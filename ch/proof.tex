@@ -1,0 +1,63 @@
+\section{证明}
+\subsection{特征1证明}
+\begin{proof}
+	
+不失一般性，假设用户 $a_i$对所有dapp的价值权
+重为 $b_{i1}, b_{i2}, ..., b_{in}$。这些均为定值。
+假设用户$a_i$对所有dapp的分贡献值分别为$NR_{i1},...,NR_{in}$，这些为可调整的变量。
+
+用户$a_i$的优化目标为他所提供的总排名分，定义为
+$$w_i = \sum_{j=1}^n b_{ij}\sqrt{NR_{ij}}$$
+根据柯西不等式可得
+$$w_i = \sum_{j=1}^n b_{ij}\sqrt{NR_{ij}} \leq (\sum_{j=1}^n b_{ij}^2)(\sum_{j=1}^n NR_{ij}) \leq (\sum_{j=1}^n b_{ij}^2)NR_i$$
+上式最右边为定值。等号成立当且仅当
+$$\frac{b_{i1}^2}{NR_{i1}}=\frac{b_{i2}^2}{NR_{i2}}=\cdots=\frac{b_{in}^2}{NR_{in}}$$
+故命题得证。
+
+\end{proof}
+\subsection{特征2证明}
+\begin{proof}
+	 不失一般性，假设$d_1$开发者将其dapp拆分成2个dapp。对于任何正常用户$a_i$，拆分之前他对所有dapp的价值权重分别为$b_{i1},b_{i2},...,b_{in}$。拆分之后，假设$a_i$对于拆分出的$2$个dapp价值权重为$b'_{i1},b'_{i2}$。根据我们的假设有$b_{i1} \geq b'_{i1}+b'_{i2}$
+	 
+	 我们接下来计算拆分之前的分贡献值。计$H_i = \sum_{j=2}^n b_{ij}^2$，根据特征1的结论及合分比定理有
+	 $$\frac{NR_{i1}}{b_{i1}^2} = \frac{\sum_{j=1}^n NR_{ij}}{\sum_{j=1}^n b_{ij}^2} = \frac{NR_i}{b_{i1}^2+H_i}$$ 
+	 故
+	 $$NR_{i1}=\frac{b_{i1}^2NR_i}{b_{i1}^2+H_i}$$
+	 
+     类似的可得到拆分之后$a_i$对拆分的第$t$个dapp的分贡献值为（定义为$NR'_{it},t=1,2$）
+	 $$NR'_{it} =  \frac{b_{it}^{'2}NR_i}{b_{i1}^{'2}+b_{i2}^{'2}+H_i}$$
+	 注意到$b_{i1}^2 \geq (b‘_{i1}+b’_{i2})^2 >b_{i1}^{'2}+b_{i2}^{'2}$，可得
+	 $$NR_{i1} > NR'_{i1}+NR'_{i2}$$
+	 
+	 定义$score'_1,score'_2$分别为$d_1$拆分之后的两个dapp的排名分，根据定义，有
+	 $$score'_1 =  \sum_{i=1}^m \sqrt{NR'_{i1}},~~~score'_2 =  \sum_{i=1}^m \sqrt{NR'_{i2}},~~~score_1 = \sum_{i=1}^m \sqrt{NR_{i1}}$$
+	 定义$u'_1$为拆分之后$d_1$开发者从所有dapp中获得的奖励，则
+	 $$u'_1=\frac{score_1^{'2}+score_2^{'2}}{score_1^{'2}+score_2^{'2}+\sum_{j=2}^n score_j^2},~~~u_1=\frac{score^2_1}{score_1^2+\sum_{j=2}^n score_j^2}$$
+	 注意到在固定$score_2,...,score_n$的情况下，
+	 $$ u_1 \geq u'_1 \Leftrightarrow score_1^2 \geq score_1^{'2}+score_2^{'2}$$
+	 
+	 所以，为了比较$d_1$开发者在拆分前后的收益，我们只需要比较下面两个量
+	 $$score_1^2 = (\sum_{i=1}^m \sqrt{NR_{i1}})^2,~~~score_1^{'2}+score_2^{'2}=  (\sum_{i=1}^m \sqrt{NR'_{i1}})^2+(\sum_{i=1}^m \sqrt{NR'_{i2}})^2$$
+	 事实上，$score_1^2 \geq score_1^{'2}+score_2^{'2}$可由最短路性质得出。
+	 \begin{figure}
+	 	\centering
+	 	 \includegraphics[width = 0.6\textwidth]{../common/m1.png}
+	 	\caption{最短路证明 \label{fig:path}}
+	 \end{figure}
+	 如图\ref{fig:path}，构造一个网格，其长和宽均被分成了$m$段，其第$i$段长度分别为$\sqrt{NR'_{i1}}$和$\sqrt{NR'_{i2}}$。
+	 
+	 $score_1^{'2}+score_2^{'2}=A_0A_m^2$，即恰好等于图中蓝线的长度的平方。而
+	 $$score_1^2 = (\sum_{i=1}^m \sqrt{NR_{i1}})^2 > (\sum_{i=1}^m \sqrt{NR'_{i1}+NR'_{i2}})^2 = (\sum_{i=1}^m A_{i-1}A_i)^2$$
+	 即所有红线长度之和的平方。根据两点之间线段最短可得$score_1^2 >score_1^{'2}+score_2^{'2}$。
+	 
+	 对于拆分成$k>2$个dapp的情形，只需转化成逐次拆分然后每次应用$k=2$时的结论即可。
+	 
+	 故命题得证。
+\end{proof}
+
+\subsection{推论1证明}
+\begin{proof}
+	对于一个被$d_1$开发者收买的用户，在$d_1$进行拆分之前，可以将该用户等价于一个价值权重向量为$(1,0,0,...,0)$的正常用户。而拆分成$k$个dapp之后，假设被收买用户对这$k$个dapp的分贡献值为$NR_{t1},...,NR_{tk}$，其和为定值。根据特征1的证明中柯西不等式取等号的条件，可将该用户等价于一个价值权重向量为$(\sqrt{NR_{t1}}/C,\sqrt{NR_{t2}}/C,...,\sqrt{NR_{tk}}/C,0,0,...,0)$的正常用户。其中$C=\sum_{j=1}^k \sqrt{NR_{tj}}$。即对拆分出的dapp按某种比例分配权重，所有其他dapp权重为0\footnote{注意将所有价值权重同时扩大若干倍对结论没有影响，因为最终用户分贡献值总和只与权重占据的比例有关。}。此时因为
+	$$\sum_{j=1}^k \sqrt{NR_{tj}}/C =1$$
+	可规约为特征2的情况，即变成满足假设的正常用户的情形。故命题得证。
+\end{proof}
