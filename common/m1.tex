@@ -1,0 +1,46 @@
+\begin{tikzpicture}
+\pgfmathsetmacro{\XTD}{3.8}
+\pgfmathsetmacro{\YTD}{1.2}
+
+\tikzset{
+  node/.style={draw, circle, on grid, align=center, minimum height=2ex},
+}
+
+\node[node] (d1) at (\XTD, 2*\YTD) {$d_1$};
+\node[node] (d2) at (\XTD, \YTD) {$d_2$};
+\node[node] (d3) at (\XTD, 0) {$d_3$};
+\node[node] (d4) at (\XTD, -1*\YTD) {$d_4$};
+\node[node] (d5) at (\XTD, -2*\YTD) {$d_5$};
+
+\node[node] (a1) at (-\XTD, 1.5*\YTD) {$a_1$};
+\node[node] (a2) at (-\XTD, 0.5*\YTD) {$a_2$};
+\node[node] (a3) at (-\XTD, -0.5*\YTD) {$a_3$};
+\node[node] (a4) at (-\XTD, -1.5*\YTD) {$a_4$};
+
+\draw[->, >=stealth'] (a1) to (d1);
+\draw[->, >=stealth'] (a1) to (d2);
+\draw[->, >=stealth'] (a1) to (d3);
+\draw[->, >=stealth'] (a1) to (d4);
+\draw[->, >=stealth'] (a1) to (d5);
+
+\draw[->, >=stealth'] (a2) to (d1);
+\draw[->, >=stealth'] (a2) to (d2);
+\draw[->, >=stealth'] (a2) to (d3);
+\draw[->, >=stealth'] (a2) to (d4);
+\draw[->, >=stealth'] (a2) to (d5);
+
+\draw[->, >=stealth'] (a3) to (d1);
+\draw[->, >=stealth'] (a3) to (d2);
+\draw[->, >=stealth'] (a3) to (d3);
+\draw[->, >=stealth'] (a3) to (d4);
+\draw[->, >=stealth'] (a3) to (d5);
+
+\draw[->, >=stealth'] (a4) to (d1);
+\draw[->, >=stealth'] (a4) to (d2);
+\draw[->, >=stealth'] (a4) to (d3);
+\draw[->, >=stealth'] (a4) to (d4);
+\draw[->, >=stealth'] (a4) to (d5);
+
+\node at (0, 2*\YTD) {$e_{ij}$};
+
+\end{tikzpicture}

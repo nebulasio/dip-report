@@ -19,11 +19,13 @@ NR值是我们衡量用户价值的重要依据。然而NR的更新是一天一�
 	\item $M$表示星云团队用于给与开发者奖励的最大值。实际发放的奖励总额会根据该阶段社区参与度来适当进行衰减。
 	\item $u_j, j=1,2,...,n$，表示DAPP $d_j$开发者最终获得的奖励，这个奖励由奖励总额以及所有$Dapp$的排名分共同决定。生活中常见的评奖方式通常具有凹函数性质，例如第一名10000元，第二名5000元，第三名2000元。我们的奖励函数具有同样性质且具有更高的可扩展性。
 \end{itemize}
-	 \begin{figure}
-	 	\centering
-	 	\includegraphics[width = 0.4\textwidth]{../common/m2.png}
-	 	\caption{用户与DApp间的交互 \label{fig:interact}}
-	 \end{figure}
+
+\begin{figure}
+	\centering
+ %\includegraphics[width = 0.4\textwidth]{../common/m2.png}
+  \input{../common/m1.tex}
+\caption{用户与DApp间的交互 \label{fig:interact}}
+\end{figure}
 \subsection{行为介绍}
 在我们的模型中，一个用户$a_i \in \mathcal{A}$本质上是一个账户地址，正如黄皮书所提到的，一个用户可以控制多个账户地址。由于建立新的账户地址是没有成本的，用户可以伪造出多个受他控制的地址进行投票，进行所谓女巫攻击。但受NR定义中的财产中值等限制这些伪造的账户NR值都很低。同时，一个DApp也对应于一个合约地址。DApp开发者可以选择将自己的Dapp分成多个地址，相当将一个DApp拆分成多个低质量的DApp，并且获得这些DApp的总奖励。
 

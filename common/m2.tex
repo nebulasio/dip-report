@@ -1,0 +1,86 @@
+\begin{tikzpicture}
+\pgfmathsetmacro{\HEIGHT}{1.2}
+\pgfmathsetmacro{\HDOT}{2.2}
+\pgfmathsetmacro{\WDOT}{3.2}
+\pgfmathsetmacro{\WOne}{1.6}
+\pgfmathsetmacro{\WTwo}{2.2}
+\pgfmathsetmacro{\WN}{4.2}
+
+\pgfmathsetmacro{\LEN}{\WOne + \WTwo + \WN + \WDOT}
+\pgfmathsetmacro{\TH}{3*\HEIGHT+ \HDOT}
+
+\tikzset{
+  t/.style={draw, on grid, align=center, minimum height=1ex},
+  coord/.style={coordinate, on grid, node distance=6mm and 25mm},
+  between/.style args={#1 and #2}{
+         at = ($(#1)!0.5!(#2)$)
+    }
+}
+
+\draw [name path=h1] (0, 0) -- (\LEN, 0);
+\draw [name path=h2] (0, \HEIGHT) -- (\LEN, \HEIGHT);
+\draw [name path=h3] (0, 2*\HEIGHT) -- (\LEN, 2*\HEIGHT);
+\draw [name path=h4] (0, 2*\HEIGHT + \HDOT) -- (\LEN, 2*\HEIGHT + \HDOT);
+\draw [name path=h5] (0, 3*\HEIGHT + \HDOT) -- (\LEN, 3*\HEIGHT + \HDOT);
+
+\draw[name path=v1] (0, 0) -- (0, \TH);
+\draw[name path=v2] (\WOne, 0) -- (\WOne, \TH);
+\draw[name path=v3] (\WOne + \WTwo, 0) -- (\WOne + \WTwo, \TH);
+\draw[name path=v4] (\WOne + \WTwo + \WDOT, 0) -- (\WOne + \WTwo + \WDOT, \TH);
+\draw[name path=v5] (\WOne + \WTwo + \WDOT + \WN, 0) -- (\WOne + \WTwo + \WDOT + \WN, \TH);
+
+\path [name intersections={of=h1 and v1,by=A0}];
+\path [name intersections={of=h2 and v2,by=A1}];
+\path [name intersections={of=h3 and v3,by=A2}];
+\path [name intersections={of=h4 and v4,by=Am1}];
+\path [name intersections={of=h5 and v5,by=Am}];
+
+\draw [red] (A0) -- (A1) -- (A2) -- (Am1) -- (Am);
+\draw [blue] (A0) -- (Am);
+
+\node [below=0.01 of A0, anchor=north east] {$A_0$};
+\node [above=0.05 of A1, anchor=south east]{$A_1$};
+\node [above=0.05 of A2, anchor=south east] {$A_2$};
+\node [above=0.05 of Am1, anchor=south east] {$A_{m-1}$};
+\node [above=0.05 of Am, anchor=south]{$A_m$};
+
+
+\path [name intersections={of=h1 and v1,by=t00}];
+\path [name intersections={of=h2 and v1,by=t01}];
+\path [name intersections={of=h3 and v1,by=t02}];
+\path [name intersections={of=h4 and v1,by=t03}];
+\path [name intersections={of=h5 and v1,by=t04}];
+\node [coord, between=t00 and t01] (x1){};
+\node [coord, between=t01 and t02] (x2){};
+\node [coord, between=t02 and t03] (x3){};
+\node [coord, between=t03 and t04] (x4){};
+
+\node [left=0.05 of x1.west] {$\sqrt{{\nr}'_{11}}$};
+\node [left=0.05 of x2.west] {$\sqrt{{\nr}'_{21}}$};
+\node [left=0.7 of x3.west, anchor=center] {$\vdots$};
+\node [left=0.05 of x4.west] {$\sqrt{{\nr}'_{m1}}$};
+
+\path [name intersections={of=h1 and v1,by=s00}];
+\path [name intersections={of=h1 and v2,by=s01}];
+\path [name intersections={of=h1 and v3,by=s02}];
+\path [name intersections={of=h1 and v4,by=s03}];
+\path [name intersections={of=h1 and v5,by=s04}];
+\node [coord, between=s00 and s01] (y1){};
+\node [coord, between=s01 and s02] (y2){};
+\node [coord, between=s02 and s03] (y3){};
+\node [coord, between=s03 and s04] (y4){};
+
+\node [below=0.5 of y1.south, anchor=center] {$\sqrt{{\nr}'_{12}}$};
+\node [below=0.5 of y2.south, anchor=center] {$\sqrt{{\nr}'_{22}}$};
+\node [below=0.5 of y3.south, anchor=center] {$\dots$};
+\node [below=0.5 of y4.south, anchor=center] {$\sqrt{{\nr}'_{m2}}$};
+
+\node at (x1.east -| y3.north) {$\dots$};
+\node at (x2.east -| y3.north) {$\dots$};
+\node at (x4.east -| y3.north) {$\dots$};
+
+\node at (y1.north |- x3.east) {$\vdots$};
+\node at (y2.north |- x3.east) {$\vdots$};
+\node at (y4.north |- x3.east) {$\vdots$};
+
+\end{tikzpicture}
