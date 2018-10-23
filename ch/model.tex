@@ -9,7 +9,7 @@ DIP包括两个环节：DApp评分以及开发者激励分配。
 \label{subsection:parameters}
 首先我们给出DIP模型中涉及的符号表示。
 \begin{itemize}
-	\item $\mathcal{A}=\{a_1,a_2,...,a_m\}$表示所有参与此阶段评选的投票用户的集合，注意的是只有在一定时间内调用过任何DApp的外部账户（External Owned Account）才会被定义为投票用户。
+	\item $\mathcal{A}=\{a_1,a_2,...,a_m\}$表示所有参与此阶段评选的投票用户的集合，注意的是只有在一定时间内调用过任何DApp的外部账户（External Owned Account）才会被定义为投票用户。同时期所有用户集合表示为$\mathcal{A}^*=\{a_1,a_2,...,a_m,a_{m+1},...,a_k\}$。
 	\item $\mathcal{D}=\{d_1,...,d_n\}$表示此阶段所有DApp的集合。
 	\item $e_{ij},i=1,2,...,m, j=1,2,...,n$表示在一定时间内用户$a_i$对DApp $d_j$的总调用次数。鉴于区块链系统所具有的公开性，去中心化等特性，因此DIP评分模型和传统中心化的应用商城评分系统有所不同。简单地说，DIP将在去中心化系统中基于用户调用智能合约行为DApp评分的功能，具体描述见下一节。
 	\item $\nr_i, i=1,2,...,m$表示参与评选的用户$a_i$在此阶段的平均NR值。\cite{Nabulasyellowpaper}中已经证明NR值是衡量一个用户的有效价值尺度，故我们也把其用作DIP模型中用于决定用户投票权重的重要指标。
