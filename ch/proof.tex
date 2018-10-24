@@ -1,5 +1,5 @@
 \section{证明}
-\subsection{特征\ref{p1}证明}
+\subsection{特征~\ref{p1}证明}
 \label{subsection:proof1}
 \begin{proof}
 
@@ -16,12 +16,12 @@ $$\frac{b_{i1}^2}{\nr_{i1}}=\frac{b_{i2}^2}{\nr_{i2}}=\cdots=\frac{b_{in}^2}{\nr
 故命题得证。
 
 \end{proof}
-\subsection{特征\ref{p2}证明}
+\subsection{特征~\ref{p2}证明}
 \label{subsection:proof2}
 \begin{proof}
-	 不失一般性，假设$d_1$开发者将其DApp拆分成2个DApp。对于章节\ref{subsec:5.2}中第二种情形的正常用户$a_i$，即，拆分之前他对所有dapp的价值权重分别为$b_{i1},b_{i2},...,b_{in}$。拆分之后，假设$a_i$对于拆分出的$2$个dapp价值权重为$b'_{i1},b'_{i2}$。根据我们的假设有$b_{i1} \geq b'_{i1}+b'_{i2}$
+	 不失一般性，假设$d_1$开发者将其DApp拆分成2个DApp。对于章节~\ref{subsec:5.2}中第二种情形的正常用户$a_i$，即，拆分之前他对所有dapp的价值权重分别为$b_{i1},b_{i2},...,b_{in}$。拆分之后，假设$a_i$对于拆分出的$2$个dapp价值权重为$b'_{i1},b'_{i2}$。根据我们的假设有$b_{i1} \geq b'_{i1}+b'_{i2}$
 
-	 我们接下来计算拆分之前的分贡献值。计$H_i = \sum_{j=2}^n b_{ij}^2$，根据特征\ref{p1}的结论及合分比定理有
+	 我们接下来计算拆分之前的分贡献值。计$H_i = \sum_{j=2}^n b_{ij}^2$，根据特征~\ref{p1}的结论及合分比定理有
 	 $$\frac{\nr_{i1}}{b_{i1}^2} = \frac{\sum_{j=1}^n \nr_{ij}}{\sum_{j=1}^n b_{ij}^2} = \frac{\nr_i}{b_{i1}^2+H_i}$$
 	 故
 	 $$\nr_{i1}=\frac{b_{i1}^2\nr_i}{b_{i1}^2+H_i}$$
@@ -30,7 +30,7 @@ $$\frac{b_{i1}^2}{\nr_{i1}}=\frac{b_{i2}^2}{\nr_{i2}}=\cdots=\frac{b_{in}^2}{\nr
 	 $$\nr'_{it} =  \frac{b_{it}^{'2}\nr_i}{b_{i1}^{'2}+b_{i2}^{'2}+H_i}$$
 	 注意到$b_{i1}^2 \geq (b‘_{i1}+b’_{i2})^2 >b_{i1}^{'2}+b_{i2}^{'2}$，可得
 	 $$\nr_{i1} > \nr'_{i1}+\nr'_{i2}$$
-	 上述分析了对于一个足够聪明的理性用户选择的分贡献值满足的条件。事实上，对于大部分普通用户，他们属于章节\ref{subsec:5.2}中第一种情形，即，他们面对DApp拆分所采取的方式通常为简单的将原本投给拆分前的DApp的所有票分散开来。无论哪种情况，均有
+	 上述分析了对于一个足够聪明的理性用户选择的分贡献值满足的条件。事实上，对于大部分普通用户，他们属于章节~\ref{subsec:5.2}中第一种情形，即，他们面对DApp拆分所采取的方式通常为简单的将原本投给拆分前的DApp的所有票分散开来。无论哪种情况，均有
 	 	$$\nr_{i1} \geq \nr'_{i1}+\nr'_{i2}$$
 
 	 定义$S'_1,S'_2$分别为$d_1$拆分之后的两个dapp的排名分，根据定义，有
@@ -49,7 +49,7 @@ $$\frac{b_{i1}^2}{\nr_{i1}}=\frac{b_{i2}^2}{\nr_{i2}}=\cdots=\frac{b_{in}^2}{\nr
     \input{../common/m2.tex}
 	 	\caption{最短路证明 \label{fig:path}}
 	 \end{figure}
-	 如图\ref{fig:path}，构造一个网格，其长和宽均被分成了$m$段，其第$i$段长度分别为$\sqrt{\nr'_{i1}}$和$\sqrt{\nr'_{i2}}$。
+	 如图~\ref{fig:path}，构造一个网格，其长和宽均被分成了$m$段，其第$i$段长度分别为$\sqrt{\nr'_{i1}}$和$\sqrt{\nr'_{i2}}$。
 
 	 $S_1^{'2}+S_2^{'2}=A_0A_m^2$，即恰好等于图中蓝线的长度的平方。而
 	 $$S_1^2 = (\sum_{i=1}^m \sqrt{\nr_{i1}})^2 > (\sum_{i=1}^m \sqrt{\nr'_{i1}+\nr'_{i2}})^2 = (\sum_{i=1}^m A_{i-1}A_i)^2$$
@@ -60,7 +60,7 @@ $$\frac{b_{i1}^2}{\nr_{i1}}=\frac{b_{i2}^2}{\nr_{i2}}=\cdots=\frac{b_{in}^2}{\nr
 	 故命题得证。
 \end{proof}
 
-\subsection{推论\ref{c1}证明}
+\subsection{推论~\ref{c1}证明}
 \label{subsection:proof3}
 \begin{proof}
 	对于一个被$d_1$开发者收买的用户，在$d_1$进行拆分之前，可以将该用户等价于一个价值权重向量为$(1,0,0,...,0)$的正常用户。而拆分成$k$个dapp之后，假设被收买用户对这$k$个dapp的分贡献值为$\nr_{t1},...,\nr_{tk}$，其和为定值。根据特征1的证明中柯西不等式取等号的条件，可将该用户等价于一个价值权重向量为$(\sqrt{\nr_{t1}}/C,\sqrt{\nr_{t2}}/C,...,\sqrt{\nr_{tk}}/C,0,0,...,0)$的正常用户。其中$C=\sum_{j=1}^k \sqrt{\nr_{tj}}$。即对拆分出的dapp按某种比例分配权重，所有其他dapp权重为0\footnote{注意将所有价值权重同时扩大若干倍对结论没有影响，因为最终用户分贡献值总和只与权重占据的比例有关。}。此时因为
@@ -68,13 +68,13 @@ $$\frac{b_{i1}^2}{\nr_{i1}}=\frac{b_{i2}^2}{\nr_{i2}}=\cdots=\frac{b_{in}^2}{\nr
 	可规约为特征2的情况，即变成满足假设的正常用户的情形。故命题得证。
 \end{proof}
 
-\subsection{性质\ref{p3}证明}
+\subsection{性质~\ref{p3}证明}
 \begin{proof}
 我们先考虑某个用户将其账户拆分成两个子账户的情况。固定其他用户的行为，假设$c$为该用户原账户，$a$,$b$为拆分后子账户。$S,S'$分别为拆分前后该用户指定DApp的排名分。$U,U'$分别为拆分前该用户。根据定义，有
 $$S= \sqrt{\nr_c}+O,~~S'=\sqrt{\nr_a}+\sqrt{\nr_b}+O$$
 其中$O$为其他用户对该DApp的贡献值之和，是个定值。
 
-由$\ref{eq:sqrt_nr}$可得$S < S'$，即该DApp排名分不会增加。
+由~\ref{eq:sqrt_nr}可得$S < S'$，即该DApp排名分不会增加。
 
 同时，根据定义有
 $$U = \frac{S}{S+P}\lambda M,~~U' = \frac{S'}{S'+P} \lambda M$$
