@@ -1,0 +1,42 @@
+\pgfplotstableread[col sep=comma]{../common/gateionr.csv}\datatable
+
+\begin{tikzpicture}
+  \begin{axis}[
+%ticks=none,
+ylabel={NR值},
+xlabel={日期},
+%xtick={0,10,20,30,40,50,60},
+%xlabel={时间（天）}
+legend style={fill=none},
+xtick={0, 56},
+xticklabels={2018/07/31, 2018/09/25},
+extra x ticks={1, 2, ..., 55},
+      extra x tick style={
+        xticklabels={,,},
+      },
+%xticklabels from table={\datatable}{record},
+width=.75\textwidth,
+    ]
+\addplot [mark=., color=blue] table [x expr=\coordindex, y=nr, col sep=comma] {../common/gateionr.csv};
+
+\draw[dashed, color=gray] (axis cs:0, 340000000) -- ( axis cs:0,
+450000000) ;
+\draw[dashed, color=gray] (axis cs:6, 340000000) -- ( axis cs:6,
+450000000) ;
+\draw[dashed, color=gray] (axis cs:21, 340000000) -- ( axis cs:21,
+450000000) ;
+\draw[dashed, color=gray] (axis cs:35, 340000000) -- ( axis cs:35,
+450000000) ;
+\draw[dashed, color=gray] (axis cs:56, 340000000) -- ( axis cs:56,
+450000000) ;
+
+\draw[<->, color=gray] (axis cs:0, 445000000) -- node[ color=black, fill=violet!25, anchor=center] {\small $t_1$} (axis cs:6, 445000000);
+\draw[<->, color=gray] (axis cs:6, 445000000) -- node[ color=black, fill=violet!25,
+anchor=center] {\small $t_2$} (axis cs:21, 445000000);
+\draw[<->, color=gray] (axis cs:21, 445000000) -- node[ color=black, fill=violet!25,
+anchor=center] {\small $t_3$} (axis cs:35, 445000000);
+\draw[<->, color=gray] (axis cs:35, 445000000) -- node[ color=black, fill=violet!25,
+anchor=center] {\small $t_4$} (axis cs:56, 445000000);
+\end{axis}
+
+\end{tikzpicture}
