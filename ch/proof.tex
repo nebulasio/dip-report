@@ -1,5 +1,6 @@
 \section{证明}
 \subsection{特征1证明}
+\label{subsection:proof1}
 \begin{proof}
 
 不失一般性，假设用户 $a_i$对所有dapp的价值权
@@ -16,6 +17,7 @@ $$\frac{b_{i1}^2}{\nr_{i1}}=\frac{b_{i2}^2}{\nr_{i2}}=\cdots=\frac{b_{in}^2}{\nr
 
 \end{proof}
 \subsection{特征2证明}
+\label{subsection:proof2}
 \begin{proof}
 	 不失一般性，假设$d_1$开发者将其dapp拆分成2个dapp。对于任何正常用户$a_i$，拆分之前他对所有dapp的价值权重分别为$b_{i1},b_{i2},...,b_{in}$。拆分之后，假设$a_i$对于拆分出的$2$个dapp价值权重为$b'_{i1},b'_{i2}$。根据我们的假设有$b_{i1} \geq b'_{i1}+b'_{i2}$
 
@@ -59,6 +61,7 @@ $$\frac{b_{i1}^2}{\nr_{i1}}=\frac{b_{i2}^2}{\nr_{i2}}=\cdots=\frac{b_{in}^2}{\nr
 \end{proof}
 
 \subsection{推论1证明}
+\label{subsection:proof3}
 \begin{proof}
 	对于一个被$d_1$开发者收买的用户，在$d_1$进行拆分之前，可以将该用户等价于一个价值权重向量为$(1,0,0,...,0)$的正常用户。而拆分成$k$个dapp之后，假设被收买用户对这$k$个dapp的分贡献值为$\nr_{t1},...,\nr_{tk}$，其和为定值。根据特征1的证明中柯西不等式取等号的条件，可将该用户等价于一个价值权重向量为$(\sqrt{\nr_{t1}}/C,\sqrt{\nr_{t2}}/C,...,\sqrt{\nr_{tk}}/C,0,0,...,0)$的正常用户。其中$C=\sum_{j=1}^k \sqrt{\nr_{tj}}$。即对拆分出的dapp按某种比例分配权重，所有其他dapp权重为0\footnote{注意将所有价值权重同时扩大若干倍对结论没有影响，因为最终用户分贡献值总和只与权重占据的比例有关。}。此时因为
 	$$\sum_{j=1}^k \sqrt{\nr_{tj}}/C =1$$

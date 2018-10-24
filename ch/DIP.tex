@@ -47,6 +47,7 @@ S_j = g(\nr_{1j},\nr_{2j},...,\nr_{mj})
 \end{align}
 同样地，这里我们给出一个符合条件的函数：
 \begin{align}
+\label{eq:sqrt}
 g(\nr_{1j},\nr_{2j},...,\nr_{mj}) = \sum_{i=1}^m \sqrt{\nr_{ij}}
 \end{align}
 
@@ -63,6 +64,7 @@ DIP对于用户而言提供了可信的DApp排名\footnote{我们假设用户只
 
 给定所有DApp的排名分$S_j,i=1,2,...,n$，定义DApp $d_j$开发者的奖励为
 \begin{align}
+\label{eq:distribution}
 U_i = \frac{S_j^2}{\sum_{k=1}^n S_j^2}\cdot \lambda M
 \end{align}
 其中$M$是星云团队用于发放奖励的最大值，$\lambda $定义为参与系数，即我们希望参与评选的用户越多给的奖励总额越大，具体定义为
