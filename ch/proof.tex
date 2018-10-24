@@ -69,6 +69,7 @@ $$\frac{b_{i1}^2}{\nr_{i1}}=\frac{b_{i2}^2}{\nr_{i2}}=\cdots=\frac{b_{in}^2}{\nr
 \end{proof}
 
 \subsection{性质\ref{p3}证明}
+\begin{proof}
 我们先考虑某个用户将其账户拆分成两个子账户的情况。固定其他用户的行为，假设$c$为该用户原账户，$a$,$b$为拆分后子账户。$S,S'$分别为拆分前后该用户指定DApp的排名分。$U,U'$分别为拆分前该用户。根据定义，有
 $$S= \sqrt{\nr_c}+O,~~S'=\sqrt{\nr_a}+\sqrt{\nr_b}+O$$
 其中$O$为其他用户对该DApp的贡献值之和，是个定值。
@@ -80,4 +81,4 @@ $$U = \frac{S}{S+P}\lambda M,~~U' = \frac{S'}{S'+P} \lambda M$$
 其中$P$为其他DApp的排名分的平方和，是个定值，故
 $$U \geq U' \Leftrightarrow S \geq S'$$
 由$S < S' $可得 $U \leq U'$，即该DApp最终奖励不会增加。
-
+\end{proof}
