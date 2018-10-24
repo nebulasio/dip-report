@@ -29,6 +29,7 @@
 综上，用户和DApp之间的交互可以用图\ref{fig:interact}中的二分图来表示。
 
 \subsection{投票行为}
+\label{subsection:voting}
 在中心化的App Store\footnote{https://en.wikipedia.org/wiki/App\_store}中，系统会记录App的下载量等信息，后者也是应用评分的主要参考因素之一。而在区块链场景下，用户对于应用的使用会直接反应在调用合约地址行为上，例如表现为一段时间内用户$a_i$对DApp $d_j$的总调用次数$e_{ij}$。DIP通过用户调用行为作为用户的投票数据来源，相比传统的下载量信息具有如下优点：
 \begin{itemize}
 	\item 用户调用智能合约行为记录在链上，很难篡改，相比中心化的下载量统计方式更加公开透明；
@@ -61,6 +62,7 @@
 
 %在星云的DApp开发生态中，每个用户具有一个NR值，他可以调用（一个或多个）DApp，每次调用用户会消耗一定的gas费用用于执行智能合约。gas费用最终将支付给矿工。同时，根据智能合约性质的不同，用户有可能会直接支付一定数量的nas给智能合约地址，最终由DApp开发者获得。星云团队（{\color{red}多少钱?}）会支付最高xx nas用于奖励优秀DApp开发者，其中参与评选活跃用户越多（根据NR来判断）奖励总额越高。
 \subsection{采样时间}
+\label{subsection:interval}
 (增加图和修改)
 
 在\ref{subsection:parameters}小节中，我们介绍了将使用NR值作为决定用户投票权重的重要指标。根据星云黄皮书定义\cite{Nabulasyellowpaper}，DIP中的数据采样周期远大于NR的更新周期，这意味着系统在统计用户调用行为的过程中，用户自身NR可能会发生变化甚至较大波动。
