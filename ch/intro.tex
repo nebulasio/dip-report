@@ -1,8 +1,11 @@
 \section{概要}
 
-%1. 区块链关于DApp的介绍
-
-一般而言，在传统的软件开发行业，开发者在某开发平台（如Windows\footnote{\url{https://www.microsoft.com/en-us/windows}}，Linux\footnote{\url{https://en.wikipedia.org/wiki/Linux}}，macOS\footnote{\url{https://en.wikipedia.org/wiki/MacOS}}, iOS\footnote{\url{https://en.wikipedia.org/wiki/IOS}}，Android\footnote{\url{https://en.wikipedia.org/wiki/Android}}等）上开发相应的应用，并由此获利。开发者的获利方式主要包括，薪资、售卖自己主导或参与开发的软件以及在免费分发的软件中插入广告流量。
+一般而言，在传统的软件开发行业，开发者在某开发平台
+（如Windows\footnote{\url{https://www.microsoft.com/en-us/windows}}，Linux\footnote{\url{https://en.wikipedia.org/wiki/Linux}}，
+macOS\footnote{\url{https://en.wikipedia.org/wiki/MacOS}},
+iOS\footnote{\url{https://en.wikipedia.org/wiki/IOS}}，
+Android\footnote{\url{https://en.wikipedia.org/wiki/Android}}等）上开发相应的应用，并由此获利。
+开发者的获利方式主要包括，薪资、售卖自己主导或参与开发的软件以及在免费分发的软件中插入广告流量。
 
 然而，应用平台方在软件的使用中所获得的利益并没有被公平的分配给相应的开发者。例如，某用户需要使用Sketch而不得不购买搭载macOS的Mac设备\footnote{\url{https://www.sketchapp.com/support/requirements/other-platforms/}}，
 并由此付出费用，尽管Sketch的开发者可以向用户收取使用费用，
@@ -79,47 +82,3 @@
 相对于一年前的概念论证，经过一年的深入思考与实际验证，我们有信心和能力设计出更为严谨的算法，并对星云指数的更多实际细节问题提供明确的解决方案或方向。
 为了方便阅读，我们将使用实线框高亮解释技术白皮书提及过、并且在本紫皮书中有升级的相关技术点。
 }
-
-\begin{comment}
-
-基于已有的星云指数（Nebulas Rank，NR）\cite{Nabulasyellowpaper}，我们提出的激励机制能够在一定程度上保证上述性质。
-\begin{itemize}
-
-\item 为了实现公平性，我们把用户调用DApp的次数作为影响评分的主要标准。正如各大排行网站出现的点击榜一样，这样能够保证好的DApp受到了更多关注，并能促进整个系统的活跃性。
-
-\item 为了抵抗女巫攻击，我们应用了星云指数（NR）本身具有的性质。我们让具有更高NR值的用户拥有更多的投票权。
-由于NR的设计保证了伪造高NR用户的困难性从而有效防止了用户这方面的女巫攻击。同时，我们最终奖励函数的凹函数性质能保证开发者将他的DApp拆分成多个小DApp不会提升他的收益。
-
-\item 为了防止收买，我们给与将票投给多个DApp的用户更高的投票权。因为被收买的用户往往只将票投给一个人，导致效用较低，这样就增加了收买的代价。
-\end{itemize}
-
-
-
-
-%相比于传统的应用，DApp具有如下特性：
-%\begin{itemize}
-%	\item 数据公开透明、不可篡改，应用数据存储在区块链上所有节点，而不依赖于任何中心化的服务器；
-%	\item 应用逻辑公开、不可篡改，应用逻辑完全由智能合约代码决定，绝大多数智能合约会公布其源代码，从而保证可信度。
-%\end{itemize}
-
-
-
-\textcolor{red}{下面这个切入点太直白了，试试这个：区块链做为典型的社区驱动的项目，维护社区中各方的利益，是区块链平台不可推卸的责任和义务。
-然而，目前，大多数公链平台漠视、甚至损坏开发者的利益，这对于整个区块链行业及生态的长远健康发展，是极为不利的。因此，本文提出开发者激励协议。出发点应该是我们要维护社区的利益，而不是为了让星云繁荣，提出了这个东西。所以后续的措辞可能都需要改一下}
-对于区块链平台而言，DApp应用数量和质量直观反映了其社区繁荣程度，也影响着平台发展潜力。
-迄今为止\textcolor{red}{注明时间}，根据DAppradar统计以太坊上已有超过632款DApp\footnote{https://DAppradar.com/DApps.}，相比之下目前大部分其他基础公链的DApp发行数量都远不及以太坊。值得注意的是，星云链一直致力于发展DApp生态并为开发者提供友好的开发平台。经过历时两个多月的激励计划\textcolor{red}{不要提激励计划}，目前星云链上已有超过6871个DApp\footnote{https://incentive.nebulas.io/summary.html.} \textcolor{red}{这个统计和对比是不严谨的}。
-%同时，星云和eos上也分别有xxx和xxx DApp。
-
-伴随着DApp爆炸式增长，暴露出的问题是DApp的质量参差不齐。因此，
-如何对海量的DApp进行评价以提供更好的用户体验，以及如何促进激励开发者开发新的高质量DApp成为每条公链必须解决的问题。
-
-%2. 引入开发者激励协议的必要性（何谓激励？）
-
-所谓激励是指通过特定的方法让用户产生行为动机。对应地，\textcolor{red}{星云开发者激励协议（DIP）是指以鼓励开发者开发优秀DApp为目的，以一套具有抗作弊性的DApp排名算法为核心，以对优秀DApp开发者给与NAS奖励为手段的一系列开源的激励机制的集合。}简单而言，优秀的DApp将在我们的排名算法中获得较高排名进而获得较高的奖励（在星云链上以官方代币NAS形式发放），以此来激励开发者。 我们期望，DIP能使每一个理性的诚实DApp开发者自发的设计优秀的DApp，正如日常生活常见的评奖活动一样。同时，每一个理性的非诚实的开发者无法通过各种作弊手段来骗取NAS奖励。
-
-
-
-
-事实上，正如目前区块链中存在不可能三角（The Imposible Triangle）一样\footnote{https://news.8btc.com/the-impossible-triangle-of-blockchain.}，设计一个能够满足上述特性的激励协议存在很大挑战，同时我们需要保证一定的高效性与可扩展性。
-本紫皮书的结构如下：TBA
-\end{comment}
