@@ -12,11 +12,17 @@
 \node[node] (d4) at (\XTD, -1*\YTD) {$d_4$};
 \node[node] (d5) at (\XTD, -2*\YTD) {$d_5$};
 
-\node [right=0.05 of d1] {${S}_{1}$};
-\node [right=0.05 of d2] {${S}_{2}$};
-\node [right=0.05 of d3] {${S}_{3}$};
-\node [right=0.05 of d4] {${S}_{4}$};
-\node [right=0.05 of d5] {${S}_{5}$};
+  \node [right=0.05 of d1] (s1) {${S}_{1}$};
+  \node [right=0.05 of d2] (s2) {${S}_{2}$};
+  \node [right=0.05 of d3] (s3) {${S}_{3}$};
+  \node [right=0.05 of d4] (s4) {${S}_{4}$};
+  \node [right=0.05 of d5] (s5) {${S}_{5}$};
+
+  \node [right=2.2 of s1] (u1) {${u}_{1}$};
+  \node [right=2.2 of s2] (u2) {${u}_{2}$};
+  \node [right=2.2 of s3] (u3) {${u}_{3}$};
+  \node [right=2.2 of s4] (u4) {${u}_{4}$};
+  \node [right=2.2 of s5] (u5) {${u}_{5}$};
 
 \node[node] (a1) at (-\XTD, 1.5*\YTD) {$a_1$};
 \node[node] (a2) at (-\XTD, 0.5*\YTD) {$a_2$};
@@ -53,5 +59,18 @@
 \draw[->, >=stealth'] (a4) to (d5);
 
 \node at (0, 2*\YTD) {$e_{ij}$};
+
+  \node [right= 0.1 of s1, anchor=south] (cs1) {};
+  \node [right= 0.1 of s5, anchor=north] (cs5) {};
+
+  \node [left= 0.1 of u1, anchor=south] (cu1) {};
+  \node [left= 0.1 of u5, anchor=north] (cu5) {};
+  \draw [decorate,decoration={brace,amplitude=5pt,raise=1pt}] (cs1) -- (cs5)
+  node [black,midway, right] (lc1) {};
+
+  \draw [decorate,decoration={brace,amplitude=5pt,raise=1pt, mirror}] (cu1) -- (cu5)
+  node [black,midway, left] (lc2) {};
+
+  \draw[->, dashed] (lc1) -- (lc2);
 
 \end{tikzpicture}
