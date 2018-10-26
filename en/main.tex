@@ -10,14 +10,15 @@
 
 %\setlength{\parindent}{2.1em}
 %\setlength{\parskip}{0.3\baselineskip}
-\newcommand{\nrcore}{Core Nebulas Rank}
-\newcommand{\nrext}{Extended Nebulas Ranks}
-\newcommand{\nr}{Nebulas Rank}
-\newcommand{\dom}{{\; \texttt{dom}\;}}
+%\newcommand{\nrcore}{Core Nebulas Rank}
+%\newcommand{\nrext}{Extended Nebulas Ranks}
+\newcommand{\nr}{\Gamma}
+%\newcommand{\dom}{{\; \texttt{dom}\;}}
 
 \onehalfspacing
 
 \newtheorem{property}{Property}
+\newtheorem{corollary}{Corollary}
 %\addbibresource{reference.bib}
 
 \begin{document}
@@ -34,7 +35,7 @@
     \vspace{0.5cm}
 
 
-    \textbf{\huge{Yellow Paper: Nebulas Rank}}
+    \textbf{\huge{Purple Paper: Developer Incentive Protocol}}
 
     \vspace{0.5cm}
     Nebulas Research
@@ -52,21 +53,19 @@
 \setcounter{page}{1}
 \pagestyle{fancy}
 \vspace*{0.01cm}
-\input{intro.tex}
+%\input{intro.tex}
 \input{background.tex}
-\input{economic.tex}
-\input{core.tex}
-\input{core-anti.tex}
-\input{core-impl.tex}
-\input{extension.tex}
-\input{future.tex}
-\newpage
+\input{model.tex}
+%\input{DIP.tex}
+\input{analysis}
+%\input{future.tex}
+%\newpage
 \bibliography{reference}
 
 \newpage
 \begin{appendices}
 \input{proof}
-\input{changelog.tex}
+%\input{changelog.tex}
 \end{appendices}
 
 \end{document}

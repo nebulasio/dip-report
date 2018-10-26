@@ -1,0 +1,19 @@
+\section{Developer Incentive Model}
+The Developer Incentive Protocol, DIP, including two processes: ranking the DApps and distributing the rewards. 
+
+Firstly, constructing a good ranking system can provide third-party developers with a convenient and effective  platform to promote allocations and provide users with a reliable recommendation system. Like the App Store platform for mobile, goods Apps have top positions on the ranking list and thus receive more attention from users. Secondly, users have better experience when their obtain high-quality Apps directly from the ranking lost. Further more, Apps' ranks can be used in keyword search. Just like the search systems in search engines and ecommerce platform,  listing keyword-ralated Apps on the search results according to their ranks is satisfactory to users. 
+
+On the other hand, as we shown in Section~\ref{sec:background}, the purpose of DIP is to provide rewards for good DApps' developers, thus further increases developers‘ incentives to design good DApps and promotes the ecosystem development. So the second process of DIP is to design a fair rewarding mechanism, according to DAPPs' ranks, 
+
+\subsection{model representation}
+\label{subsection:parameters}
+In this section we introduce necessary notations and symbols in DIP model.
+
+\begin{itemize}
+	\item $\mathcal{A}=\{a_1,a_2,...,a_m\}$ represent the set of users that participate the ranking system during a time period. We use voters to denote such users. Note that a user is defined to be a voter only if he invokes some DApp's EOA(External Owned Account) in a time period. Define $$\mathcal{A}^*=\{a_1,a_2,...,a_m,a_{m+1},...,a_{m^*}\}$$
+	to be the set of all users in the community during the same time period, i.e., $m*-m$ users do not invoke any DApp. 	
+  \item $\mathcal{D}=\{d_1,...,d_n\}$ represent the set of DApps during a time period.
+  \item $e_{ij},i=1,2,...,m, j=1,2,...,n$ represent the times that voter $a_i$ invokes DApp $d_j$. Due to the publicity and decentralization of blockchain, the DIP model is different from the ranking system in traditional centralized application markets. Generally speaking, DIP ranks the DApps according to users' invoking behaviors, in a decentralized environment. The details are shown in the next section.
+\end{itemize}
+
+
