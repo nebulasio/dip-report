@@ -13,11 +13,11 @@ In this section we introduce necessary notations and symbols in DIP model.
 	\item $\mathcal{A}=\{a_1,a_2,...,a_m\}$ represent the set of users that participate the ranking system during a time period. We use voters to denote such users. Note that a user is defined to be a voter only if he invokes some DApp's EOA(External Owned Account) in a time period. Define $$\mathcal{A}^*=\{a_1,a_2,...,a_m,a_{m+1},...,a_{m^*}\}$$
 	to be the set of all users in the community during the same time period, i.e., $m*-m$ users do not invoke any DApp. 	
   \item $\mathcal{D}=\{d_1,...,d_n\}$ represent the set of DApps during a time period.
-  \item $e_{ij},i=1,2,...,m, j=1,2,...,n$ represent the times that voter $a_i$ invokes DApp $d_j$. Due to the publicity and decentralization of blockchain, the DIP model is different from the ranking system in traditional centralized application markets. Generally speaking, DIP ranks the DApps according to users' invoking behaviors, in a decentralized environment. The details are shown in the next section.
+  \item $e_{ij},i=1,2,...,m, j=1,2,...,n$ represent the times that voter $a_i$ invokes DApp $d_j$. Due to the publicity and decentralization of blockchain, the DIP model is different from the ranking system in traditional centralized application markets. Generally speaking, DIP ranks the DApps according to users' invocation behaviors, in a decentralized environment. The details are shown in the next section.
   
   \item $\nr_i, i=1,2,...,m$ represent voter $a_i$'s voting capacity during a period of time.
-  ~\cite{Nebulasyellowpaper} proves that user's NR value is a effective measure of value. So in DIP, NR is also used as a significant criterion to decide users' voting capacity.	
-  \item $\nr_{ij}, i=1,2,...,m,j=1,2,...,n$ represent the contributory value from voter $a_i$ to DApp $d_j$, which can be regarded as the the number of votes that $a_i$ willing to vote for $d_j$.
+  ~\cite{Nebulasyellowpaper} proves that user's NR value is an effective measure of his account's value. So in DIP, NR is also used as a significant criterion to decide users' voting capacity.	
+  \item $\nr_{ij}, i=1,2,...,m,j=1,2,...,n$ represent the contributory value from voter $a_i$ to DApp $d_j$, which can be regarded as the number of votes that $a_i$ willing to vote for $d_j$.
   
   \item $S_j, j=1,2,...,n$ represent DApp $d_j$'s ranking score, which is determined by its total contributory value from all voters. Intuitively, the ranking scores determine DApps' positions on the ranking list. 
   
@@ -42,19 +42,19 @@ In this section we introduce necessary notations and symbols in DIP model.
  	
 \end{itemize}
   
- Actually, there are other available informations when users invoke DApps, for example, the amount of gases that has been expended and possible token transformations involved in an invocation. However, DIP takes neither of them into consideration. 
+ Actually, there are other available informations when users invoke DApps, for example, the amount of gases that has been expended and possible token transfers involved in an invocation. However, DIP takes neither of them into consideration. 
  
  Firstly, the amount of expended gases depend on the executed statements within the smart contracts each time a user invokes a DApp, where the later is not related to the DApp's own quality. Moreover, in the current Nebulas system, the average amount of expended gases during each invocation is at the order of $10^{-8}$ NAS, which is negligible. 
  
- The reason why we do not consider token transformations is the lack of an effective method against manipulation. Intuitively, the DApp's {\color{red} identification level} ought to be increased if users are williing to pay extra tokens when invoking the DApp. 
+ The reason why we do not consider token transfers is the lack of an effective method against manipulation. Intuitively, the wilinesses of users to pay additional tokens when invoking the DApp improve the DApp's {\color{red} identification level}. 
   However, in practice, when a user pays tokens to a DApp, the tokens' final destination could belong to the following three cases:
   
   \begin{enumerate}
   	 \item The tokens finally belongs to the developer of the DApp. In this case, it is believed that the user voluntarily pays to the DApp. Since the DApp's developer has benefited from the user, it is not that meaningful to further increase his rank and reward. 
-  	\item The DApp itself requires token transformation, such as gambling DApps, which leads  a huge amount of token transformation between the user and the DApp. It's a normal phenomenon. However, the DApp's rank should not be increased accordingly, due to the fact that the user's purpose for paying the token is to gather profits, which does not reflect the DApp's quality.  
+  	\item The DApp itself requires token transfer, such as gambling DApps, which leads  a huge amount of token transfer between the user and the DApp. It's a normal phenomenon. However, the DApp's rank should not be increased accordingly, due to the fact that the user's purpose for paying the token is to gather profits, which does not reflect the DApp's quality.  
    \item The DApp's developer commits that all tokens paid to the DApps will be returned to the user. It is actually a kind of manipulation, which would be aggravated if we increases the DApp's rank and reward accordingly.  
   \end{enumerate}
-  In practice, without analyzing the code of smart contracts, we are not able to determine which case token transformations between users and DApps belongs to and in either case we have explained reasons for not involving DApps' ranks. So the algorithm in DIP will be independent of token transformations. 
+  In practice, without analyzing the code of smart contracts, we are not able to determine which case token transfers between users and DApps belongs to and in either case we have explained reasons for not involving DApps' ranks. So the algorithm in DIP will be independent of token transfers. 
   
   In the DIP model, a user $a_i \in \mathcal{A}$ is essentially an account address. As referred in~\cite{Nebulasyellowpaper}, a user can actually control multiple acount addresses. Since there is not cost for creating new accounts, the user can forge several addresses which he controls to vote -- the Sybil attack. Similarly, a developer can divide his DApp into several addresses, that is, split his DApp into several low-quality DApps, and obtain all rewards from split DApps. In the meanwhile, a developer can buy over one or more users to vote for his DApp. 
   
@@ -62,6 +62,18 @@ In this section we introduce necessary notations and symbols in DIP model.
   
   \subsection{Sample time interval}
   \label{subsection:interval}
-  In Section~\ref{subsection:parameters}, we illustrated that the NR is a significant criterion to determine voters' voting capacities. However, according to th definition in ~\cite{Nebulasyellowpaper}, the sampling period of DIP is much longer than the sampling period of NR.
+  In Section~\ref{subsection:parameters}, we illustrated that the NR is a significant criterion to determine voters' voting capacities. However, according to th definition in ~\cite{Nebulasyellowpaper}, the sampling period of DIP data is much longer than the sampling period of NR data, which means that during the process for recording invocation hehaviors, users' NRs may vary, even fluctuate wildly.
+  
+  A naive solution is to synchronize the sampling period of NR data and DIP data. However in practice, in a short time period (say, one day), times of invocations are very small for most users. So it is of small significance for ranking the DApps when users behaviors are sparse and the properties discretized  in Section ~\ref{section:properties} are not guaranteed to be satisfied.
+  
+  So our strategy is to properly extend the sampling period to gather enough invocation behaviors and bound the variation of users' NRs simultaneously. The variation of  an address's NR is shown in Figure~\ref{fig:nr}. Here we divide the whole ranking process of DIP into several time period. According to the data about the variations of NRs, pick integer $t$ such that the variance of NR within $t$ days less than a threshold $\tau$ holds for most users. We take $t$ days as a sampling period, by gather the average NR values of voters and the invocation data in the time period to compute DApp's ranking score and developers' final reward. Then we take the average data over all time periods during a ranking process as the final  results. 
+  
+  \begin{figure}
+  	\label{fig:nr}
+  	\centering
+  	\input{../common/nr.tex}
+  	\caption{NR variation graph of an address on Nebulas main net. The main net address is n1Ugq21nif8BQ8uw81SwXHK6DHqeTEmPRhj.}
+  \end{figure}
+  
 
 

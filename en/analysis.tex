@@ -1,9 +1,22 @@
 \section{Property Analysis}
 \label{section:properties}
-\subsection{Buyer Over Voters}
+Have introduced the Developer Incentive Protocol, in this section we analyze  manipulations that could occur in practice and the properties against manipulation of  DIP. On the voters and developers' points of view respectively, manipulations including buying over, maliciously splitting DApp, Sybil attack and so on.
+\subsection{Buy Over Voters}
+The so-called buy over means that a developer lets voters' cast all their votes to the developer's DApp, by the means of bribing or other, which is vary common in the real life. Here we suppose that all voters are self-interest. We assume thatnormal voters only care about the ranks of the DApps they like, rather than the final reward of developers. In other words, a normal user want to maximize the total
+weighted ranking score of all DApps he likes. Our quadratic ranking algorithm guarantees the following property:
 \begin{property}
 	\label{p1}
+	In the DIP model, for a self-interested normal voter, generally, he will case his votes to multiple DApps.  
 \end{property}
+We illustrate the property by the following model: suppose the weights that voter $a_i$ values all DApps are $b_{i1}, b_{i2}, ..., b_{in}$ respectively (can be regarded as the true preference of the voter to all DApps). Taking the form of~\ref{eq:sqrt}, the voter's contributory values satisfy 
+$$\frac{b_{i1}}{\sqrt{\nr_{i1}}}=\frac{b_{i2}}{\sqrt{\nr_{i2}}}=\cdots=\frac{b_{in}}{\sqrt{\nr_{in}}}$$,
+in other words, voter $a_i$'s contributory values matches his true preference to DApps. The detailed proof is in Section~\ref{subsection:proof1}.
+
+Transitional voting models usually compute the ranking score linearly, i.e.,
+$$g(\nr_{1j},\nr_{2j},...,\nr_{mj}) = \sum_{i=1}^m \nr_{ij}$$.
+In this model, a rational voter only cast his votes to the DApp he likes the most. In comparison, formula ~\ref{eq:sqrt} can promote the interactions between voters and DApps, due to the property of the square root function. In other words, voters voting for multiple DApps maximizes the utilization of his voting capacity. Similar analysis can be found in~\ref{buterin2018liberal}. To sum up, a voter would vote for multiple DApps and keeps the priority of DApps he likes the most simultaneously, i.e. the ratio equation above.
+
+In practice, sometimes transitional  linear voting model will limits the maximum votes for a voter to a DApp, to forcibily let voters disperse their votes, while our algorithm achive the same goal by the means of essentially incentive,  with a more elegant and simple mathematical expression. 
 
 \begin{corollary}
 
