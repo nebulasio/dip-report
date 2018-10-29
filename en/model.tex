@@ -5,7 +5,7 @@ Firstly, constructing a good ranking system can provide third-party developers w
 
 On the other hand, as we shown in Section~\ref{sec:background}, the purpose of DIP is to provide rewards for good DApps' developers, thus further increases developers‘ incentives to design good DApps and promotes the ecosystem development. So the second process of DIP is to design a fair rewarding mechanism, according to DAPPs' ranks, 
 
-\subsection{model representation}
+\subsection{Model Representation}
 \label{subsection:parameters}
 In this section we introduce necessary notations and symbols in DIP model.
 
@@ -14,6 +14,54 @@ In this section we introduce necessary notations and symbols in DIP model.
 	to be the set of all users in the community during the same time period, i.e., $m*-m$ users do not invoke any DApp. 	
   \item $\mathcal{D}=\{d_1,...,d_n\}$ represent the set of DApps during a time period.
   \item $e_{ij},i=1,2,...,m, j=1,2,...,n$ represent the times that voter $a_i$ invokes DApp $d_j$. Due to the publicity and decentralization of blockchain, the DIP model is different from the ranking system in traditional centralized application markets. Generally speaking, DIP ranks the DApps according to users' invoking behaviors, in a decentralized environment. The details are shown in the next section.
+  
+  \item $\nr_i, i=1,2,...,m$ represent voter $a_i$'s voting capacity during a period of time.
+  ~\cite{Nebulasyellowpaper} proves that user's NR value is a effective measure of value. So in DIP, NR is also used as a significant criterion to decide users' voting capacity.	
+  \item $\nr_{ij}, i=1,2,...,m,j=1,2,...,n$ represent the contributory value from voter $a_i$ to DApp $d_j$, which can be regarded as the the number of votes that $a_i$ willing to vote for $d_j$.
+  
+  \item $S_j, j=1,2,...,n$ represent DApp $d_j$'s ranking score, which is determined by its total contributory value from all voters. Intuitively, the ranking scores determine DApps' positions on the ranking list. 
+  
+  	\item $M$ represents the total amount of the reward pool for developers, granted by the Nabulas group.  The actual reward would be properly reduced according to the participation rate of the whole community during the time period. 
+   \item $U_j, j=1,2,...,n$ represent the final reward of DApp $d_j$, which is determine by actual total reward and all DApp's ranking scores. 
+ \end{itemize}
+   \begin{figure}
+   	\centering
+   	%\includegraphics[width = 0.4\textwidth]{../common/m2.png}
+   	\input{../common/m1.tex}
+   	\caption{Interactions between voters and DApps \label{fig:interact}}
+   \end{figure}
+  To sum up, the interactions between voters and DApps can be represented by the bipartite graph in ~\ref{fig:interact}.
+  
+ \subsection{Voting Action}
+ \label{subsection:voting}
+  In the centralized App Store \footnote{\url{https://en.wikipedia.org/wiki/App\_store}}, the system can record specific information such as times that a App has been downloaded, which is a key factor for determining its rank. However, in situations of Blockchain, the way that users use DApps is to invoke smart contracts' addresses, e.g., the times that user $a_i$ invokes DApp $d_i$, denoted by  $e_{ij}$. Compared to traditional information about downloads, DIP, that takes information about invocations as the date sources, has the following advantages:
+  
+ \begin{itemize}
+ 	\item The number of invocations are recored on the blockchain, which is hard to be tempered and is more open and transparent, compare to centralized methods such as recording the downloads.
+ 	\item The number of invocations is more fine-grained compare to the downloads, since downloads only record users' one-shot behavior. But a good DApp should have user stickiness. Therefore the number of invocations are more reasonable to reflect users' real behaviors. 
+ 	
 \end{itemize}
+  
+ Actually, there are other available informations when users invoke DApps, for example, the amount of gases that has been expended and possible token transformations involved in an invocation. However, DIP takes neither of them into consideration. 
+ 
+ Firstly, the amount of expended gases depend on the executed statements within the smart contracts each time a user invokes a DApp, where the later is not related to the DApp's own quality. Moreover, in the current Nebulas system, the average amount of expended gases during each invocation is at the order of $10^{-8}$ NAS, which is negligible. 
+ 
+ The reason why we do not consider token transformations is the lack of an effective method against manipulation. Intuitively, the DApp's {\color{red} identification level} ought to be increased if users are williing to pay extra tokens when invoking the DApp. 
+  However, in practice, when a user pays tokens to a DApp, the tokens' final destination could belong to the following three cases:
+  
+  \begin{enumerate}
+  	 \item The tokens finally belongs to the developer of the DApp. In this case, it is believed that the user voluntarily pays to the DApp. Since the DApp's developer has benefited from the user, it is not that meaningful to further increase his rank and reward. 
+  	\item The DApp itself requires token transformation, such as gambling DApps, which leads  a huge amount of token transformation between the user and the DApp. It's a normal phenomenon. However, the DApp's rank should not be increased accordingly, due to the fact that the user's purpose for paying the token is to gather profits, which does not reflect the DApp's quality.  
+   \item The DApp's developer commits that all tokens paid to the DApps will be returned to the user. It is actually a kind of manipulation, which would be aggravated if we increases the DApp's rank and reward accordingly.  
+  \end{enumerate}
+  In practice, without analyzing the code of smart contracts, we are not able to determine which case token transformations between users and DApps belongs to and in either case we have explained reasons for not involving DApps' ranks. So the algorithm in DIP will be independent of token transformations. 
+  
+  In the DIP model, a user $a_i \in \mathcal{A}$ is essentially an account address. As referred in~\cite{Nebulasyellowpaper}, a user can actually control multiple acount addresses. Since there is not cost for creating new accounts, the user can forge several addresses which he controls to vote -- the Sybil attack. Similarly, a developer can divide his DApp into several addresses, that is, split his DApp into several low-quality DApps, and obtain all rewards from split DApps. In the meanwhile, a developer can buy over one or more users to vote for his DApp. 
+  
+  We analyzed all manipulations above when designing DIP and gave corresponding solutions. The details about DIP against manipulation are in Section~\ref{section:properties}.
+  
+  \subsection{Sample time interval}
+  \label{subsection:interval}
+  In Section~\ref{subsection:parameters}, we illustrated that the NR is a significant criterion to determine voters' voting capacities. However, according to th definition in ~\cite{Nebulasyellowpaper}, the sampling period of DIP is much longer than the sampling period of NR.
 
 
