@@ -1,21 +1,21 @@
 \section{Background}
 \label{sec:background}
-The DIP by this mauve paper referred  lots of previous related works and also extended our previous results. Here we introduce the related works which play a significant role for reference and guidance.
+The DIP given by this mauve paper referred  lots of related works and also extended our previous results. Here we introduce the related works, which play a significant role for the  reference and guidance of this mauve paper.
 
 \subsection{DApp's Developer Incentive}
-As for as we know, currently, no decentralized platform on blockchain offers a long-term effective incentive mechanism for DApp developer. As a representation of blockchain 2.0, Ethereum makes a breakthrough to involve turing-complete smart contracts. A number of DApps emerges on Ethereum, including game, gambling, crowd sourcing, credit and many other types. In particular, the CryptoKitties in the late 2017 and Fomo 3D in 2018 attract most attentions, which once cause network jams. 
+As for as we know, currently, no decentralized platform on blockchain offers a long-term effective incentive mechanism for DApp developers. As a representation of blockchain 2.0, Ethereum makes a breakthrough to involve turing-complete smart contracts. A number of DApps emerge on Ethereum, including game, gambling, crowd sourcing, credit and many other types. In particular, the CryptoKitties in the late 2017 and Fomo 3D in 2018 attract most attentions, which once cause network congestions. 
 
-Actually, like the two famous DApps, most DApps gain utilities only by charing fees to users, unable to benefit from the increase of Ethereum's value or rewards for new blocks. 
+Actually, like the two famous DApps, most DApps gain utilities only by charging fees to users, unable to benefit from the increase of Ethereum's value or the rewards for new blocks. 
 
 With the lack of the incentive of developer, the application scenarios of DApps has also been affected to a certain extent. For example, implicitly, free DApps may be aborted due to the difficulty for getting a return. As a result, the quantity, quality and diversity of DApps are affected. In contrast, a fair and effective mechanism for incentivizing developers enables developers to focus on the development of DApps, which further promotes the prosperity and sustainable development of the whole blockchain ecosystem.
 
-To a certain extent, many emerging blockchain systems recognize the necessity of incentive mechanism for building blockchain ecosystem. For example, in Nebulas Incentive Program more than 6781 DApps have been generated and a large number of excellent development teams can go to the front desk and get high investments. 
+To a certain extent, many emerging blockchain systems recognize the necessity of incentive mechanism for building blockchain ecosystems. For example, in Nebulas Incentive Program, more than 6781 DApps have been generated and a large number of excellent development teams can go to the front desk and obtain high investments. 
 
-Along with it, other public blockchains also launched short-term incentive programs based on centralized management. Such incentive programs mainly aims to publicize the community and official evaluations takes a major role, without long-term sustainability.
+Along with it, other public blockchains also launched short-term incentive programs based on centralized management. Such incentive programs mainly aims to publicize to the community with official evaluations taking a major role, without long-term sustainability.
 
 
 \subsection{Nebulas Rank}
-Nebulas Rank (NR)~\cite{Nebulasyellowpaper} gives the contribution of each account to the total economic output and has nice properties against manipulations. In particular, Nebulas Rank introduces the Wilbur function, which has the following properties: 
+Nebulas Rank (NR)~\cite{Nebulasyellowpaper} gives each account's contribution to the total economic output and has nice properties against manipulations. In particular, Nebulas Rank introduces the Wilbur function, which has the following properties: 
 
 \begin{property}
 	\label{prop:one}
@@ -33,22 +33,22 @@ Nebulas Rank (NR)~\cite{Nebulasyellowpaper} gives the contribution of each accou
 \begin{align}
 	\lim\limits_{x_1 \to \infty, x_2\to \infty} f(x_1+x_2) = f(x_1) + f(x_2)\quad x_1>0, x_2>0
 \end{align}
-\noindent As the basis of NR, the two properties also offers nice properties for DIP against manipulations. 
+\noindent As the basis of NR, the two properties also offer nice properties for DIP against manipulations. 
 
 \subsection{Voting Mechanism}
-As mentioned earlier, in DIP, the process that users using DApps can be regarded as a process that users vote for DApps, the later's incentive mechanism is similar to ranking algorithms. 
+As mentioned earlier, in DIP, the process that users use DApps can be regarded as a process that voters vote for DApps. The later's incentive mechanism is similar to ranking algorithms. 
 
-About voting mechanism and ranking algorithm, there are lots of related work in various fields, which we have referred. 
+About voting mechanism and ranking algorithm, there are lots of related work in various fields, which we have referred and show examples as follows. 
 
-One of the most famous results is the Arrow's Theorem, which shows that no ranking algorithm can simultaneously satisfy Pareto Efficiency, i.e., the ranking results satisfy the majority's interest, non-dictatorship and Independent of irrelevant alternatives, i.e. the relation of ranking of two candidates does not affect by a third candidate. 
+One of the most famous results is the Arrow's Theorem, which shows that no ranking algorithm can simultaneously satisfy Pareto Efficiency, i.e., the ranking results satisfies the majority's interest, non-dictatorship and independent of irrelevant alternatives, i.e. the relative ranking of two candidates is not affected by any third candidate. 
 
-The result implies that no ranking algorithm ca cover everything. So the DIP in this mauve paper will focus on the more important and well-known attributes. 
+The result implies that no ranking algorithm can cover everything. So the DIP in this mauve paper will focus on more important and well-known attributes. 
 
-In real life, there are a lot of scenarios requiring ranking algorithms. A typical and related example is the buyers' impressions to sellers (merchant) on Amazon and Taobao. sellers with higher reputation will be given better display slots thus obtains more attentions and higher click-through rates (CTRs). In particular, such e-commerce platform exists similar problems like Sybil attack, i.e., creating fake transactions or buy over buyers to give 5-star evaluations. 
+In the real life, there are a lot of scenarios requiring ranking algorithms. A typical and related example is the buyers' impressions to sellers (merchant) on Amazon and Taobao. Sellers with higher reputations will be given better display slots thus obtain more attentions and higher click-through rates (CTRs). In particular, such e-commerce platforms exist similar problems like Sybil attack, i.e., creating fake transactions or buy over buyers to obtain 5-star evaluations. 
 
-For now, even these centralized platforms mostly rely on machine learning to distinguish normal and fake users~\cite{mukherjee2013spotting,jindal2008opinion,yoo2009comparison}. However, practical results shows that such methods are not ideal. ~\cite{ott2011finding} points out that even artificial identification can not effectively distinguish such accounts. ~\cite{cai2016mechanism} gives an algorithm that eliminate the incentive of such manipulations, based on mechanism design. Although its model is different form us, it can used as a significant reference.
+For now, even these centralized platforms mostly rely on machine learning to distinguish normal and fake users~\cite{mukherjee2013spotting,jindal2008opinion,yoo2009comparison}. However, practical results show that such methods are not ideal. ~\cite{ott2011finding} points out that even artificial identifications can not effectively distinguish such accounts. ~\cite{cai2016mechanism} gives an algorithm that eliminates the incentive of such manipulations, based on mechanism design. Although its model is different form us, it can used as a significant reference.
 
-~\cite{salihefendic2010hacker} introduces the ranking algorithm to postings in a network community, which combines the users' votes and the process that decline with the time. ~\cite{salihefendic2010reddit} introduces the ranking algorithm to postings in Reddit, which involves the situation where users can vote in the negative. 
+~\cite{salihefendic2010hacker} introduces the ranking algorithm for postings in a network community, which combines the users' votes and time declining. ~\cite{salihefendic2010reddit} introduces the ranking algorithm for postings in Reddit, which involves the situation where users can vote in the negative. 
 ~\cite{miller2009how} introduced Reddit's ranking algorithm for the comments, taking the confidence interval into account.
 IMDB ~\cite {IMDB} introduces the idea of Bayesian Model Averaging to film rankings, which can narrow the gap between different films due to the number of voters.
 
