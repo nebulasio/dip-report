@@ -20,13 +20,13 @@ In this section we introduce necessary notations and symbols in DIP model.
   \item $e_{ij},i=1,2,\ldots,m, j=1,2,\ldots,n$ represent the times that voter $a_i$ invokes DApp $d_j$. Due to the publicity and decentralization of blockchain, the DIP model is different from the ranking system in traditional centralized application markets. Generally speaking, DIP ranks the DApps according to users' invocation behaviors, in a decentralized environment. The details are shown in the next section.
 
   \item $\nr_i, i=1,2,\ldots,m$ represent voter $a_i$'s voting capacity during a time period.
-  ~\cite{Nebulasyellowpaper} proves that a user's NR value is an effective measure of his account's value. So in DIP, NR is also used as a significant criterion to decide users' voting capacity.
+  ~\cite{Nebulasyellowpaper} proves that a user's NR value is an effective measure of his account's value. So in DIP, NR is also used as a significant criterion to decide users' voting capacities.
   \item $\nr_{ij}, i=1,2,\ldots,m,j=1,2,\ldots,n$ represent the contributory value of voter $a_i$ to DApp $d_j$, which can be regarded as the number of votes where $a_i$ is willing to vote for $d_j$.
 
-  \item $S_j, j=1,2,\ldots,n$ represent DApp $d_j$'s ranking score, which is determined by its total contributory value from all voters. Intuitively, the ranking scores determine DApps' positions on the ranking list.
+  \item $S_j, j=1,2,\ldots,n$ represent DApp $d_j$'s ranking score, which is determined by its total contributory values from all voters. Intuitively, the ranking scores determine DApps' positions on the ranking list.
 
-  	\item $M$ represents the total amount of the reward pool for developers, granted by the Nabulas group.  The actual reward would be properly reduced according to the participation rate of the whole community during the time period.
-   \item $U_j, j=1,2,\ldots,n$ represent the final reward of DApp $d_j$, which is determine by actual total reward and all DApp's ranking scores.
+  	\item $M$ represents the total amount of the reward pool for developers, granted by the Nebulas group.  The actual reward would be properly reduced according to the participation rate of the whole community during the time period.
+   \item $U_j, j=1,2,\ldots,n$ represent the final reward of DApp $d_j$, which is determine by actual total reward and all DApps' ranking scores.
  \end{itemize}
    \begin{figure}
    	\centering
@@ -34,7 +34,7 @@ In this section we introduce necessary notations and symbols in DIP model.
    	\input{../common/m1.tex}
    	\caption{Interactions between voters and DApps \label{fig:interact}}
    \end{figure}
-  To sum up, the interactions between voters and DApps can be represented by the bipartite graph in~\ref{fig:interact}.
+  To sum up, the interactions between voters and DApps can be represented by the bipartite graph in Figure~\ref{fig:interact}.
 
  \subsection{Voting Action}
  \label{subsection:voting}
