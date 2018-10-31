@@ -38,10 +38,9 @@ For a voter $a_i$ who is bought over, he can at most offer the DApp with contrib
 
 \subsection{Malicious Splitting}
 \label{subsec:5.2}
-\noindent For developers, another manipulation is to maliciously split their
-DApps, in order to obtain higher total rewards of all split DApps. Intuitively, splitting can increase the number of DApps that participant the reward mechanism and thus increase the total final rewards. However our model guarantees that it is not the case. Here we assume that all developers concern their final rewards (total bonus) as well as the potential utility caused by the improvement of ranks.
+\noindent For developers, another manipulation is to maliciously split their DApps, in order to obtain higher total rewards of all splitted DApps. Intuitively, splitting can increase the number of DApps that participant in the reward mechanism and thus increase the total final rewards. However our model guarantees that it is not the case. Here we assume that all developers concern their final rewards (total bonus) as well as the potential utility caused by the improvement of ranks.
 
-Specifically, as the algorithm of final rewards, the convexity of formula~\ref{eq:distribution} guarantees the following property
+Specifically, as the algorithm of final rewards, the convexity of formula~\ref{eq:distribution} guarantees the following property:
 \begin{property}
 	\label{p2}
     If all voters are normal, splitting DApps will not increase the reward of the developer.
@@ -49,12 +48,12 @@ Specifically, as the algorithm of final rewards, the convexity of formula~\ref{e
 
 It is assumed that a normal voter belongs to the following cases:
 \begin{inparaenum}
-\item[i).] voter simply distributes his votes that are supposed for the original DApp to split DApps. Such case occurs when an application has different smart contract address for invocation.
-\item[ii).] Suppose that the voter values the original DApp with weight $a$, and with weights $b$ and $c$ for two split DApps respectively, then $c>a+b$. Such case can be illustrated that after splitting, the split DApps' qualities are greatly decreased due to the lack of linkages. So the total qualities of split DApps' is lower than the original DApp.
+\item[i).] voter simply distributes his votes that are supposed for the original DApp to split DApps. Such case occurs when an application has different smart contract addresses for invocation.
+\item[ii).] Suppose that the voter values the original DApp with weight $a$, and with weights $b$ and $c$ for two split DApps respectively, then $c>a+b$. Such case can be illustrated that after splitting, the split DApps' qualities are greatly decreased due to the lack of linkages. So the total qualities of split DApps' is lower than the quality of the original DApp.
  \end{inparaenum}
 
   In both cases, the final reward of the developer does not increase. Detailed
-  proof  is in Section~\ref{subsection:proof2}.
+  proof is in Section~\ref{subsection:proof2}.
 
 Furthermore, a developer can buyer over voter and split his DApp simultaneously: he first splits his DApp to $K$ DApps. Then, he lets his bought-over voters distribute their votes uniformly to split DApps, thus  maximizing the utilization of  bought-over  voters. We have the following corollary against this case:
 
