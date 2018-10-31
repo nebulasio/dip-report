@@ -1,5 +1,5 @@
 \section{Implementation of DIP}
-The complete implementation of DIP is out of scope for this purple paper. So here only discusses key issues to be handle when implementing DIP.
+The complete implementation of DIP is out of scope for this purple paper. So here only discusses key issues to be handle when implementing DIP\@.
 
 \subsection{How to distribute rewards}
 For distributing rewards, a special account is needed. In the meanwhile, a part of the new-block rewards is transferred to $D$ according to a fixed ratio.
@@ -13,7 +13,7 @@ By the methods above, not only the rewards for developers are distributed normal
 \subsection{Updating of DIP}
 As we know, the DIP is closely related to the whole ecosystem. As the variance of the ecosystem, DIP ought to be updated, in particular, the parameters in the DIP model. So how to effective update the DIP turns out to be a key issue.
 
-For this, we use Nebulas Force to iteratively update DIP.
+For this, we use Nebulas Force to iteratively update DIP\@.
 
 We update the blocks' structures to contain algorithms and parameters in DIP (by the form of LLVM, IR). Nebulas Virtual Machine (NVM), as the engine of the algorithm, get algorithm and parameters from blocks and run algorithms, to obtain the amount of tokens that an account deserves.
 
