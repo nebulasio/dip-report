@@ -1,4 +1,5 @@
 \section{Implementation of DIP}
+
 \noindent
 The complete implementation of DIP is out of scope of this paper. So here we only discuss the key issues should be handled when implementing DIP\@.
 
@@ -6,19 +7,10 @@ The complete implementation of DIP is out of scope of this paper. So here we onl
 \noindent
 For distributing rewards, a special account $D$ should be established. In the meanwhile, a part of the new-block rewards is transferred to $D$ according to a fixed ratio.
 
-Developers' deserved rewards will be sent regularly.\footnote{The time interval
-of sending rewards equals to the sampling interval in
-Section~\ref{subsection:interval}}. In order to send rewards on the blockchain,
-$D$'s private key is required for signing the transaction. Therefore, for the purpose of security, the account $D$ for sending rewards needs a special treatment.
 
-Firstly, a special kind of transaction is added to the system, denoted by
-\texttt{dip} transaction, which contains the information about the amount of
-deserved reward and the block height. Secondly, the system rejects all
-transactions other than \texttt{dip} initiated by $D$, to ensure that no
-account can extract tokens from $D$. Finally, verification nodes on the
-blockchain  need to verify the \texttt{dip} transactions. Particularly,
-verification nodes need to run DIP locally and verify whether the data in
-\texttt{dip} transactions coincident with the local results.
+Developers' deserved rewards will be sent regularly.\footnote{The time interval of sending rewards equals to the sampling interval in Section~\ref{subsection:interval}}. In order to send rewards on the blockchain, the private key of the account that sends rewards is required for signing the transaction of sending. Therefore, for the purpose of security, the account $D$ for sending rewards needs a special treatment.
+
+Firstly, a special kind of transaction is added to the system, denoted by \texttt{dip} transaction, which contains the information about the amount of deserved reward of a developer and the height of the blockchain. Secondly, the system refuses all transactions other than \texttt{dip} initiated by $D$, to ensure that no account can extract tokens from $D$. Finally, verification nodes on the blockchain  need to verify the \texttt{dip} transactions. Particularly, verification nodes need to run DIP locally and verify whether the data in \texttt{dip} transactions coincident with local results.
 
 Through the methods mentioned above, not only the rewards for developers are distributed normally, but also the security of account $D$ for sending rewards is ensured.
 
