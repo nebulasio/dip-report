@@ -31,24 +31,24 @@ cryptocurrency networks to decentralized application platforms. However, in comp
  from the increment of the blockchain system's value.
 
 
-Generally speaking,  new-block rewards represent incremental values of the blockchain system and the distribution of such rewards determines the incentive direction of the decentralize system. In our opinion, a blockchain system's incremental value essentially comes from the implicit values from users' data, which should be distributed to all contributed parties, including DApp deveploers. However, what we see in practice is that, in most PoW blockchain systems, represented by Bitcoin, new-block rewards are distributed to miner nodes; In PoS (proof of stake) based blockchain systems, new-blocks rewards are assigned to  stake holders. Along with it, the interests of DApp developers are somewhat infringed.
+Generally speaking,  new-block rewards represent incremental values of the blockchain system and the distribution of such rewards determines the incentive direction of the decentralize system. In our opinion, a blockchain system's incremental value essentially comes from the implicit values from users' data, which should be distributed to all contributed parties, including \dapp deveploers. However, what we see in practice is that, in most PoW blockchain systems, represented by Bitcoin, new-block rewards are distributed to miner nodes; In PoS (proof of stake) based blockchain systems, new-blocks rewards are assigned to  stake holders. Along with it, the interests of \dapp developers are somewhat infringed.
 
 
-Conceptually, a DApp is a set of smart contracts with a series of specific
+Conceptually, a \dapp is a set of smart contracts with a series of specific
 functionalities, while a smart contract is a computer protocol intended to
 digitally facilitate, verify, or enforce the negotiation or performance of a
 contract. Smart contracts allow the performance of credible transactions
 without third
 parties\footnote{\url{https://en.wikipedia.org/wiki/Smart\_contract}}.
 
-From the technical architecture's point of view, most DApp usually uses smart contracts as the back-end, while using common front-end technologies and its interactions. DApps' forms can be either a traditional PC client, mobile applications or web applications.
+From the technical architecture's point of view, most \dapp usually uses smart contracts as the back-end, while using common front-end technologies and its interactions. {\dapp}s' forms can be either a traditional PC client, mobile applications or web applications.
 
-We believe that the relationship among decentralized application platforms, DApp developers and DApp users is mutually reinforcing and symbiotic. Firstly, the emergence of decentralized application platforms enlarges the group of blockchain developers. More and more developers try to develop DApps that meet different requirements and benefit from the development of DApps. Secondly, DApp developers provide a rich variety of DApps, expanding the application scenarios of the blockchain, and bringing more incremental users to the blockchain. Finally, DApp users drive the continuous optimization and upgrade of decentralized application platforms, increasing the mobility of tokens on the decentralized application platform, making the whole blockchain system develop.
+We believe that the relationship among decentralized application platforms, \dapp developers and \dapp users is mutually reinforcing and symbiotic. Firstly, the emergence of decentralized application platforms enlarges the group of blockchain developers. More and more developers try to develop {\dapp}s that meet different requirements and benefit from the development of {\dapp}s. Secondly, \dapp developers provide a rich variety of {\dapp}s, expanding the application scenarios of the blockchain, and bringing more incremental users to the blockchain. Finally, \dapp users drive the continuous optimization and upgrade of decentralized application platforms, increasing the mobility of tokens on the decentralized application platform, making the whole blockchain system develop.
 
-It should be noted that the developers described here only refer to developers on the decentralized application platform, not specifically the NEBULAS developers, nor the developers of the blockchain system itself.
-Notice that we mean DApp developers instead of Nebulas DApp developers or
-blockchain system developers. Thus, we shall use developers short for DApp
-developers without ambiguity. Also, a DApp developer may be a stake holder.
+It should be noted that the developers described here only refer to developers on the decentralized application platform, not specifically the Nebulas developers, nor the developers of the blockchain system itself.
+Notice that we mean \dapp developers instead of Nebulas \dapp developers or
+blockchain system developers. Thus, we shall use developers short for \dapp
+developers without ambiguity. Also, a \dapp developer may be a stake holder.
 He may benefit from being a stake holder and that benefit is not considered
 as sharing the increase value of blockchains. The interests of being a developer can still be ignored or infringed.
 
@@ -60,23 +60,24 @@ no chance to know the details of or participate in the sharing of revenues. Seco
 is difficult to quantify each developer's contribution to the growth of
 application platforms so the fairness of the reward mechanism is hard to be guaranteed. Fortunately, this situation can be changed in blockchain
 industry since each invocation to smart contracts by each user is
-publicly recorded on
-blockchain. Thus, it is possible to \emph{reward or incentive each DApp developer by
-quantifying each DApp's contribution}.
+publicly recorded on blockchain. Thus, it is possible to \emph{reward or incentive each \dapp developer by
+quantifying each \dapp's contribution}.
 
 An ideal incentive mechanism should satisfy some basic properties:
 \begin{itemize}
 
-\item Fairness: the protocol should maintain objectivity when rewarding developers, that is, every DApps should be equally treated and their usages are evaluated veritably, even there are some potential manipulations.
+\item Fairness: the protocol should maintain objectivity when rewarding developers, that is, every {\dapp}s should be equally treated and their usages are evaluated veritably, even there are some potential manipulations.
 
-\item Effectiveness: the reward should reflect user preference, that is, the DApps with high reward are ones that frequented by active users while the DApps with low or no reward are unwelcome.
+\item Effectiveness: the reward should reflect user preference, that is, the {\dapp}s with high reward are ones that frequented by active users while the {\dapp}s with low or no reward are unwelcome.
 \end{itemize}
 
-In this paper, we propose Developer Incentive Protocol (DIP), which aims at rewarding and incentivizing  developers, enabling the developers to benefit from the development of the decentralized application platform. Naturally, an ideal developer incentive protocol does not exist since the users' evaluations to DApps are subjective and multi-dimensioned. So the DIP introduced in the paper still has space for improvement. However, the balance in this mauve paper is innovative, that is, under the premise of guaranteeing the interests of DApp developers, in terms of resistance to manipulation, we make the greatest efforts.
+
+In this paper, we propose Developer Incentive Protocol (DIP), which aims at rewarding and incentivizing  developers, enabling the developers to benefit from the development of the decentralized application platform. Naturally, an ideal developer incentive protocol does not exist since the users' evaluations to  {\dapp}s are subjective and multi-dimensioned. So the DIP introduced in the paper still has space for improvement. However, the balance in this mauve paper is innovative, that is, under the premise of guaranteeing the interests of \dapp developers, in terms of resistance to manipulation, we make the greatest efforts.
 
 DIP is designed based on the existing Nebulas Rank
 (NR)~\cite{Nebulasyellowpaper} and it benefits from some good features of NR\@.
 Intuitively, DApp evaluation is reduced to a voting process in DIP\@.
+
 An invocation from a certain user is treated as a vote and user's voting
 capacity is a function of his/her NR\@. The developers will get the rewards from the system eventually, according to the voting results.
 
