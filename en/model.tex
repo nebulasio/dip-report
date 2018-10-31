@@ -34,7 +34,8 @@ In this section we introduce necessary notations and symbols in DIP model.
 
   \item $S_j, j=1,2,\ldots,n$ represent DApp $d_j$'s ranking score, which is determined by its total contributory values from all voters. Intuitively, the ranking scores determine DApps' positions on the ranking list.
 
-  	\item $M$ represents the total amount of the reward pool for developers, granted by the Nebulas group.  The actual reward would be properly reduced according to the participation rate of the whole community during the time period.
+  	\item $M$ represents the total amount of the reward pool for developers,
+  	  comes from the new-block rewards.  The actual reward would be properly reduced according to the participation rate of the whole community during the time period.
    \item $U_j, j=1,2,\ldots,n$ represent the final reward of DApp $d_j$, which is determine by actual total reward and all DApps' ranking scores.
  \end{itemize}
    \begin{figure}
@@ -87,8 +88,9 @@ In this section we introduce necessary notations and symbols in DIP model.
   So our strategy is to properly extend the sampling period to gather enough invocation behaviors and bound the variation of users' NRs simultaneously. The variation of  an address's NR is shown in Figure~\ref{fig:nr}. Here we divide a whole ranking process of DIP into several time periods. According to the data about the variations of NRs, pick integer $t$ such that the variance of NR within $t$ days less than a threshold $\tau$ holds for most users. We take $t$ days as a sampling period, by gathering the average NR values of voters and invocation data during the time period, to compute DApp's ranking score and developers' final reward. Then we take the average data over all time periods during a ranking process as the final  results.
 
   \begin{figure}
-  	\label{fig:nr}
   	\centering
   	\input{../common/nr.tex}
-  	\caption{NR variation graph of an address on Nebulas mainnet. The mainnet address is n1Ugq21nif8BQ8uw81SwXHK6DHqeTEmPRhj.}
+
+  	\caption{\label{fig:nr} NR variation graph of an address on Nebulas mainnet. The mainnet
+    address is \texttt{n1Ugq21nif8BQ8uw81SwXHK6DHqeTEmPRhj}.}
   \end{figure}

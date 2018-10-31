@@ -2,7 +2,7 @@
 \label{section:properties}
 \noindent Have introduced the Developer Incentive Protocol, in this section, we analyze
 manipulations that could occur in practice and the properties against
-manipulation of  DIP\@. On the voters and developers' points of view respectively, manipulations including buying over, maliciously splitting \dapp, Sybil attack and so on.
+manipulation of  DIP\@. From the voters and developers' points of view respectively, manipulations including buying over, maliciously splitting \dapp, Sybil attack and so on.
 \subsection{Buy Over Voters}
 \noindent The so-called buy over means that a developer lets voters' cast all their votes to the developer's DApp, by  means of bribing or other, which is very common in the real life. Here we suppose that all voters are self-interest. We assume that normal voters only care about the ranks of the DApps they like, rather than the final rewards of developers. In other words, a normal voter wants to maximize the total
 weighted ranking scores of all DApps he likes. Our quadratic ranking algorithm guarantees the following property:
@@ -38,7 +38,8 @@ For a voter $a_i$ who is bought over, he can at most offer the DApp with contrib
 
 \subsection{Malicious Splitting}
 \label{subsec:5.2}
-\noindent For developers, another manipulation is to maliciously split their DApps, in order to obtain the total rewards of all split DApps. Intuitively, splitting can increase the number of DApps that participant the reward mechanism and thus increase the total final rewards. However our model guarantees that it is not the case. Here we assume that all developers concern their final rewards (total bonus) as well as the potential utility caused by the improvement of ranks.
+\noindent For developers, another manipulation is to maliciously split their
+DApps, in order to obtain higher total rewards of all split DApps. Intuitively, splitting can increase the number of DApps that participant the reward mechanism and thus increase the total final rewards. However our model guarantees that it is not the case. Here we assume that all developers concern their final rewards (total bonus) as well as the potential utility caused by the improvement of ranks.
 
 Specifically, as the algorithm of final rewards, the convexity of formula~\ref{eq:distribution} guarantees the following property
 \begin{property}
@@ -52,7 +53,8 @@ It is assumed that a normal voter belongs to the following cases:
 \item[ii).] Suppose that the voter values the original DApp with weight $a$, and with weights $b$ and $c$ for two split DApps respectively, then $c>a+b$. Such case can be illustrated that after splitting, the split DApps' qualities are greatly decreased due to the lack of linkages. So the total qualities of split DApps' is lower than the original DApp.
  \end{inparaenum}
 
-  In both cases, the final reward of the developer does not increase. Detailed proof  is in~\ref{subsection:proof2}.
+  In both cases, the final reward of the developer does not increase. Detailed
+  proof  is in Section~\ref{subsection:proof2}.
 
 Furthermore, a developer can buyer over voter and split his DApp simultaneously: he first splits his DApp to $K$ DApps. Then, he lets his bought-over voters distribute their votes uniformly to split DApps, thus  maximizing the utilization of  bought-over  voters. We have the following corollary against this case:
 
@@ -65,7 +67,9 @@ Detailed proof is in Section~\ref{subsection:proof3}.
 
 It is notable that, the rank of DApps will be decreased if developers split DApps, thus the potential utility is also decreased. In summary, our algorithm essentially prevents malicious splitting.
 
-Without doubt that for a developer that developers multiple different  DApps, since there is no mirrored of split relations amount the DApps, the utility of the developer is not affected.
+Without doubt that for a developer that develops multiple different  DApps,
+since there is no mirrored of split relations among the DApps, the utility of
+the developer is not affected.
 
 \subsection{Sybil Attack}
 \noindent By generalized Sybil Attack we mean an attack subverts the reputation system by creating a large number of pseudonymous identities, using them to gain a disproportionately large influence~\cite{quercia2010sybil}. In Nebulas Yellow Paper~\cite{Nebulasyellowpaper}, the properties of NR against manipulations that increase NR by creating a large number of new accounts have been proved. So in the DIP ranking algorithm, voters are also not able to increase NR by creating new accounts, \ie,
@@ -76,7 +80,9 @@ where $c$ is the original account, $a,b$ are the split sub-accounts. According t
 	\label{eq:sqrt_nr}
 	\sqrt{\nr_{a+b}}>\sqrt{\nr_a}+\sqrt{\nr_b}
 \end{align}
+
 Suppose that the propose of a voter to execute Sybil attack is to increase the ranking score of a specific and the final rewards of its developer. According to the constraint above we have the following property:
+
 
 \begin{property}
 	\label{p3}
