@@ -1,10 +1,10 @@
 \section{Property Analysis}
 \label{section:properties}
-Have introduced the Developer Incentive Protocol, in this section, we analyze
+\noindent Have introduced the Developer Incentive Protocol, in this section, we analyze
 manipulations that could occur in practice and the properties against
 manipulation of  DIP\@. On the voters and developers' points of view respectively, manipulations including buying over, maliciously splitting \dapp, Sybil attack and so on.
 \subsection{Buy Over Voters}
-The so-called buy over means that a developer lets voters' cast all their votes to the developer's DApp, by  means of bribing or other, which is very common in the real life. Here we suppose that all voters are self-interest. We assume that normal voters only care about the ranks of the DApps they like, rather than the final rewards of developers. In other words, a normal voter wants to maximize the total
+\noindent The so-called buy over means that a developer lets voters' cast all their votes to the developer's DApp, by  means of bribing or other, which is very common in the real life. Here we suppose that all voters are self-interest. We assume that normal voters only care about the ranks of the DApps they like, rather than the final rewards of developers. In other words, a normal voter wants to maximize the total
 weighted ranking scores of all DApps he likes. Our quadratic ranking algorithm guarantees the following property:
 
 \begin{property}
@@ -38,8 +38,7 @@ For a voter $a_i$ who is bought over, he can at most offer the DApp with contrib
 
 \subsection{Malicious Splitting}
 \label{subsec:5.2}
-
-For developers, another manipulation is to maliciously split their DApps, in order to obtain the total rewards of all split DApps. Intuitively, splitting can increase the number of DApps that participant the reward mechanism and thus increase the total final rewards. However our model guarantees that it is not the case. Here we assume that all developers concern their final rewards (total bonus) as well as the potential utility caused by the improvement of ranks.
+\noindent For developers, another manipulation is to maliciously split their DApps, in order to obtain the total rewards of all split DApps. Intuitively, splitting can increase the number of DApps that participant the reward mechanism and thus increase the total final rewards. However our model guarantees that it is not the case. Here we assume that all developers concern their final rewards (total bonus) as well as the potential utility caused by the improvement of ranks.
 
 Specifically, as the algorithm of final rewards, the convexity of formula~\ref{eq:distribution} guarantees the following property
 \begin{property}
@@ -69,7 +68,7 @@ It is notable that, the rank of DApps will be decreased if developers split DApp
 Without doubt that for a developer that developers multiple different  DApps, since there is no mirrored of split relations amount the DApps, the utility of the developer is not affected.
 
 \subsection{Sybil Attack}
-By generalized Sybil Attack we mean an attack subverts the reputation system by creating a large number of pseudonymous identities, using them to gain a disproportionately large influence~\cite{quercia2010sybil}. In Nebulas Yellow Paper~\cite{Nebulasyellowpaper}, the properties of NR against manipulations that increase NR by creating a large number of new accounts have been proved. So in the DIP ranking algorithm, voters are also not able to increase NR by creating new accounts, \ie,
+\noindent By generalized Sybil Attack we mean an attack subverts the reputation system by creating a large number of pseudonymous identities, using them to gain a disproportionately large influence~\cite{quercia2010sybil}. In Nebulas Yellow Paper~\cite{Nebulasyellowpaper}, the properties of NR against manipulations that increase NR by creating a large number of new accounts have been proved. So in the DIP ranking algorithm, voters are also not able to increase NR by creating new accounts, \ie,
 $$\mathcal{C}(c)>\mathcal{C}(a)+\mathcal{C}(b)$$
 where $c$ is the original account, $a,b$ are the split sub-accounts. According to formula~\ref{eq:vote_rate} their voting capacities satisfy the following constraint:
 
