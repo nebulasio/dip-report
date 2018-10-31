@@ -1,8 +1,8 @@
 \section{Implementation of DIP}
-The complete implementation of DIP is out of scope for this purple paper. So here only discusses key issues to be handle when implementing DIP\@.
+The complete implementation of DIP is out of scope for this purple paper. So here only discusses key issues to be handled when implementing DIP\@.
 
 \subsection{How to distribute rewards}
-For distributing rewards, a special account is needed. In the meanwhile, a part of the new-block rewards is transferred to $D$ according to a fixed ratio.
+For distributing rewards, a special account is needed. Meanwhile, a fixed ratio of  the new-block rewards is transferred to $D$ according.
 
 Developers' deserved rewards will be sent regularly.\footnote{The time interval of sending rewards equals to the sampling interval in Section~\ref{subsection:interval}}. In order to send rewards on the blockchain, the private key of the account that sends rewards is needed for signing the transaction of sending. Therefore, for the purpose of security the account $D$ for sending rewards needs a special treatment.
 
