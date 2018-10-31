@@ -1,9 +1,9 @@
 \section{Future Work}
 
-\subsection{Muli-dimension voting}
+\subsection{Muli-dimension Voting}
 \noindent
-In Section~\ref{subsection:voting}, we take the number of invocations as the criterion to determine DApps' ranking scores and show reasons why token transfers involved in invocations are not taken into consideration. In the future work, when we are able to analyze the invocations to smart contract, we can  distinguish the cause for token transfers in detail and thus we can introduce token transfers as another criterion for ranking DApps.
+In Section~\ref{subsection:voting}, we take the number of invocations as the criterion to determine DApps' ranking scores and show reasons why token transfers involved in invocations are not taken into consideration. In the future work, when we are able to analyze the invocations to smart contract, we can distinguish the causes of token transfer in more details, so we can introduce token transfer as another criterion for ranking DApps.
 
 \subsection{Invocations Among DApps}
 \noindent
-Currently, DApps' ranks are determined by users' voting capacities (NR values), which come from invocations of users to DApps. However, more complicated invocation behaviors, such as invocations among DApps, can further transmit users' voting capacities. So in our future work, we can give each DApp a initial ranking score and then run the Page Rank algorithm~\cite{page1999pagerank} according to the invoke-relation graph among DApps, to compute the final ranking scores.
+Currently, DApps' ranks are determined by users' voting capacities (NR values), which come from invocations of DApps. However, more complicated invocation behaviors, such as invocations among DApps, can further transmit users' voting capacities. So in our future work, we can give each DApp an initial ranking score, then run the Page Rank algorithm~\cite{page1999pagerank} according to the invoke-relation graph among DApps, to compute the final ranking scores.
