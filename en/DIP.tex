@@ -1,8 +1,8 @@
 \section{Developer Incentive Protocol}
-Based on the model in previous section, we introduce the Developer Incentive Protocol in this section. DIP includes two steps: ranking the DApps and rewarding the developers. Specifically, from voters' invocation behaviors to developers' final reward, it includes four transformations: invocation times-voting capacity-contributory value-ranking score-final reward.
+\noindent Based on the model in previous section, we introduce the Developer Incentive Protocol in this section. DIP includes two steps: ranking the DApps and rewarding the developers. Specifically, from voters' invocation behaviors to developers' final reward, it includes four transformations: invocation times-voting capacity-contributory value-ranking score-final reward.
 
 \subsection{Voting Capacity and Contributory Value}
-For any voter $a_i$, we use $\nr_i$ to denote his voting capacity, which can be regard as the total number of votes voter $a_i$ has. \cite{Nebulasyellowpaper} proves that voter's NR value is an effective measure of his account's value. So in DIP, the NR is also used as a significant criterion to decide voters' voting capacities. For voter $a_i$, his voting capacity can be represented as a function of his NR value:
+\noindent For any voter $a_i$, we use $\nr_i$ to denote his voting capacity, which can be regard as the total number of votes voter $a_i$ has. \cite{Nebulasyellowpaper} proves that voter's NR value is an effective measure of his account's value. So in DIP, the NR is also used as a significant criterion to decide voters' voting capacities. For voter $a_i$, his voting capacity can be represented as a function of his NR value:
 \begin{align}
 	\nr_i = f(\mathcal{C}(a_i))
 \end{align}
@@ -33,7 +33,7 @@ $$\sum_{j=1}^n \nr_{ij} \leq \nr_i$$
 
 The reason for introducing $e_{i0}$ is that, for remaining voters' individual rationals (IR), in other words, voters' interests will not be damaged, we do not force voters to cast all their votes. Voters can selectively exercise part of his voting rights or totally abstain, by properly increasing the value of $e_{i0}$.\footnote{$e_{i0}$ can be implemented by setting an empty smart contract officially, which does not contain any actual effectiveness. Voters can invoke the empty smart contract any times.}
 \subsection{Ranking Score}
-Given all voters' contributory values to all DApps, we are able to compute the
+\noindent Given all voters' contributory values to all DApps, we are able to compute the
 ranking scores of DApps: Given all contributory values
 $\nr_{ij},i=1,2,\ldots,m,j=1,2,\ldots,n$, we define Dapp $d_j$'s ranking score to be a multivariate function over contributory values from all voters:
 
@@ -50,7 +50,7 @@ That is, a DApp's ranking store equals to the sum of square roots of its contrib
 Given ranking scores $S_j,j=1,2,\ldots,m$, the ranks of DApps are determined accordingly. For example, in Nebulas nano client\footnote{\url{https://nano.nebulas.io/}}, high ranked DApp are listed on prominent positions and will attract more attentions.
 
 \subsection{Final Reward}
-DIP offers voters a reliable ranking list of DApps.\footnote{We assume that voters only care about the ranks of DApps he like, while the developers' rewards are not concerned by voters.} For developers, we need to distribute the rewards to them according to their ranking scores.
+\noindent DIP offers voters a reliable ranking list of DApps.\footnote{We assume that voters only care about the ranks of DApps he like, while the developers' rewards are not concerned by voters.} For developers, we need to distribute the rewards to them according to their ranking scores.
 
 Given all DApps' ranking scores, define the reward of DApp $d_j$'s developer to be:
 \begin{align}
