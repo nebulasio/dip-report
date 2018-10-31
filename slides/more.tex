@@ -1,0 +1,59 @@
+\section{性质分析}
+\begin{frame}\frametitle{作弊行为}
+	相比黄皮书，作弊行为更复杂：
+\begin{itemize}
+\item 收买用户：开发者通过各种手段例如贿赂用户从而获得用户的全部投票权；
+\item 恶意分拆：开发者将自己的DApp强行分拆成若干个DApp以获得所有分拆的 DApp的总奖励；
+\item 女巫攻击：创建大量虚假地址来获取更高投票效用（不同于NR的女巫攻击）。
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{抗作弊特性}
+抗收买：
+\begin{property}
+在DIP模型中，对于一个利益最大化的用户，一般而言，他会将手中的票投给多个不同的DApp。
+\end{property}
+
+\begin{corollary}
+被收买的用户对DApp排名分的总贡献远远小于正常的用户。
+\end{corollary}
+\end{frame}
+
+\begin{frame}\frametitle{抗作弊特性}
+抗恶意拆分：
+\begin{property}
+	在所有投票者均为正常用户的情况下，开发者通过DApp分拆不会提升他的收益。
+\end{property}
+
+\begin{corollary}
+	即使引入被收买者的情况下，开发者进行DApp恶意分拆不会提升他的收益。
+\end{corollary}
+\end{frame}
+
+\begin{frame}\frametitle{抗作弊特性}
+抗女巫攻击：
+黄皮书已经保证大量创建子账户无法提升NR值，进一步地
+
+\begin{property}
+	\label{p3}
+	对于任何用户，进行女巫攻击不会增加他所投的DApp的排名分以及最终奖励。
+\end{property}
+\end{frame}
+
+
+\section{实现和未来工作}
+\begin{frame}\frametitle{实现和未来工作}
+DIP具体实现：
+\begin{itemize}
+\item 发放奖励：设置专用的奖励发放账户$D$，增加发放奖励的交易类型，\texttt{dip}交易；
+\item 协议更新：基于NF，更新区块结构（LLVM IR）；
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{实现和未来工作}
+未来工作：
+\begin{itemize}
+\item 多维投票行为：解析智能合约调用，引入资金交易这个信息；
+\item DApp间调用：考虑合约内部调用，进一步传递投票效用；
+\end{itemize}
+\end{frame}

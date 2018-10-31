@@ -1,0 +1,24 @@
+\section{DApp评分}
+\begin{frame}
+\frametitle{DApp评分}
+“调用即投票”：
+\begin{itemize}
+	\item 用户调用行为在链上公开可见，无法篡改；
+	\item 调用行为更能反映用户的真实使用情况。
+\end{itemize}
+\[
+\Gamma_{ij} = \frac{e_{ij}}{e_{i0}+\sum_{j=1}^n {e_{ij}}} \Gamma_i
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{DApp评分}
+开方排名分：
+\begin{itemize}
+	\item 用户调用越多的DApp其产生的投票效用越高，鼓励用户接触更多DApp；
+	\item 有效防止开发者收买用户。
+\end{itemize}
+\[
+S_j = g(\Gamma_{1j},\Gamma_{2j},...,\Gamma_{mj}) = \sum_{i=1}^m \sqrt{\Gamma_{ij}}
+\]
+\end{frame}
