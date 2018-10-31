@@ -1,4 +1,5 @@
 \section{Developer Incentive Model}
+\noindent
 The Developer Incentive Protocol, DIP, including two processes: ranking the DApps and distributing the rewards.
 
 Firstly, constructing a good ranking system can provide third-party developers
@@ -14,6 +15,7 @@ On the other hand, as we shown in Section~\ref{sec:background}, the purpose of D
 
 \subsection{Model Representation}
 \label{subsection:parameters}
+\noindent
 In this section we introduce necessary notations and symbols in DIP model.
 
 \begin{itemize}
@@ -45,6 +47,7 @@ In this section we introduce necessary notations and symbols in DIP model.
 
  \subsection{Voting Action}
  \label{subsection:voting}
+ \noindent
   In a centralized App Store\footnote{\url{https://en.wikipedia.org/wiki/App\_store}}, the system can record specific information such as times that a App has been downloaded, which is a key factor for determining its rank. However, in situations of Blockchain, the way that users use DApps is to invoke smart contracts' addresses, e.g., represented as the times that user $a_i$ invokes DApp $d_i$, denoted by  $e_{ij}$. Compared to traditional information about downloads, DIP, taking invocation information as the date sources, has the following advantages:
 
  \begin{itemize}
@@ -76,6 +79,7 @@ In this section we introduce necessary notations and symbols in DIP model.
 
   \subsection{Sample Time Interval}
   \label{subsection:interval}
+  \noindent
   In Section~\ref{subsection:parameters}, we illustrated that the NR is a significant criterion to determine voters' voting capacities. However, according to the definition in~\cite{Nebulasyellowpaper}, the sampling period of DIP data is much longer than the sampling period of NR data, which means that during the process for recording invocation behaviors, users' NRs may vary, even fluctuate wildly.
 
   A naive solution is to synchronize the sampling period of NR data and DIP data. However in practice, in a short time period (say, one day),  invocation times are very small for most users. So it is of small significance to rank the DApps when users behaviors are sparse, and the properties discretized  in Section~\ref{section:properties} are not guaranteed to be satisfied.
