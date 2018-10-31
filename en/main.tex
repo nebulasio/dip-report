@@ -26,6 +26,21 @@
 %\renewcommand{\nomname}{术语表（按首字母排序）}
 %\renewcommand{\baselinestretch}{1.5}
 
+\usepackage{expl3}
+\ExplSyntaxOn
+\newcommand\latinabbrev[1]{
+  \peek_meaning:NTF . {% Same as \@ifnextchar
+    #1\@}%
+  { \peek_catcode:NTF a {% Check whether next char has same catcode as \'a, i.e., is a letter
+      #1.\@ }%
+    {#1.\@}}}
+\ExplSyntaxOff
+
+%Omit final dot from each def.
+\def\eg{\latinabbrev{e.g}}
+\def\etal{\latinabbrev{et al}}
+\def\etc{\latinabbrev{etc}}
+\def\ie{\latinabbrev{i.e}}
 \pagecolor{\pcolor}
 
 \begin{titlepage}
