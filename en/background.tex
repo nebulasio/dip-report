@@ -47,7 +47,10 @@ As mentioned earlier, in DIP, the process that users use DApps can be regarded a
 
 About voting mechanism and ranking algorithm, there are lots of related work in various fields, which we have referred and show examples as follows.
 
-One of the most famous results is the Arrow's Theorem, which shows that no ranking algorithm can simultaneously satisfy Pareto Efficiency, i.e., the ranking results satisfies the majority's interest, non-dictatorship and independent of irrelevant alternatives, i.e. the relative ranking of two candidates is not affected by any third candidate.
+One of the most famous results is the Arrow's Theorem, which shows that no
+ranking algorithm can simultaneously satisfy Pareto Efficiency, i.e.\, the
+ranking results satisfies the majority's interest, non-dictatorship and
+independent of irrelevant alternatives, i.e.\ the relative ranking of two candidates is not affected by any third candidate.
 
 The result implies that no ranking algorithm can cover everything. So the DIP
 in this mauve paper will focus on the important and well-known attributes.
@@ -62,15 +65,16 @@ For now, these centralized platforms mostly rely on machine learning to
 distinguish normal and fake
 users~\cite{mukherjee2013spotting,jindal2008opinion,yoo2009comparison}.
 However, practical results show that such methods are not ideal.
-~\cite{ott2011finding} points out that even artificial identifications can not
-effectively distinguish such accounts. ~\cite{cai2016mechanism} gives an
+\cite{ott2011finding} points out that even artificial identifications can not
+effectively distinguish such accounts. \cite{cai2016mechanism} gives an
 algorithm that eliminates the incentive of such manipulations, based on
 mechanism design. Although its model is different form us, it can be used as a significant reference.
 
-~\cite{salihefendic2010hacker} introduces the ranking algorithm for postings in
-a social network community, which combines the users' votes and time declining. ~\cite{salihefendic2010reddit} introduces the ranking algorithm for postings in Reddit, which involves the situation where users can vote in the negative.
-~\cite{miller2009how} introduced Reddit's ranking algorithm for the comments, taking the confidence interval into account.
-IMDB ~\cite {IMDB} introduces the idea of Bayesian Model Averaging to film
+\cite{salihefendic2010hacker} introduces the ranking algorithm for postings in
+a social network community, which combines the users' votes and time declining.
+\cite{salihefendic2010reddit} introduces the ranking algorithm for postings in Reddit, which involves the situation where users can vote in the negative.
+\cite{miller2009how} introduced Reddit's ranking algorithm for the comments, taking the confidence interval into account.
+IMDB~\cite{IMDB} introduces the idea of Bayesian Model Averaging to film
 rankings, which can narrow the gap among different films due to the number of voters.
 
 Because of properties against manipulation in NR, the DIP proposed in this mauve paper can distinguish normal users and fake users more clearly. Therefore, the emphasis of this mauve paper is to transfer users' NR values to DApps' ranking scores through interactive behaviors.
