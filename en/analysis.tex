@@ -2,7 +2,7 @@
 \label{section:properties}
 Have introduced the Developer Incentive Protocol, in this section we analyze
 manipulations that could occur in practice and the properties against
-manipulation of  DIP\@. On the voters and developers' points of view respectively, manipulations including buying over, maliciously splitting DApp, Sybil attack and so on.
+manipulation of  DIP\@. On the voters and developers' points of view respectively, manipulations including buying over, maliciously splitting \dapp, Sybil attack and so on.
 \subsection{Buy Over Voters}
 The so-called buy over means that a developer lets voters' cast all their votes to the developer's DApp, by the means of bribing or other, which is vary common in the real life. Here we suppose that all voters are self-interest. We assume that normal voters only care about the ranks of the DApps they like, rather than the final reward of developers. In other words, a normal voter want to maximize the total
 weighted ranking score of all DApps he likes. Our quadratic ranking algorithm guarantees the following property:
@@ -12,7 +12,7 @@ weighted ranking score of all DApps he likes. Our quadratic ranking algorithm gu
 \end{property}
 We illustrate the property by the following model: suppose the weights that
 voter $a_i$ values all DApps are $b_{i1}, b_{i2}, \ldots, b_{in}$ respectively (can be regarded as the true preference of the voter to all DApps). Taking the form of~\ref{eq:sqrt}, the voter's contributory values satisfy
-$$\frac{b_{i1}}{\sqrt{\nr_{i1}}}=\frac{b_{i2}}{\sqrt{\nr_{i2}}}=\cdots=\frac{b_{in}}{\sqrt{\nr_{in}}}$$,
+$$\frac{b_{i1}}{\sqrt{\nr_{i1}}}=\frac{b_{i2}}{\sqrt{\nr_{i2}}}=\cdots=\frac{b_{in}}{\sqrt{\nr_{in}}}.$$
 in other words, voter $a_i$'s contributory values matches his true preference to DApps. The detailed proof is in Section~\ref{subsection:proof1}.
 
 Transitional voting models usually compute the ranking score linearly, i.e.,
@@ -41,7 +41,13 @@ Specifically, as the algorithm of final rewards, the convexity of formula~\ref{e
 	\label{p2}
     If all voters are normal, splitting DApps will not increase the reward of the developer.
 \end{property}
-It is assume that a normal voter belongs to the following to cases: i) voter simply distributes his votes that are supposed for the original DApp to split DApps. Such case occurs when an application has different smart contract address for invocation. ii) Suppose that the voter values the original DApp with weight $a$, and with weights $b$ and $c$ for two split DApps respectively, then $c>a+b$. Such case can be illustrated that after splitting, the split DApps' qualities are greatly decreased and lack of linkages. So the total qualities of split DApps' is lower than the original DApp. In both cases, the final reward of the developer does not increase. Detailed proof  is in~\ref{subsection:proof2}.
+It is assume that a normal voter belongs to the following cases:
+\begin{inparaenum}
+\item[i).] voter simply distributes his votes that are supposed for the original DApp to split DApps. Such case occurs when an application has different smart contract address for invocation.
+\item[ii).] Suppose that the voter values the original DApp with weight $a$, and with weights $b$ and $c$ for two split DApps respectively, then $c>a+b$. Such case can be illustrated that after splitting, the split DApps' qualities are greatly decreased and lack of linkages. So the total qualities of split DApps' is lower than the original DApp.
+ \end{inparaenum}
+
+  In both cases, the final reward of the developer does not increase. Detailed proof  is in~\ref{subsection:proof2}.
 
 Further more, a developer can buyer over voter and split his DApp simultaneously: he first splits his DApp to $K$ DApps. Then, he lets his bought-over voters distribute their votes uniformly to split DApps, thus  maximizing the utilization of  bought-over  voters. We have the following corollary against this case:
 \begin{corollary}
@@ -56,7 +62,7 @@ It is notable that, the rank of DApps will be decreased if developers split DApp
 Without doubt that is a developer developers multiple different  DApps, since there is no mirrored of split relations amount the DApps, the utility of the developer is not affected.
 
 \subsection{Sybil Attack}
-By generalized Sybil Attack we mean an attack subverts the reputation system by creating a large number of pseudonymous identities, using them to gain a disproportionately large influence~\cite{quercia2010sybil}. In Nebulas Yellow Paper~\cite{Nebulasyellowpaper}, the properties of NR against manipulations that increase NR by creating a large number of new accounts have been proved. So in the DIP ranking algorithm, voters are also not able to increase NR by creating new accounts, i.e.,
+By generalized Sybil Attack we mean an attack subverts the reputation system by creating a large number of pseudonymous identities, using them to gain a disproportionately large influence~\cite{quercia2010sybil}. In Nebulas Yellow Paper~\cite{Nebulasyellowpaper}, the properties of NR against manipulations that increase NR by creating a large number of new accounts have been proved. So in the DIP ranking algorithm, voters are also not able to increase NR by creating new accounts, \ie,
 $$\mathcal{C}(c)>\mathcal{C}(a)+\mathcal{C}(b)$$
 where $c$ is the original account, $a,b$ are the split sub-accounts. According to formula~\ref{eq:vote_rate} their voting capacities satisfy the following constraint:
 
@@ -71,5 +77,3 @@ Suppose that the propose of a voter for Sybil attack is to increase the ranking 
     For any voter, executing Sybil attack will not increase the ranking score of the DApp he votes and the final reward of the DApp's developer.
 \end{property}
 So the property against Sybil attack is guaranteed.
-
-
