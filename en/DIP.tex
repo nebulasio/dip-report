@@ -1,5 +1,5 @@
 \section{Developer Incentive Protocol}
-Based on the model in previous section, we introduce the Developer Incentive Protocol in this section. DIP includes two steps: ranking the DApps and rewarding the developers. Specifically, from voters' invocation behaviors to developers' final reward, it includes four transformations: times of invocations-voting capacity-contributory value-ranking score-final reward. 
+Based on the model in previous section, we introduce the Developer Incentive Protocol in this section. DIP includes two steps: ranking the DApps and rewarding the developers. Specifically, from voters' invocation behaviors to developers' final reward, it includes four transformations: times of invocations-voting capacity-contributory value-ranking score-final reward.
 
 \subsection{Voting Capacity and Contributory Value}
 For any voter $a_i$, we use $\nr_i$ to denote his voting capacity, which can be regard as the total number of votes voter $a_i$ has. \cite{Nebulasyellowpaper} proves that voter's NR value is an effective measure of his account's value. So in DIP, NR is also used as a significant criterion to decide voters' voting capacity. For voter $a_i$, his voting capacity can be represented as a function of his NR value:
@@ -12,7 +12,7 @@ Normally, we wish $f$ to be a increasing function, i.e., voters with higher NR v
 \begin{align}
 	f(\mathcal{C}(a_i))=\mathcal{C}^2(a_i)
 \end{align}
-In other words, 
+In other words,
 \begin{align}
 	\nr_i = \mathcal{C}^2(a_i)
 \end{align}
@@ -25,42 +25,44 @@ Then we discuss the mechanism for  distributing voting capacities. According to 
 \end{align}
 Formula~\ref{eq:vote_rate} can be understood as the ratio of the number of invocation to $d_j$ to the total number of invocations. Here $e_{i0}$ represent the number of invocations which do not belong to any DApp. A voter can arbitrarily adjust the values of $e_{i0}$ and $e_{ij}$'s.
 
-With the introduction of $e_{i0}$, it holds that 
+With the introduction of $e_{i0}$, it holds that
 $$\sum_{j=1}^n \nr_{ij} \leq \nr_i$$
 \noindent It is notable that formula~\ref{eq:vote_rate}'s purpose is to let voters can arbitrarily distribute their NRs for voting (by arbitrarily choose contributory values). In practice it is possible that some DApps forcibly increase the number of invocations (by only receiving doubled invocations), but since all NRs and the number of invocations are public, a voters can still achieve the distribution of contributory values he want by adjusting his contributory values.
 
-The reason for introducing $e_{i0}$ is that, for remaining voters' individual rationals (IR), in other words, voters' interests will not be damaged, we do not force voters to cast all their votes. Voters can selectively exercise part of his voting rights or totally abstain, by properly increasing the value of $e_{i0}$. \footnote{ $e_{i0}$ can be implemented by setting a empty smart contract officially, which does not contain any actual effectiveness. Voters can invoke the empty smart contract any times.}
+The reason for introducing $e_{i0}$ is that, for remaining voters' individual rationals (IR), in other words, voters' interests will not be damaged, we do not force voters to cast all their votes. Voters can selectively exercise part of his voting rights or totally abstain, by properly increasing the value of $e_{i0}$.\footnote{$e_{i0}$ can be implemented by setting a empty smart contract officially, which does not contain any actual effectiveness. Voters can invoke the empty smart contract any times.}
 \subsection{Ranking Score}
-Given all voters' contributory values to all DApps, we are able to compute the ranking scores of DApps: Given all contributory values $\nr_{ij},i=1,2,...,m,j=1,2,...,n$, we define Dapp $d_j$'s ranking score to be a multivariate function over contributory values from all voters:
+Given all voters' contributory values to all DApps, we are able to compute the
+ranking scores of DApps: Given all contributory values
+$\nr_{ij},i=1,2,\ldots,m,j=1,2,\ldots,n$, we define Dapp $d_j$'s ranking score to be a multivariate function over contributory values from all voters:
 
 \begin{align}
-	S_j = g(\nr_{1j},\nr_{2j},...,\nr_{mj})
+	S_j = g(\nr_{1j},\nr_{2j},\ldots,\nr_{mj})
 \end{align}
 Similarly, here we give a satisfactory function:
 \begin{align}
 	\label{eq:sqrt}
-	g(\nr_{1j},\nr_{2j},...,\nr_{mj}) = \sum_{i=1}^m \sqrt{\nr_{ij}}
+	g(\nr_{1j},\nr_{2j},\ldots,\nr_{mj}) = \sum_{i=1}^m \sqrt{\nr_{ij}}
 \end{align}
-That is, a DApp's ranking store equals to the sum of square roots of its contributory values from all voters. It is not hard to see that, for a user $a_i$, when he only votes for one Dapp (assume that he does not discard any votes), his total contributory value is $\sqrt{\nr_i}$. When he casts his votes to several different DApps, his total contributory value increases due to the property $\sqrt{a+b}<\sqrt{a}+\sqrt{b}$ of the square root function. In other words, the voter gets in touch with more DApps, which is encouraged by our system. In Section~\ref{section:properties} we will prove  detailed properties for our construction. Similar method are referred in ~\cite{buterin2018liberal}.
+That is, a DApp's ranking store equals to the sum of square roots of its contributory values from all voters. It is not hard to see that, for a user $a_i$, when he only votes for one DApp (assume that he does not discard any votes), his total contributory value is $\sqrt{\nr_i}$. When he casts his votes to several different DApps, his total contributory value increases due to the property $\sqrt{a+b}<\sqrt{a}+\sqrt{b}$ of the square root function. In other words, the voter gets in touch with more DApps, which is encouraged by our system. In Section~\ref{section:properties} we will prove  detailed properties for our construction. Similar method are referred in~\cite{buterin2018liberal}.
 
-Given ranking scores $S_j,j=1,2,...,m$, the ranks of DApps are determined accordingly. For example, in Nebulas nano client\footnote{\url{https://nano.nebulas.io/}}, high ranked DApp are listed on prominent positions and will attract more attentions.
+Given ranking scores $S_j,j=1,2,\ldots,m$, the ranks of DApps are determined accordingly. For example, in Nebulas nano client\footnote{\url{https://nano.nebulas.io/}}, high ranked DApp are listed on prominent positions and will attract more attentions.
 
 \subsection{Final Reward}
-DIP offers voters a reliable rank list of DApps.\footnote{We assume that voters only care about the ranks of DApps he like, while the developers' rewards are not concerned by voters.} For developers, we need to distribute the rewards to them according to their ranking scores. 
+DIP offers voters a reliable rank list of DApps.\footnote{We assume that voters only care about the ranks of DApps he like, while the developers' rewards are not concerned by voters.} For developers, we need to distribute the rewards to them according to their ranking scores.
 
 Given all DApps' ranking scores, define the reward of DApp $d_j$'s developer to be:
 \begin{align}
 	\label{eq:distribution}
 	U_i = \frac{S_j^2}{\sum_{k=1}^n S_j^2}\cdot \lambda M
 \end{align}
-where $M$ is  total amount of the reward pool for developers, granted by the Nabulas group. $\lambda $ is define to be the participation factor, that is, we want the total amount of rewards increases with the total NR of value voters. The specific definition is as follows:
+where $M$ is  total amount of the reward pool for developers, granted by the Nebulas group. $\lambda $ is define to be the participation factor, that is, we want the total amount of rewards increases with the total NR of value voters. The specific definition is as follows:
 \begin{align}
 	\lambda=\min\{\frac{\nr_p}{\alpha \nr_s }\cdot \min\{\frac{\beta\nr_p^2 }{\sigma^2(\nr_p)},1\},1\}
 \end{align}
-,where $$\nr_p = \sum_{i=1}^m (\nr_i-\nr_{i0}),~~~\nr_{i0} = \frac{e_{i0}\nr_i}{e_{i0}+\sum_{j=1}^n {e_{ij}}}$$, i.e., the total effective voting capacities of all voters, 
-$$\nr_s = \sum_{i=1}^{m^*} (\nr_i-\nr_{i0})$$, 
+,where $$\nr_p = \sum_{i=1}^m (\nr_i-\nr_{i0}),\quad \nr_{i0} = \frac{e_{i0}\nr_i}{e_{i0}+\sum_{j=1}^n {e_{ij}}}$$, i.e., the total effective voting capacities of all voters,
+$$\nr_s = \sum_{i=1}^{m^*} (\nr_i-\nr_{i0})$$,
 the total voting capacity (the square of NR value) of all users in the community, $\sigma$ is the standard deviation (square root of variance) of all voters' effective voting capacities:
 $$ \sigma^2(\nr_p) = \sum_{i=1}^m (\nr_i-\frac{1}{m}\nr_p)^2 $$
-of which its maximum value is $\frac{(m-1)^2}{m^2}\nr_p^2$, and $\alpha,\beta < 1$ are adjustable parameters. 
+of which its maximum value is $\frac{(m-1)^2}{m^2}\nr_p^2$, and $\alpha,\beta < 1$ are adjustable parameters.
 
-The purpose of introducing the participation factor $\lambda$ is to expect the total voting capacities of voters more than a threshold (the total voting capacities of  community users times $\alpha$)  and to bound the variance of voters’ voting capacities, preventing the case with several high-NR voters along with lots of low-NR fake accounts. The two terms can complement each other, i.e., when the participation rate is high, we can ignore the effect of the variance. 
+The purpose of introducing the participation factor $\lambda$ is to expect the total voting capacities of voters more than a threshold (the total voting capacities of  community users times $\alpha$)  and to bound the variance of voters’ voting capacities, preventing the case with several high-NR voters along with lots of low-NR fake accounts. The two terms can complement each other, i.e., when the participation rate is high, we can ignore the effect of the variance.
