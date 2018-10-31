@@ -7,14 +7,14 @@ times$\rightarrow$ voting capacity$\rightarrow$ contributory
 value$\rightarrow$ ranking score$\rightarrow$ final reward.
 
 \subsection{Voting Capacity and Contributory Value}
-\noindent For any voter $a_i$, we use $\nr_i$ to denote his voting capacity, which can be regard as the total number of votes voter $a_i$ has. \cite{Nebulasyellowpaper} proves that voter's NR value is an effective measure of his account's value. So in DIP, the NR is also used as a significant criterion to decide voters' voting capacities. For voter $a_i$, his voting capacity can be represented as a function of his NR value:
+\noindent For any voter $a_i$, we use $\nr_i$ to denote his voting capacity, which can be regarded as the total number of votes voter $a_i$ has. \cite{Nebulasyellowpaper} proves that voter's NR value is an effective measurement of his account's value. So in DIP, the NR is also used as a significant criterion to decide voters' voting capacities. For voter $a_i$, his voting capacity can be represented as a function of his NR value:
 \begin{align}
 	\nr_i = f(\mathcal{C}(a_i))
 \end{align}
 where $\mathcal{C}(a_i)$ represents voter $a_i$'s NR value.
 
 
-Normally, we wish $f$ to be a increasing function, \ie, voters with higher NR value has larger voting capacities. Here we give a satisfactory function:
+Normally, we wish $f$ to be a increasing function, \ie, voters with higher NR value have larger voting capacities. Here we give a satisfactory function:
 
 \begin{align}
 	f(\mathcal{C}(a_i))=\mathcal{C}^2(a_i)
@@ -34,7 +34,7 @@ Formula~\ref{eq:vote_rate} can be understood as the ratio of the number of invoc
 
 With the introduction of $e_{i0}$, it holds that
 $$\sum_{j=1}^n \nr_{ij} \leq \nr_i$$
-\noindent It is notable that formula~\ref{eq:vote_rate}'s purpose is to let voters can arbitrarily distribute their NRs for voting (by arbitrarily choose contributory values). In practice it is possible that some DApps forcibly increase the number of invocations (by only receiving doubled invocations), but since all NRs and the number of invocations are public, a voter can still achieve the distribution of contributory values he want by adjusting his contributory values.
+\noindent It is notable that formula~\ref{eq:vote_rate}'s purpose is to let voters arbitrarily distribute their NRs for voting (by arbitrarily choosing contributory values). In practice it is possible that some DApps forcibly increase the number of invocations (by only receiving doubled invocations), but since all NRs and the number of invocations are public, a voter can still achieve the distribution of contributory values he wants by adjusting his contributory values.
 
 The reason for introducing $e_{i0}$ is that, for remaining voters' individual rationals (IR), in other words, voters' interests will not be damaged, we do not force voters to cast all their votes. Voters can selectively exercise part of his voting rights or totally abstain, by properly increasing the value of $e_{i0}$.\footnote{$e_{i0}$ can be implemented by setting an empty smart contract officially, which does not contain any actual effectiveness. Voters can invoke the empty smart contract any times.}
 \subsection{Ranking Score}
