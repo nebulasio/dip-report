@@ -1,27 +1,27 @@
 \section{Developer Incentive Model}
 The Developer Incentive Protocol, DIP, including two processes: ranking the DApps and distributing the rewards.
 
-Firstly, constructing a good ranking system can provide third-party developers with a convenient and effective  platform to promote allocations and provide users with a reliable recommendation system. Like the App Store platform for mobile, goods Apps have top positions on the ranking list and thus receive more attention from users. Secondly, users have better experience when their obtain high-quality Apps directly from the ranking lost. Further more, Apps' ranks can be used in keyword search. Just like the search systems in search engines and e-commerce platform,  listing keyword-ralated Apps on the search results according to their ranks is satisfactory to users.
+Firstly, constructing a good ranking system can provide third-party developers with a convenient and effective platform to promote applications and provide users with a reliable recommendation system. Like the App Store platform, good Apps have top positions on the ranking list and thus receive more attention from users. Secondly, users have better experience when their obtain high-quality Apps directly from the ranking list. Further more, Apps' ranks can be used in keyword search. Just like the search systems in search engines and e-commerce platform,  listing keyword-ralated Apps on the search results according to their ranks is satisfactory to users.
 
-On the other hand, as we shown in Section~\ref{sec:background}, the purpose of DIP is to provide rewards for good DApps' developers, thus further increases developers‘ incentives to design good DApps and promotes the ecosystem development. So the second process of DIP is to design a fair rewarding mechanism, according to DAPPs' ranks,
+On the other hand, as we shown in Section~\ref{sec:background}, the purpose of DIP is to provide rewards for good DApps' developers, thus further increases developers' incentives to design good DApps and promotes the ecosystem development. So the second process of DIP is to design a fair rewarding mechanism, according to DAPPs' ranks.
 
 \subsection{Model Representation}
 \label{subsection:parameters}
 In this section we introduce necessary notations and symbols in DIP model.
 
 \begin{itemize}
-	\item $\mathcal{A}=\{a_1,a_2,\ldots,a_m\}$ represent the set of users that
+	\item $\mathcal{A}=\{a_1,a_2,\ldots,a_m\}$ represents the set of users that
 	  participate the ranking system during a time period. We use voters to
 	  denote such users. Note that a user is defined to be a voter only if he
 	  invokes some DApp's EOA(External Owned Account) in a time period. Define
 	  $$\mathcal{A}^*=\{a_1,a_2,\ldots,a_m,a_{m+1},\ldots,a_{m^*}\}$$
-	to be the set of all users in the community during the same time period, i.e., $m*-m$ users do not invoke any DApp.
-  \item $\mathcal{D}=\{d_1,\ldots,d_n\}$ represent the set of DApps during a time period.
+	to be the set of all users in the community during the same time period, i.e., $m^*-m$ users do not invoke any DApp.
+  \item $\mathcal{D}=\{d_1,\ldots,d_n\}$ represents the set of DApps during a time period.
   \item $e_{ij},i=1,2,\ldots,m, j=1,2,\ldots,n$ represent the times that voter $a_i$ invokes DApp $d_j$. Due to the publicity and decentralization of blockchain, the DIP model is different from the ranking system in traditional centralized application markets. Generally speaking, DIP ranks the DApps according to users' invocation behaviors, in a decentralized environment. The details are shown in the next section.
 
-  \item $\nr_i, i=1,2,\ldots,m$ represent voter $a_i$'s voting capacity during a period of time.
-  \cite{Nebulasyellowpaper} proves that user's NR value is an effective measure of his account's value. So in DIP, NR is also used as a significant criterion to decide users' voting capacity.
-  \item $\nr_{ij}, i=1,2,\ldots,m,j=1,2,\ldots,n$ represent the contributory value from voter $a_i$ to DApp $d_j$, which can be regarded as the number of votes that $a_i$ willing to vote for $d_j$.
+  \item $\nr_i, i=1,2,\ldots,m$ represent voter $a_i$'s voting capacity during a time period.
+  ~\cite{Nebulasyellowpaper} proves that a user's NR value is an effective measure of his account's value. So in DIP, NR is also used as a significant criterion to decide users' voting capacity.
+  \item $\nr_{ij}, i=1,2,\ldots,m,j=1,2,\ldots,n$ represent the contributory value of voter $a_i$ to DApp $d_j$, which can be regarded as the number of votes where $a_i$ is willing to vote for $d_j$.
 
   \item $S_j, j=1,2,\ldots,n$ represent DApp $d_j$'s ranking score, which is determined by its total contributory value from all voters. Intuitively, the ranking scores determine DApps' positions on the ranking list.
 
@@ -64,7 +64,7 @@ In this section we introduce necessary notations and symbols in DIP model.
 
   We analyzed all manipulations above when designing DIP and gave corresponding solutions. The details about DIP against manipulation are in Section~\ref{section:properties}.
 
-  \subsection{Sample time interval}
+  \subsection{Sample Time Interval}
   \label{subsection:interval}
   In Section~\ref{subsection:parameters}, we illustrated that the NR is a significant criterion to determine voters' voting capacities. However, according to th definition in~\cite{Nebulasyellowpaper}, the sampling period of DIP data is much longer than the sampling period of NR data, which means that during the process for recording invocation behaviors, users' NRs may vary, even fluctuate wildly.
 
