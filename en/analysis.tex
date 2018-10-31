@@ -4,12 +4,12 @@
 manipulations that could occur in practice and the properties against
 manipulation of  DIP\@. From the voters and developers' points of view respectively, manipulations including buying over, maliciously splitting \dapp, Sybil attack and so on.
 \subsection{Buy Over Voters}
-\noindent The so-called buy over means that a developer lets voters' cast all their votes to the developer's DApp, by  means of bribing or other, which is very common in the real life. Here we suppose that all voters are self-interest. We assume that normal voters only care about the ranks of the DApps they like, rather than the final rewards of developers. In other words, a normal voter wants to maximize the total
+\noindent The so-called buy over means that a developer lets voters' cast all their votes to the developer's DApp, by means of bribing or other, which is very common in the real life. Here we suppose that all voters are self-interest. We assume that normal voters only care about the ranks of the DApps they like, rather than the final rewards of developers. In other words, a normal voter wants to maximize the total
 weighted ranking scores of all DApps he likes. Our quadratic ranking algorithm guarantees the following property:
 
 \begin{property}
 	\label{p1}
-	In the DIP model, for a self-interested normal voter, generally, he will case his votes to multiple DApps.
+	In the DIP model, for a self-interested normal voter, generally, he will cast his votes to multiple DApps.
 \end{property}
 We illustrate the property by the following model: suppose the weights that
 voter $a_i$ values all DApps are $b_{i1}, b_{i2}, \ldots, b_{in}$ respectively (can be regarded as the true preference of the voter to all DApps). Taking the form of~\ref{eq:sqrt}, the voter's contributory values satisfy
@@ -28,7 +28,7 @@ capacity. Similar analysis can be found in~\cite{buterin2018liberal}. To sum up,
 a voter would vote for multiple DApps and keep the priority of DApps he likes
 the most simultaneously, \ie the ratio equation above.
 
-In practice, sometimes traditional  linear voting model will limit the maximum votes for a voter to a DApp, to forcibly let voters disperse their votes, while our algorithm achieve the same goal by the means of essentially incentive, with a more elegant and simple mathematical expression.
+In practice, sometimes traditional  linear voting model will limit the maximum votes for a voter to a DApp, to forcibly let voters disperse their votes, while our algorithm achieves the same goal by the means of essential incentive, with a more elegant and simple mathematical expression.
 
 
 \begin{corollary}
