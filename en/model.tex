@@ -1,4 +1,5 @@
 \section{Developer Incentive Model}
+\noindent
 The Developer Incentive Protocol, DIP, including two processes: ranking the DApps and distributing the rewards.
 
 Firstly, constructing a good ranking system can provide third-party developers
@@ -14,6 +15,7 @@ On the other hand, as we shown in Section~\ref{sec:background}, the purpose of D
 
 \subsection{Model Representation}
 \label{subsection:parameters}
+\noindent
 In this section we introduce necessary notations and symbols in DIP model.
 
 \begin{itemize}
@@ -45,6 +47,7 @@ In this section we introduce necessary notations and symbols in DIP model.
 
  \subsection{Voting Action}
  \label{subsection:voting}
+ \noindent
   In a centralized App Store\footnote{\url{https://en.wikipedia.org/wiki/App\_store}}, the system can record specific information such as times that a App has been downloaded, which is a key factor for determining its rank. However, in situations of Blockchain, the way that users use DApps is to invoke smart contracts' addresses, e.g., represented as the times that user $a_i$ invokes DApp $d_i$, denoted by  $e_{ij}$. Compared to traditional information about downloads, DIP, taking invocation information as the date sources, has the following advantages:
 
  \begin{itemize}
@@ -55,7 +58,7 @@ In this section we introduce necessary notations and symbols in DIP model.
 
  Actually, there are other available information when users invoke DApps. For example, the amount of gases that has been expended and possible token transfers involved in an invocation. However, DIP takes neither of them into consideration.
 
- Firstly, the amount of expended gases depends on the executed codes within the smart contracts each time a user invokes a DApp, where the later is not related to the DApp's own quality. Moreover, in the current Nebulas system, the average amount of expended gases during each invocation is at the order of $10^{-8}$ NAS, which is negligible.
+ Firstly, the amount of expended gases depends on the executed instructions within the smart contracts each time a user invokes a DApp, where the later is not related to the DApp's own quality. Moreover, in the current Nebulas system, the average amount of expended gases during each invocation is at the order of $10^{-8}$ NAS, which is negligible.
 
  The reason why we do not consider token transfers is the lack of an effective method against manipulation. Intuitively, the wilinesses of users to pay additional tokens when invoking the DApp improve the DApp's recognition.
   However, in practice, when a user pays tokens to a DApp, the tokens' final destination could belong to the following three cases:
@@ -65,14 +68,18 @@ In this section we introduce necessary notations and symbols in DIP model.
   	\item The DApp itself requires token transfer, such as gambling DApps, which leads  a huge amount of token transfer between the user and the DApp. It's a normal phenomenon. However, the DApp's rank should not be increased accordingly, due to the fact that the user's purpose for paying tokens is to gather profits, which does not reflect the DApp's quality.
    \item The DApp's developer commits that all tokens paid to the DApp will be returned to the user. It is actually a kind of manipulation, which would be aggravated if we increases the DApp's rank and reward accordingly.
   \end{enumerate}
-  In practice, without analyzing the codes of smart contracts, we are not able to determine which case token transfers between users and DApps belongs to and in either case we have explained reasons for not involving DApps' ranks. So the algorithm in DIP will be independent of token transfers.
+  In practice, without analyzing the source code of smart contracts, we are not able to determine which case token transfers between users and DApps belongs to and in either case we have explained reasons for not involving DApps' ranks. So the algorithm in DIP will be independent of token transfers.
 
-  In the DIP model, a user $a_i \in \mathcal{A}$ is essentially an account address. As referred in~\cite{Nebulasyellowpaper}, a user can actually control multiple account addresses. Since there is not cost for creating new accounts, the user can forge several addresses which he controls to vote --- the Sybil attack. Similarly, a developer can divide his DApp into several addresses, that is, split his DApp into several low-quality DApps, and obtain all rewards from split DApps. In the meanwhile, a developer can buy over one or more users to vote for his DApp.
+  In the DIP model, a user $a_i \in \mathcal{A}$ is essentially an account
+  address. As referred in~\cite{Nebulasyellowpaper}, a user can actually
+  control multiple account addresses. Since there is no cost for creating new
+  accounts, the user can forge several addresses which he controls to vote --- the Sybil attack. Similarly, a developer can divide his DApp into several addresses, that is, split his DApp into several low-quality DApps, and obtain all rewards from split DApps. In the meanwhile, a developer can buy over one or more users to vote for his DApp.
 
   We analyzed all manipulations above when designing DIP and gave corresponding solutions. The details about DIP against manipulation are in Section~\ref{section:properties}.
 
   \subsection{Sample Time Interval}
   \label{subsection:interval}
+  \noindent
   In Section~\ref{subsection:parameters}, we illustrated that the NR is a significant criterion to determine voters' voting capacities. However, according to the definition in~\cite{Nebulasyellowpaper}, the sampling period of DIP data is much longer than the sampling period of NR data, which means that during the process for recording invocation behaviors, users' NRs may vary, even fluctuate wildly.
 
   A naive solution is to synchronize the sampling period of NR data and DIP data. However in practice, in a short time period (say, one day),  invocation times are very small for most users. So it is of small significance to rank the DApps when users behaviors are sparse, and the properties discretized  in Section~\ref{section:properties} are not guaranteed to be satisfied.
@@ -83,5 +90,5 @@ In this section we introduce necessary notations and symbols in DIP model.
   	\label{fig:nr}
   	\centering
   	\input{../common/nr.tex}
-  	\caption{NR variation graph of an address on Nebulas main net. The main net address is \textit{n1Ugq21nif8BQ8uw81SwXHK6DHqeTEmPRhj}.}
+  	\caption{NR variation graph of an address on Nebulas mainnet. The mainnet address is n1Ugq21nif8BQ8uw81SwXHK6DHqeTEmPRhj.}
   \end{figure}
