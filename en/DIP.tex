@@ -7,8 +7,7 @@ times$\overset{1}{\rightarrow}$ voting capacity$\overset{2}{\rightarrow}$ contri
 value$\overset{3}{\rightarrow}$ ranking score$\overset{4}{\rightarrow}$ final reward.
 
 \subsection{Voting Capacity and Contributory Value}
-\noindent For any voter $a_i$, we use $\nr_i$ to denote his voting capacity,
-which can be regarded as the total number of votes voter $a_i$ has. \cite{Nebulasyellowpaper} proves that voter's NR value is an effective measure of his account's value. So in DIP, the NR is also used as a significant criterion to decide voters' voting capacities. For voter $a_i$, his voting capacity can be represented as a function of his NR value:
+\noindent For any voter $a_i$, we use $\nr_i$ to denote his voting capacity, which can be regarded as the total number of votes voter $a_i$ has. \cite{Nebulasyellowpaper} proves that voter's NR value is an effective measurement of his account's value. So in DIP, the NR is also used as a significant criterion to decide voters' voting capacities. For voter $a_i$, his voting capacity can be represented as a function of his NR value:
 \begin{align}
 	\nr_i = f(\mathcal{C}(a_i))
 \end{align}
@@ -38,7 +37,7 @@ invocation times which do not belong to any DApp. A voter can arbitrarily adjust
 
 With the introduction of $e_{i0}$, it holds that
 $$\sum_{j=1}^n \nr_{ij} \leq \nr_i.$$
-It is notable that formula~\ref{eq:vote_rate}'s purpose is to let voters can
+It is notable that formula~\ref{eq:vote_rate}'s purpose is to let voters
 arbitrarily distribute their NRs for voting (by arbitrarily choose contributory
 values). In practice, it is possible that some DApps forcibly increase the
 number of invocations (by only receiving doubled invocations), but since all
