@@ -46,40 +46,41 @@ We believe that the relationship among decentralized application platforms, DApp
 Notice that we mean DApp developers instead of Nebulas DApp developers or
 blockchain system developers. Thus, we shall use developers short for DApp
 developers without ambiguity. Also, a DApp developer may be a stake holder.
-He/she may benefit from being a stake holder and that benefit is not considered
-as sharing the increase value of blockchains.
+He may benefit from being a stake holder and that benefit is not considered
+as sharing the increase value of blockchains. The interests of being a developer can still be ignored or infringed.
 
 
 It's inappropriate to directly distribute a platform's increased value to
-corresponding application developers. First, the revenue is owned by
+corresponding application developers. One the one hand, the revenue is owned by
 centralized organizations, like an enterprise, and application developers have
-no chance to know the details or participate in sharing the revenue. Second, it
+no chance to know the details of or participate in the sharing of revenues. Second, it
 is difficult to quantify each developer's contribution to the growth of
-application platforms. Fortunately, this situation can be changed in blockchain
-industry since each invocation for smart contracts by each user is
+application platforms so the fairness of the reward mechanism is hard to be guaranteed. Fortunately, this situation can be changed in blockchain
+industry since each invocation to smart contracts by each user is
 publicly recorded on
 blockchain. Thus, it is possible to \emph{reward or incentive each DApp developer by
 quantifying each DApp's contribution}.
 
 An ideal incentive mechanism should satisfy some basic properties:
 \begin{itemize}
-\item Faireness: the protocol should maintain objectivity in the process of rewarding developers, that is, every DApp should be evaluated equally even there are some potential manipulations.
+\item Faireness: the protocol should maintain objectivity when rewarding developers, that is, every DApps should be equally treated and their usages are evaluated veritably, even there are some potential manipulations.
 \item Effectiveness: the reward should reflect user preference, that is, the DApps with high reward are ones that frequented by active users while the DApps with low or no reward are unwelcome.
 \end{itemize}
 
-In this paper, we propose Developer Incentive Protocol (DIP), which aims at rewarding developers and makes the developers to benefit from the process in a decentralized application platform. Naturally, the ideal developer incentive protocol is not exist since the user satisfaction evaluations to DApps are subjective and multi-dimensioned. And the DIP introduced in the paper may have some potential weaknesses. However, the research is still creative and has a balance of anti-manipulation and developers' rights. We give our best to improve the performance of anti-manipulation, while still keeping the developers rights.
+In this paper, we propose Developer Incentive Protocol (DIP), which aims at rewarding and incentivizing  developers, enabling the developers to benefit from the development of the decentralized application platform. Naturally, an ideal developer incentive protocol is not exist since the users' evaluations to DApps are subjective and multi-dimensioned. So the DIP introduced in the paper have pace for improvement. However, the balance in this mauve paper is still innovative, that is, under the premise of guaranteeing the interests of DApp developers, in terms of resistance to manipulation, we make the greatest efforts.
 
 DIP is designed based on the existing Nebulas Rank
 (NR)~\cite{Nebulasyellowpaper} and it benefits from some good features of NR\@.
-Intuitively, the DApp evaluation of users is reduced to voting problem in DIP\@.
+Intuitively, DApp evaluations of users is reduced to a voting process in DIP\@.
 An invocation from a certain user is treated as a vote and user's voting
-capacity is a function of her NR\@. The developers will get the rewards from system eventually, corresponding to the voting result.
+capacity is a function of his NR\@. The developers will get the rewards from the system eventually, according to the voting results.
 
-Beyond giving the theoretical model of Developer Incentive Protocol, we also
-have analysis about the properties of anti-manipulations and illustrate the
-implementation of DIP, such as, how to adjust and update DIP\@. These works
-above will provide the direction of practical application of DIP\@.
+Besides giving the theoretical model of Developer Incentive Protocol, we also
+analyze the properties against manipulations and illustrate the
+implementation of DIP, such as, how to adjust and update DIP\@, which specify the direction of the actual landing of the DIP.
 
 \whitepaper{
-Special Hint: The mauve paper is devoted to Developer Incentive Protocol which is different from the description in our whitepaper (version 1.02 released on April 2018) [3] with numerous new upgrades and extensions. This is because we keep thinking and verifying the algorithm in our whitepaper. And now we are more confident and capable to make it more rigorous. We use a different format (like this paragraph) to emphasize the relevant updates presented in this mauve paper.
+Special Hint: As the mauve paper dedicated to discussing Developer Incentive Protocol, Mauve Peper: Developer Incentive Protocal greatly upgrades and expands the relevant chapters of the Nebula Technology White Paper~\cite{Nebulaswhitepaper}(version 1.02 released in April 2018). Compared with the conceptual demonstration one year ago, after a year of in-depth thinking and practical verification, we are confident and able to design more rigorous algorithms and provide clear solutions or directions for more practical details of the Nebulas Incentive Protocal.
+
+%For ease of reading, we'll use solid-frame highlighting techniques mentioned in the white paper, and there are upgraded technical points in this purple paper.
 }
