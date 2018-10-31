@@ -1,7 +1,7 @@
 \section{Developer Incentive Model}
 The Developer Incentive Protocol, DIP, including two processes: ranking the DApps and distributing the rewards. 
 
-Firstly, constructing a good ranking system can provide third-party developers with a convenient and effective  platform to promote allocations and provide users with a reliable recommendation system. Like the App Store platform for mobile, goods Apps have top positions on the ranking list and thus receive more attention from users. Secondly, users have better experience when their obtain high-quality Apps directly from the ranking lost. Further more, Apps' ranks can be used in keyword search. Just like the search systems in search engines and ecommerce platform,  listing keyword-ralated Apps on the search results according to their ranks is satisfactory to users. 
+Firstly, constructing a good ranking system can provide third-party developers with a convenient and effective  platform to promote allocations and provide users with a reliable recommendation system. Like the App Store platform for mobile, goods Apps have top positions on the ranking list and thus receive more attention from users. Secondly, users have better experience when their obtain high-quality Apps directly from the ranking lost. Further more, Apps' ranks can be used in keyword search. Just like the search systems in search engines and e-commerce platform,  listing keyword-ralated Apps on the search results according to their ranks is satisfactory to users. 
 
 On the other hand, as we shown in Section~\ref{sec:background}, the purpose of DIP is to provide rewards for good DApps' developers, thus further increases developers‘ incentives to design good DApps and promotes the ecosystem development. So the second process of DIP is to design a fair rewarding mechanism, according to DAPPs' ranks, 
 
@@ -56,13 +56,13 @@ In this section we introduce necessary notations and symbols in DIP model.
   \end{enumerate}
   In practice, without analyzing the code of smart contracts, we are not able to determine which case token transfers between users and DApps belongs to and in either case we have explained reasons for not involving DApps' ranks. So the algorithm in DIP will be independent of token transfers. 
   
-  In the DIP model, a user $a_i \in \mathcal{A}$ is essentially an account address. As referred in~\cite{Nebulasyellowpaper}, a user can actually control multiple acount addresses. Since there is not cost for creating new accounts, the user can forge several addresses which he controls to vote -- the Sybil attack. Similarly, a developer can divide his DApp into several addresses, that is, split his DApp into several low-quality DApps, and obtain all rewards from split DApps. In the meanwhile, a developer can buy over one or more users to vote for his DApp. 
+  In the DIP model, a user $a_i \in \mathcal{A}$ is essentially an account address. As referred in~\cite{Nebulasyellowpaper}, a user can actually control multiple account addresses. Since there is not cost for creating new accounts, the user can forge several addresses which he controls to vote -- the Sybil attack. Similarly, a developer can divide his DApp into several addresses, that is, split his DApp into several low-quality DApps, and obtain all rewards from split DApps. In the meanwhile, a developer can buy over one or more users to vote for his DApp. 
   
   We analyzed all manipulations above when designing DIP and gave corresponding solutions. The details about DIP against manipulation are in Section~\ref{section:properties}.
   
   \subsection{Sample time interval}
   \label{subsection:interval}
-  In Section~\ref{subsection:parameters}, we illustrated that the NR is a significant criterion to determine voters' voting capacities. However, according to th definition in ~\cite{Nebulasyellowpaper}, the sampling period of DIP data is much longer than the sampling period of NR data, which means that during the process for recording invocation hehaviors, users' NRs may vary, even fluctuate wildly.
+  In Section~\ref{subsection:parameters}, we illustrated that the NR is a significant criterion to determine voters' voting capacities. However, according to th definition in ~\cite{Nebulasyellowpaper}, the sampling period of DIP data is much longer than the sampling period of NR data, which means that during the process for recording invocation behaviors, users' NRs may vary, even fluctuate wildly.
   
   A naive solution is to synchronize the sampling period of NR data and DIP data. However in practice, in a short time period (say, one day), times of invocations are very small for most users. So it is of small significance for ranking the DApps when users behaviors are sparse and the properties discretized  in Section ~\ref{section:properties} are not guaranteed to be satisfied.
   
