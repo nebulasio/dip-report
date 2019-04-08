@@ -10,6 +10,7 @@
 
 通常地我们希望$f$单调递增，即星云指数高的用户可以获得更高的投票权。这里我们给出符合条件的函数：
 \begin{align}
+\label{eq:capacity}
 f(\mathcal{C}(a_i))=\mathcal{C}^2(a_i)
 \end{align}
 即
@@ -62,17 +63,18 @@ g(\nr_{1j},\nr_{2j},...,\nr_{mj}) = \sum_{i=1}^m \sqrt{\nr_{ij}}
 \subsection{最终奖励的计算}
 DIP对于用户而言提供了可信的DApp排名\footnote{我们假设用户只关心心目中的DApp的排名，而不会关心DApp开发者具体分配到多少奖励。}，而对于开发者而言，我们还需要根据排名分进行奖励分配。
 
-给定所有DApp的排名分$S_j,i=1,2,...,n$，定义DApp $d_j$开发者的奖励为
+给定所有DApp的排名分$S_i,i=1,2,...,n$，定义DApp $d_j$开发者的奖励为
 \begin{align}
 \label{eq:distribution}
-U_i = \frac{S_j^2}{\sum_{k=1}^n S_j^2}\cdot \lambda M
+U_j = \frac{S_j^2}{\sum_{k=1}^n S_k^2}\cdot \lambda M
 \end{align}
 其中$M$是来源于出块奖励的奖金池总数，$\lambda $定义为参与系数，即我们希望参与评选的用户总NR值越多给的奖励总额越大，具体定义为
 \begin{align}
+\label{eq:participation}
 \lambda=\min\{\frac{\nr_p}{\alpha \nr_s }\cdot \min\{\frac{\beta\nr_p^2 }{\sigma^2(\nr_p)},1\},1\}
 \end{align}
 其中$$\nr_p = \sum_{i=1}^m (\nr_i-\nr_{i0}),~~~\nr_{i0} = \frac{e_{i0}\nr_i}{e_{i0}+\sum_{j=1}^n {e_{ij}}}$$
-即$\nr_p$为参与投票的用户有效分贡献之和，同时$$\nr_s = \sum_{i=1}^{m^*} (\nr_i-\nr_{i0})$$即$\nr_s$为社区所有用户投票效用值（NR值的平方）的总和。$\sigma$为参与投票用户有效分贡献的标准差（方差的开方），
+即$\nr_p$为参与投票的用户有效分贡献之和，同时$$\nr_s = \sum_{i=1}^{m^*} \nr_i,$$即$\nr_s$为社区所有用户投票效用值（NR值的平方）的总和。$\sigma$为参与投票用户有效分贡献的标准差（方差的开方），
 $$ \sigma^2(\nr_p) = \sum_{i=1}^m (\nr_i-\frac{1}{m}\nr_p)^2 $$
 其最大值为$\frac{(m-1)^2}{m^2}\nr_p^2$。
 $\alpha,\beta<1$为可调的参数。
