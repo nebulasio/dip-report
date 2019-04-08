@@ -1,0 +1,108 @@
+
+\section{DIP模型}
+\begin{frame}
+\frametitle{DIP参数定义}
+\begin{itemize}
+	\item $\mathcal{A}=\{a_1,a_2,...,a_m\}$表示一定时间内所有参与评选的投票用户的集合；
+	\item $\mathcal{D}=\{d_1,...,d_n\}$表示一定时间内所有DApp的集合；
+	\item $e_{ij},i=1,2,...,m, j=1,2,...,n$表示在一定时间内用户$a_i$对DApp $d_j$的总调用次数；
+	\item $\Gamma_i, i=1,2,...,m$表示参与评选的用户$a_i$在一定时间内投票效用；
+	\item $\Gamma_{ij}, i=1,2,...,m,j=1,2,...,n$表示用户$a_i$对DApp $d_j$的分贡献值，可以理解为$a_i$愿意为$d_j$投的票数；%在我们的模型里由$a_i$对所有DApp的调用次数决定。
+	\item $S_j, j=1,2,...,n$，表示DApp $d_j$的排名分，由该DApp从用户获得的所有分贡献值决定；
+	\item $M$表示星云团队用于给与开发者奖励总奖金池，实际发放的奖励总额会根据该阶段社区参与度来适当进行加权调整；
+	\item $U_j, j=1,2,...,n$，表示DApp $d_j$开发者最终获得的奖励，这个奖励由奖励总额以及所有DApp的排名分共同决定。
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{DIP二分图模型}
+  DIP二分图模型
+\begin{figure}
+\begin{tikzpicture}[scale=0.8]
+
+\pgfmathsetmacro{\XTD}{3.8}
+\pgfmathsetmacro{\YTD}{1.2}
+
+\tikzset{
+  node/.style={draw, circle, on grid, align=center, minimum height=2ex},
+}
+\node[node] (d1) at (\XTD, 2*\YTD) {$d_1$};
+\node[node] (d2) at (\XTD, \YTD) {$d_2$};
+\node[node] (d3) at (\XTD, 0) {$d_3$};
+\node[node] (d4) at (\XTD, -1*\YTD) {$d_4$};
+\node[node] (d5) at (\XTD, -2*\YTD) {$d_5$};
+
+  \node [right=0.05 of d1] (s1) {${S}_{1}$};
+  \node [right=0.05 of d2] (s2) {${S}_{2}$};
+  \node [right=0.05 of d3] (s3) {${S}_{3}$};
+  \node [right=0.05 of d4] (s4) {${S}_{4}$};
+  \node [right=0.05 of d5] (s5) {${S}_{5}$};
+
+  \node [right=2.2 of s1] (u1) {${U}_{1}$};
+  \node [right=2.2 of s2] (u2) {${U}_{2}$};
+  \node [right=2.2 of s3] (u3) {${U}_{3}$};
+  \node [right=2.2 of s4] (u4) {${U}_{4}$};
+  \node [right=2.2 of s5] (u5) {${U}_{5}$};
+
+\node[node] (a1) at (-\XTD, 1.5*\YTD) {$a_1$};
+\node[node] (a2) at (-\XTD, 0.5*\YTD) {$a_2$};
+\node[node] (a3) at (-\XTD, -0.5*\YTD) {$a_3$};
+\node[node] (a4) at (-\XTD, -1.5*\YTD) {$a_4$};
+
+\node [left=0.05 of a1] {${\nr}_{1}$};
+\node [left=0.05 of a2] {${\nr}_{2}$};
+\node [left=0.05 of a3] {${\nr}_{3}$};
+\node [left=0.05 of a4] {${\nr}_{4}$};
+
+\draw[->, >=stealth'] (a1) to (d1);
+\draw[->, >=stealth'] (a1) to (d2);
+\draw[->, >=stealth'] (a1) to (d3);
+\draw[->, >=stealth'] (a1) to (d4);
+\draw[->, >=stealth'] (a1) to (d5);
+
+\draw[->, >=stealth'] (a2) to (d1);
+\draw[->, >=stealth'] (a2) to (d2);
+\draw[->, >=stealth'] (a2) to (d3);
+\draw[->, >=stealth'] (a2) to (d4);
+\draw[->, >=stealth'] (a2) to (d5);
+
+\draw[->, >=stealth'] (a3) to (d1);
+\draw[->, >=stealth'] (a3) to (d2);
+\draw[->, >=stealth'] (a3) to (d3);
+\draw[->, >=stealth'] (a3) to (d4);
+\draw[->, >=stealth'] (a3) to (d5);
+
+\draw[->, >=stealth'] (a4) to (d1);
+\draw[->, >=stealth'] (a4) to (d2);
+\draw[->, >=stealth'] (a4) to (d3);
+\draw[->, >=stealth'] (a4) to (d4);
+\draw[->, >=stealth'] (a4) to (d5);
+
+\node at (0, 2*\YTD) {$e_{ij}$};
+
+  \node [right= 0.1 of s1, anchor=south] (cs1) {};
+  \node [right= 0.1 of s5, anchor=north] (cs5) {};
+
+  \node [left= 0.1 of u1, anchor=south] (cu1) {};
+  \node [left= 0.1 of u5, anchor=north] (cu5) {};
+  \draw [decorate,decoration={brace,amplitude=5pt,raise=1pt}] (cs1) -- (cs5)
+  node [black,midway, right] (lc1) {};
+
+  \draw [decorate,decoration={brace,amplitude=5pt,raise=1pt, mirror}] (cu1) -- (cu5)
+  node [black,midway, left] (lc2) {};
+
+  \draw[->, dashed] (lc1) -- (lc2);
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{DIP流程}
+DIP包括两个阶段：
+\begin{itemize}
+	\item DApp评分：$\Gamma_i \longrightarrow S_j$；
+	\item 开发者激励分配：$S_j \longrightarrow U_j$；
+\end{itemize}
+\end{frame}
