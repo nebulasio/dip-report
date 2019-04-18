@@ -1,0 +1,64 @@
+\section{Antecedentes}
+\label{sec:antecedentes}
+\noindent
+El protocolo tratado en este libro púrpura se basa en un gran número de trabajos relacionados, y además completa o actualiza la información previamente disponible. En esta sección trataremos esas obras relacionadas, que jugaron un rol significativo como referencia y guía para la confección de este libro púrpura.
+
+\subsection{Incentivos para el desarrollo de aplicaciones descentralizadas}
+\noindent
+Por lo que sabemos, en la actualidad ninguna plataforma descentralizada basada en blockchains ofrece
+mecanismos de incentivos a largo plazo para desarrolladores de {\dapp}s. En su papel de representantes de la blockchain 2.0, Ethereum supuso un gran avance al implementar contratos inteligentes Turing-completos: en su red aparecieron distintas aplicaciones,
+incluyendo juegos, apuestas, sistemas de \textit{crowd sourcing}, préstamos, créditos, entre otros. En particular, el juego de \textit{tokens} coleccionables CryptoKitties —a fines de 2017— y Fomo3D —en 2018— atrajeron la mayor atención.
+
+En la actualidad, y tal como sucede con los ejemplos descriptos en el párrafo anterior, la mayoría de los desarrolladores de {\dapp}s obtuvieron sus utilidades únicamente a través del cobro de comisiones a sus usuarios, sin que les resultara posible beneficiarse del incremento del valor de Ethereum o de las recompensas por nuevos bloques.
+
+Con esta falta de incentivos para los desarrolladores, el escenario de las aplicaciones descentralizadas también se vio afectado. Por ejemplo, implícitamente, puede existir una carencia total de DApps gratuitas debido a la dificultad de obtener ingresos por medio de ellas. Como resultado de esto, la cantidad, la calidad y la diversidad de {\dapp}s se ve afectada. En contraste, la implementación de un mecanismo efectivo para incentivar a los desarrolladores logra el propósito de atraerlos al ecosistema del desarrollo de {\dapp}s, lo que promueve la prosperidad y el desarrollo del ecosistema blockchain.
+
+Hasta cierto punto, muchos sistemas blockchain emergentes comprenden la necesidad de implantar mecanismos de incentivos para construir sus ecosistemas. Por ejemplo, en el programa \textit{Nebulas Incentive}, se desarrollaron más de 6781 DApps, y también se logró que un gran número de equipos de desarrollo puedan obtener beneficios de esas DApps de forma directa.
+
+En paralelo, otros blockchains públicos lanzaron también programas de incentivos a corto plazo basados en una administración centralizada. Tales programas apuntan principalmente a publicitarse entre la comunidad, aunque con evaluaciones oficiales tomando un rol central, sin sustentabilidad a largo plazo.
+
+
+\subsection{Nebulas Rank}
+\noindent
+Nebulas Rank (NR)\cite{Nebulasyellowpaper} cuantifica la contribución de cada cuenta al rendimiento económico total, y provee características para impedir la manipulación en las mediciones. En particular, Nebulas Rank introduce la \textbf{función Wilbur}, que tiene las siguientes propiedades:
+
+\begin{property}
+	\label{prop:one}
+	Para dos variables positivas dadas $x_1$,$x_2$, la suma de sus funciones es menor que la función de su suma.
+	%对于任意输入$x$，将其拆分后的计算函数之和小于原计算函数。
+\end{property}
+\begin{align}
+	f(x_1+x_2)>f(x_1)+f(x_2) \quad x_1>0,x_2>0
+\end{align}
+\begin{property}
+	\label{prop:two}
+	Para dos variables positivas dadas $x_1$,$x_2$, cuando estas tienden a infinito, la suma de sus funciones tiende a la función de su suma.
+\end{property}
+
+\begin{align}
+	\lim\limits_{x_1 \to \infty, x_2\to \infty} f(x_1+x_2) = f(x_1) + f(x_2)\quad x_1>0, x_2>0
+\end{align}
+\noindent Como base de NR, estas dos propiedades ofrecen también resistencia contra la manipulación.
+
+\subsection{Mecanismos de voto}
+\noindent
+Como se mencionó antes, el proceso por el cual los usuarios eligen y utilizan las {\dapp}s disponibles se puede ver como una forma de votar por ellas en el protocolo DIP. El mecanismo de los incentivos es similar al algoritmo de valuación (\textit{ranking}). Con respecto a estos dos últimos, existen numerosos trabajos relacionados en distintos campos; a continuación brindaremos una muestra de ellos.
+
+Uno de los estudios más famosos es el teorema de Arrow, que sostiene que, cuando los votantes tienen tres o más alternativas, no es posible crear un sistema de votación que refleje las preferencias de los votantes en una \textit{preferencia global} mientras se satisfacen tres condiciones: independencia de alternativas irrelevantes (que la valuación relativa de dos candidatos no se vea afectada por la de un tercer candidato), ausencia de \textit{dictadores} (que ningún candidato o individuo tenga el poder de cambiar las preferencias del grupo), y eficiencia de Pareto\footnote{Dada una asignación inicial de bienes en un grupo de individuos, una redistribución de esos bienes que mejora la situación de un individuo, sin hacer que empeore la situación de los demás, se denomina eficiencia de Pareto} (el resultado de la valuación satisface los intereses de la mayoría). El estudio implica que ningún algoritmo de valuación puede cubrir todas las posibilidades. Así, el Protocolo de Incentivos para Desarrolladores que se discute en este libro púrpura se enfocará en los atributos más importantes y conocidos.
+
+En la vida real existe un sinnúmero de escenarios que requieren algoritmos de valuación. Un ejemplo claro para esta afirmación es la reputación dada por los compradores a los vendedores de Amazon, Taobao y otros sitios similares. Los vendedores con mayor reputación obtendrán mejor exposición en la plataforma, y gracias a ello obtendrán más visibilidad y mayor tasa CTR\footnote{\textit{Click Through Rates}, o tasa de clics.}. En
+particular, existen problemas similares en estas plataformas de comercio electrónico, como el ataque Sybil\footnote{Ataque que consiste en crear transacciones falsas para obtener revisiones de cinco estrellas.}.
+
+Por el momento, esas plataformas centralizadas dependen mayormente de la capacidad de aprendizaje de sus sistemas para distinguir entre transacciones normales y falsas\cite{mukherjee2013spotting,jindal2008opinion,yoo2009comparison}.
+De todas maneras, la práctica demostró que tales métodos no son los ideales.
+\cite{ott2011finding} señala que incluso la identificación mediante inteligencia artificial no puede distinguir entre ambas cuentas con efectividad. \cite{cai2016mechanism} expone un algoritmo que elimina el incentivo para tales manipulaciones basadas en el diseño del mecanismo. Aun cuando ese modelo difiere del nuestro, es posible utilizarlo como una referencia significativa.
+
+\cite{salihefendic2010hacker} introduce un algoritmo de valuación para publicaciones en redes sociales que combina los votos de los usuarios y la declinación del tiempo.
+
+\cite{salihefendic2010reddit} introduce un algoritmo de valuación para publicaciones en la red social Reddit, que implica una situación en la que los usuarios pueden emitir votos negativos.
+
+\cite{miller2009how} introduce el algoritmo de valuación de comentarios de la red social Reddit, que toma en cuenta el intervalo de confianza.
+
+IMDB~\cite{IMDB} presenta la idea de un Promedio Bayesiano de Modelos (BMA en inglés) para su sistema de valuación de filmes, que puede reducir la brecha entre las diferentes películas debido al número de votantes.
+
+Gracias a las propiedades anti-manipulativas de NR, el Protocolo de Incentivos para Desarrolladores propuesto en este libro púrpura puede distinguir entre usuarios normales y usuarios falsos de una forma más clara. Así, el énfasis de este documento está en transferir el valor NR de los usuarios a los puntos de valuación de las {\dapp}s a través de comportamientos interactivos.
