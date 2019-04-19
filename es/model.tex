@@ -1,96 +1,84 @@
-\section{Developer Incentive Model}
+\section{Modelo de Incentivos para Desarrolladores}
 \noindent
-The Developer Incentive Protocol, DIP, including two processes: ranking the DApps and distributing the rewards.
+El \pidc, (\textit{Developer Incentive Protocol}, o DIP), incluye dos procesos: la valuación de las {\dapp}s y la distribución de los incentivos.
 
-Firstly, constructing a good ranking system can provide third-party developers
-with a convenient and effective platform to promote applications and provide
-users with a reliable recommendation system. Like the App Store platform, good
-Apps have top positions on the ranking list and thus receive more attention
-from users. Secondly, users have better experience when they obtain
-high-quality Apps directly from the ranking list. Furthermore, Apps' ranks can
-be used in keyword search. Just like the search systems in search engines and
-e-commerce platform,  listing keyword-related Apps in the search results according to their ranks is satisfactory to users.
+Por un lado, la construcción de un sistema de valuación robusto puede brindarle a los desarrolladores una plataforma conveniente y efectiva para promover aplicaciones y brindarles a sus usuarios un sistema de recomendaciones fiable; tal como sucede en la plataforma App Store, las buenas aplicaciones se nmuestran primero en los listados y, debido a ello, reciben más atención de los usuarios. Por otro lado, los usuarios reciben una mejor experiencia cuando encuentran aplicaciones de alta calidad directamente en ese listado. Más aun, la valuación de las aplicaciones puede ser utilizada en la búsqueda por palabras clave.
 
-On the other hand, as we shown in Section~\ref{sec:background}, the purpose of DIP is to provide rewards for good DApps' developers, thus further increases developers' incentives to design good DApps and promotes the ecosystem development. So the second process of DIP is to design a fair rewarding mechanism, according to {\dapp}s' ranks.
+Tal como ocurre en los motores de búsqueda, y en las plataformas de \textit{e-commerce}, el listado de aplicaciones ordenado por palabras clave y de acuerdo a su valuación en los resultados de la búsqueda contribuye a la satisfacción de los usuarios.
 
-\subsection{Model Representation}
+Como vimos en la sección \ref{sec:antecedentes}, el propósito del \pidc es el de brindar incentivos a todos los desarrolladores de aplicaciones de calidad, aumentando así los incentivos de esos desarrolladores para diseñar buenas {\dapp}s y promoviendo, en paralelo, el desarrollo del ecosistema.
+
+De esto se desprende que el segundo proceso en el modelado del \pidc es el diseño de un mecanismo equitativo de incentivos, en concordancia con la valuación de cada \dapp.
+
+\subsection{Representación del modelo}
 \label{subsection:parameters}
 \noindent
-In this section we introduce necessary notations and symbols in DIP model.
+En esta sección presentamos la notación y símbolos necesarios en el modelo DIP.
 
 \begin{itemize}
-	\item $\mathcal{A}=\{a_1,a_2,\ldots,a_m\}$ represents the set of users that
-	  participate the ranking system during a time period. We use voters to
-	  denote such users. Note that a user is defined to be a voter only if he
-	  invokes some DApp's EOA(External Owned Account) in a time period. Define
+	\item $\mathcal{A}=\{a_1,a_2,\ldots,a_m\}$ representa el conjunto de usuarios que participan en el sistema de valuación durante un periodo dado. Utilizamos votantes para denotar a esos usuarios. Nótese que un usuario está definido como votante únicamente si realiza una llamada a algunas {\dapp}s EOA (Cuenta de Propiedad Externa, o \textit{External Owned Account} en inglés) dentro de un periodo dado. Defínase
 	  $$\mathcal{A}^*=\{a_1,a_2,\ldots,a_m,a_{m+1},\ldots,a_{m^*}\}$$
-	to be the set of all users in the community during the same time period, i.e., $m^*-m$ users do not invoke any DApp.
-  \item $\mathcal{D}=\{d_1,\ldots,d_n\}$ represents the set of DApps during a time period.
-  \item $e_{ij},i=1,2,\ldots,m, j=1,2,\ldots,n$ represent the times that voter $a_i$ invokes DApp $d_j$. Due to the publicity and decentralization of blockchain, the DIP model is different from the ranking system in traditional centralized application markets. Generally speaking, DIP ranks the DApps according to users' invocation behaviors, in a decentralized environment. The details are shown in the next section.
+	como el conjunto de todos los usuarios en la comunidad durante el mismo periodo de tiempo; esto es, $m^*-m$ usuarios que no invocan ninguna \dapp.
+  \item $\mathcal{D}=\{d_1,\ldots,d_n\}$ representa el conjunto de {\dapp}s durante un periodo de tiempo dado.
+  \item $e_{ij},i=1,2,\ldots,m, j=1,2,\ldots,n$ representa la cantidad de veces que el votante $a_i$ invoca la \dapp $d_j$. Debido al carácter público y descentralizado del blockchain, el modelo DIP difiere del de otros sistemas de valuación en mercados de aplicaciones centralizadas. Generalmente hablando, DIP valúa las {\dapp}s de acuerdo al comportamiento de las invocaciones realizadas por los usuarios en un entorno descentralizado. Los detalles del análisis se brindan en la siguiente sección de este documento.
 
-  \item $\nr_i, i=1,2,\ldots,m$ represent voter $a_i$'s voting capacity during a time period.
-  \cite{Nebulasyellowpaper} proves that a user's NR value is an effective measure of his account's value. So in DIP, NR is also used as a significant criterion to decide users' voting capacities.
-  \item $\nr_{ij}, i=1,2,\ldots,m,j=1,2,\ldots,n$ represent the contributory value of voter $a_i$ to DApp $d_j$, which can be regarded as the number of votes where $a_i$ is willing to vote for $d_j$.
+  \item $\nr_i, i=1,2,\ldots,m$ representa la capacidad de voto de un votante $a_i$ durante un periodo de tiempo dado.
+  \cite{Nebulasyellowpaper} demuestra que el valor NR de un usuario es una medida efectiva del valor de su cuenta. Así, en DIP, NR se utiliza también como un criterio significativo para decidir la capacidad de voto de los votantes.
+  \item $\nr_{ij}, i=1,2,\ldots,m,j=1,2,\ldots,n$ representa el valor contributivo de un votante $a_i$ a una \dapp $d_j$, que puede considerarse como el número de votos que $a_i$ está dispuesto a otorgar a $d_j$.
 
-  \item $S_j, j=1,2,\ldots,n$ represent DApp $d_j$'s ranking score, which is determined by its total contributory values from all voters. Intuitively, the ranking scores determine DApps' positions on the ranking list.
+  \item $S_j, j=1,2,\ldots,n$ representa el puntaje de la valuación de una \dapp $d_j$, que está determinado por el valor recibido por parte de todos sus votantes. Intuitivamente, el puntaje de valuación determina la posición de las {\dapp}s en la lista de valuación.
 
-  	\item $M$ represents the total amount of the reward pool for developers,
-  	  comes from the new-block rewards.  The actual reward would be properly reduced according to the participation rate of the whole community during the time period.
-   \item $U_j, j=1,2,\ldots,n$ represent the final reward of DApp $d_j$, which is determine by actual total reward and all DApps' ranking scores.
+  	\item $M$ representa el total del fondo de incentivos para desarrolladores, que tiene su origen en las recompensas por nuevos bloques. La recompensa real se reducirá adecuadamente de acuerdo con la tasa de participación de toda la comunidad durante el período de tiempo dado.
+   \item $U_j, j=1,2,\ldots,n$ representa el incentivo final de la \dapp $d_j$, que se determina por el total disponible en el fondo de incentivos, y por el puntaje de valuación de las {\dapp}s.
  \end{itemize}
    \begin{figure}
    	\centering
    	%\includegraphics[width = 0.4\textwidth]{../common/m2.png}
    	\input{../common/m1.tex}
-   	\caption{Interactions between voters and DApps \label{fig:interact}}
+   	\caption{Interacciones entre votantes y {\dapp}s \label{fig:interact}}
    \end{figure}
-  To sum up, the interactions between voters and DApps can be represented by the bipartite graph in Figure~\ref{fig:interact}.
+  Para sumarizar, las interacciones entre votantes y {\dapp}s se puede representar mediante un gráfico bipartito en la figura \ref{fig:interact}.
 
- \subsection{Voting Action}
+ \subsection{Acción de voto}
  \label{subsection:voting}
  \noindent
-  In a centralized App Store\footnote{\url{https://en.wikipedia.org/wiki/App\_store}}, the system can record specific information such as times that a App has been downloaded, which is a key factor for determining its rank. However, in situations of Blockchain, the way that users use DApps is to invoke smart contracts' addresses, e.g., represented as the times that user $a_i$ invokes DApp $d_i$, denoted by  $e_{ij}$. Compared to traditional information about downloads, DIP, taking invocation information as the date sources, has the following advantages:
+  En cualquier App Store centralizada\footnote{\url{https://en.wikipedia.org/wiki/App\_store}}, el sistema puede almacenar información específica tal como la cantidad de veces que una App fue descargada, lo cual es un factor clave para determinar su valuación. No obstante, en el mundo del blockchain, la forma en la que los usuarios utilizan las {\dapp}s es mediante la invocación de las direcciones de contratos inteligentes; esto se puede cuantificar mediante la cantidad de veces que un usuario $a_i$ invoca la \dapp $d_i$, algo denotado por $e_{ij}$. Comparado a la información tradicional acerca de cantidad de descargas, la metodología que usa DIP, de tomar la información de las llamadas a {\dapp}s como parámetro de valuación, tiene las siguientes ventajas:
 
  \begin{itemize}
- 	\item The number of invocations are recored on the blockchain, which is hard to be tempered and is more open and transparent, compare to centralized methods such as recording the downloads.
- 	\item The number of invocations is more fine-grained compare to the downloads data, since downloads data only record users' one-shot behaviors. But a good DApp should have user stickiness. Therefore the number of invocations are more reasonable to reflect users' real behaviors.
+ 	\item El número de llamadas se almacena en el blockchain, que es muy resistente al fraude, es más abierto y transparente, en comparación con otros métodos centralizados tales como el registro del número de descargas.
+ 	\item El número de llamadas es un parámetro más detallado que la cantidad de descargas, ya que el número de descargas sólo registra el comportamiento de un usuario por única vez, mientras que el registro de cantidad de llamadas a una \dapp señala, además, la fidelidad de ese usuario con la aplicación. En consecuencia, el número de llamadas es un parámetro más razonable para reflejar el comportamiento real de los usuarios.
 
 \end{itemize}
 
- Actually, there are other available information when users invoke DApps. For example, the amount of gases that has been expended and possible token transfers involved in an invocation. However, DIP takes neither of them into consideration.
+ En realidad existe más información disponible cuando los usuarios invocan una llamada a las {\dapp}s. Por ejemplo, la cantidad de \textit{gas} que se ha utilizado, y las transferencias de tokens involucradas en una transacción. Sin embargo, DIP no toma estos datos en consideración por dos motivos.
 
- Firstly, the amount of expended gases depends on the executed instructions within the smart contracts each time a user invokes a DApp, where the later is not related to the DApp's own quality. Moreover, in the current Nebulas system, the average amount of expended gases during each invocation is at the order of $10^{-8}$ NAS, which is negligible.
+ Primero, la cantidad de \textit{gas} consumido depende de la cantidad de instrucciones ejecutadas en el contrato inteligente cada vez que un usuario invoca una \dapp, algo que no guarda relación con la calidad intrínseca de la \dapp en cuestión. Más aun, en el sistema actual de Nebulas, la cantidad promedio de \textit{gas} consumido durante cada invocación está en el orden de $10^{-8}$ NAS, algo insignificante.
 
- The reason why we do not consider token transfers is the lack of an effective method against manipulation. Intuitively, the wilinesses of users to pay additional tokens when invoking the DApp improve the DApp's recognition.
-  However, in practice, when a user pays tokens to a DApp, the tokens' final destination could belong to the following three cases:
+ Segundo, la razón por la que no se toman en cuenta las transferencias de tokens es la falta de un método efectivo contra la manipulación. Intuitivamente sabemos que la voluntad de los usuarios de pagar tokens adicionales cada vez que llaman a una \dapp es algo que mejora la valuación de esta. Sin embargo, en la práctica, cuando un usuario decide pagar tokens para utilizar una \dapp, el destino final de esos tokens puede ser cualquiera de estos tres casos:
 
   \begin{enumerate}
-  	 \item The tokens finally belongs to the developer of the DApp. In this case, it is believed that the user voluntarily pays to the DApp. Since the DApp's developer has benefited from the user, it is not that meaningful to further increase his rank and reward.
-  	\item The DApp itself requires token transfer, such as gambling DApps, which leads  a huge amount of token transfer between the user and the DApp. It's a normal phenomenon. However, the DApp's rank should not be increased accordingly, due to the fact that the user's purpose for paying tokens is to gather profits, which does not reflect the DApp's quality.
-   \item The DApp's developer commits that all tokens paid to the DApp will be returned to the user. It is actually a kind of manipulation, which would be aggravated if we increases the DApp's rank and reward accordingly.
+  	 \item Los tokens quedan finalmente en posesión del desarrollador de la \dapp. En este caso, es probable que el usuario pague voluntariamente por el uso de la \dapp. Como su desarrollador recibe beneficios por parte del usuario, no es relevante incrementar aun más la valuación de su \dapp.
+  	\item La misma naturaleza de la \dapp requiere una transferencia de tokens —por ejemplo {\dapp}s de apuestas— lo que lleva a una gran cantidad de tokens transferidos entre el usuario y la \dapp, algo que es normal y aceptable. Sin embargo, la valuación de estas {\dapp}s no se debería incrementar por ello, debido al hecho de que el propósito de esas transferencias es la de obtener ganancias, algo que no refleja la calidad de la \dapp.
+   \item El desarrollador de la \dapp afirma que todos los tokens recibidos por la \dapp serán devueltos al usuario. Esto constituye en sí mismo un acto de manipulación, que se agravaría si la \dapp recibe recompensas y valuación por ello.
   \end{enumerate}
-  In practice, without analyzing the source code of smart contracts, we are not able to determine which case token transfers between users and DApps belongs to and in either case we have explained reasons for not involving DApps' ranks. So the algorithm in DIP will be independent of token transfers.
+  En la práctica, sin analizar el código fuente de los contratos inteligentes, no es posible determinar en cuál de estos casos cae cada transferencia de tokens entre usuarios y  {\dapp}s y en todo caso en ninguno de ellos se amerita otorgar incentivos, de modo que el algoritmo del DIP no tomará en cuenta la transferencia de tokens.
 
-  In the DIP model, a user $a_i \in \mathcal{A}$ is essentially an account
-  address. As referred in~\cite{Nebulasyellowpaper}, a user can actually
-  control multiple account addresses. Since there is no cost for creating new
-  accounts, the user can forge several addresses which he controls to vote --- the Sybil attack. Similarly, a developer can divide his DApp into several addresses, that is, split his DApp into several low-quality DApps, and obtain all rewards from split DApps. In the meanwhile, a developer can buy over one or more users to vote for his DApp.
+  En el modelo DIP, un usuario $a_i \in \mathcal{A}$ se ve esencialmente como una dirección Nebulas. Tal como se refiere en \cite{Nebulasyellowpaper}, un único usuario puede controlar múltiples direcciones. Debido a que no hay costo alguno en la creación de una dirección Nebulas, el usuario podría crear numerosas direcciones con el fin de votar, algo que se conoce como el ataque Sybil. Similarmente, un desarrollador podría dividir sus \dapp en distintas direcciones —esto es, dividir su \dapp en distintas {\dapp}s de baja calidad, y obtener recompensas por todas las {\dapp}s asociadas a esas direcciones. Mientras tanto, un desarrollador podría pagarle a uno o más usuarios para votar por su \dapp.
 
-  We analyzed all manipulations above when designing DIP and gave corresponding solutions. The details about DIP against manipulation are in Section~\ref{section:properties}.
+  Hemos analizado todas las manipulaciones descriptas más arriba al momento de diseñar DIP, y les hemos dado solución. Los detalles de los mecanismos antifraude de DIP se encuentran en la sección \ref{section:properties}.
 
-  \subsection{Sample Time Interval}
+  \subsection{Intervalo de muestreo}
   \label{subsection:interval}
   \noindent
-  In Section~\ref{subsection:parameters}, we illustrated that the NR is a significant criterion to determine voters' voting capacities. However, according to the definition in~\cite{Nebulasyellowpaper}, the sampling period of DIP data is much longer than the sampling period of NR data, which means that during the process for recording invocation behaviors, users' NRs may vary, even fluctuate wildly.
+  En la sección \ref{subsection:parameters}, hemos mostrado que NR es un criterio significativo para determinar la capacidad de voto de cada usuario. Sin perjuicio de ello y de acuerdo a la definición en \cite{Nebulasyellowpaper}, el periodo de muestreo de los datos para el DIP es mucho mayor que el necesario para NR, lo que implica que durante el proceso de registro del comportamiento de las invocaciones de los usuarios, el valor NR podría fluctuar, incluso significativamente.
 
-  A naive solution is to synchronize the sampling period of NR data and DIP data. However in practice, in a short time period (say, one day),  invocation times are very small for most users. So it is of small significance to rank the DApps when users behaviors are sparse, and the properties discretized  in Section~\ref{section:properties} are not guaranteed to be satisfied.
+  Un enfoque simplista es sincronizar el período de muestreo de los datos NR y los datos DIP. En la práctica, sin embargo, se ha visto que la utilización de periodos cortos de tiempo (un día, por ejemplo), son insuficientes para la mayoría de los usuarios, ya que muchos de ellos realizan invocaciones en periodos de tiempo mayores, de modo que tiene poco sentido valuar las {\dapp}s de este modo cuando el comportamiento de los usuarios es disperso, y no hay garantía de que se satisfagan las condiciones enumeradas en la sección \ref{section:properties}.
 
-  So our strategy is to properly extend the sampling period to gather enough invocation behaviors and bound the variation of users' NRs simultaneously. The variation of  an address's NR is shown in Figure~\ref{fig:nr}. Here we divide a whole ranking process of DIP into several time periods. According to the data about the variations of NRs, pick integer $t$ such that the variance of NR within $t$ days less than a threshold $\tau$ holds for most users. We take $t$ days as a sampling period, by gathering the average NR values of voters and invocation data during the time period, to compute DApp's ranking score and developers' final reward. Then we take the average data over all time periods during a ranking process as the final  results.
+  De este modo, nuestra estrategia es la de extender apropiadamente el periodo de muestreo para recoger suficiente información sobre el comportamiento de las invocaciones, y encuadrar la variación del valor NR de los usuarios de forma simultánea. La variación del valor NR de una dirección se muestra en la figura \ref{fig:nr}. Allí dividimos el proceso completo de DIP en distintos periodos de tiempo. De acuerdo a los datos acerca de las variaciones de NR, se elige un entero $t$ tal que la variación de NR dentro de $t$ días menos que el umbral $\tau$ es apto para la mayoría de los usuarios. Tomamos $t$ días como un periodo de muestreo, reuniendo el promedio de valores NR de los votantes y los datos de invocación durante ese periodo para computar el puntaje de valuación de las {\dapp}s y las recompensas finales para sus desarrolladores. Luego tomamos los datos medios de todos los períodos de tiempo durante el proceso de valuación como resultados finales.
 
   \begin{figure}
   	\centering
   	\input{../common/nr.tex}
 
-  	\caption{\label{fig:nr} NR variation graph of an address on Nebulas mainnet. The mainnet
-    address is \texttt{n1Ugq21nif8BQ8uw81SwXHK6DHqeTEmPRhj}.}
+  	\caption{\label{fig:nr} Gráfico de la variación de NR de una dirección en la red Nebulas. La dirección mainnet es \texttt{n1Ugq21nif8BQ8uw81SwXHK6DHqeTEmPRhj}.}
   \end{figure}

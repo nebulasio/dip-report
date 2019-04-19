@@ -1,19 +1,12 @@
-\section{Future Work}
+\section{Trabajo futuro}
 
-\subsection{Muli-dimension Voting}
+\subsection{Votación multidimensional}
 \noindent
-In Section~\ref{subsection:voting}, we take the number of invocations as the
-criterion to determine DApps' ranking scores and show reasons why token
-transfers involved in invocations are not taken into consideration. In the
-future, we may introduce token transfers as another criterion for ranking DApps
-when we can distinguish the causes of token transfer in more details by
-analyzing the invocations to smart contract.
+En la sección~\ref{subsection:voting}, vimos que el número de llamadas a las \dapp es el criterio que se utiliza para determinar la valuación de las mismas, y las razones por las cuales la transferencia de tokens durante esas llamadas no son tenidas en cuenta para la valuación. En el futuro, no obstante, es posible que se introduzca la transferencia de tokens como un criterio adicional para la valuación de las {\dapp}s, cuando sea posible analizarlas en detalle.
 
-\subsection{Invocations Among DApps}
+\subsection{Llamadas entre {\dapp}s}
 \noindent
-Currently, DApps' ranks are determined by users' voting capacities (NR values),
-which come from invocations of DApps. However, more complicated invocation
-behaviors, such as invocations among DApps, can further transmit users' voting
-capacities. So in our future work, we may compute each DApp's final ranking
-score by giving each DApp an initial ranking score and running the Page Rank
-algorithm~\cite{page1999pagerank}.
+Actualmente, la valuación de una {\dapp} está dada por la capacidad de \textit{voto} de cada uno de los usuarios (esto es, el valor NR de cada una de sus cuentas) que la invocan. Sin embargo, situaciones más complejas —como las llamadas entre {\dapp}s— puede transmitir aún más la capacidad de voto de los usuarios.
+
+En una versión futura, es posible que computemos la valuación final de cada \dapp
+otorgándole una puntuación inicial para correr luego un algoritmo análogo al de Page Rank~\cite{page1999pagerank}.

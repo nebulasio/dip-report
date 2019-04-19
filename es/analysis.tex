@@ -1,73 +1,71 @@
-\section{Property Analysis}
+\section{Análisis de propiedades}
 \label{section:properties}
-\noindent Have introduced the Developer Incentive Protocol, in this section, we analyze
-manipulations that could occur in practice and the properties against
-manipulation of  DIP\@. From the voters and developers' points of view respectively, manipulations including buying over, maliciously splitting \dapp, Sybil attack and so on.
+\noindent Habiendo introducido el \pidc, en esta sección analizaremos las manipulaciones que pueden ocurrir en la práctica, y las propiedades de DIP contra ellas\@. Desde el punto de vista de los votantes y los desarrolladores, respectivamente, manipulations including buying over, maliciously splitting \dapp, Sybil attack and so on.
 \subsection{Buy Over Voters}
-\noindent The so-called buy over means that a developer lets voters' cast all their votes to the developer's DApp, by means of bribing or other, which is very common in the real life. Here we suppose that all voters are self-interest. We assume that normal voters only care about the ranks of the DApps they like, rather than the final rewards of developers. In other words, a normal voter wants to maximize the total
-weighted ranking scores of all DApps he likes. Our quadratic ranking algorithm guarantees the following property:
+\noindent The so-called buy over means that a developer lets voters' cast all their votes to the developer's \dapp, by means of bribing or other, which is very common in the real life. Here we suppose that all voters are self-interest. We assume that normal voters only care about the ranks of the {\dapp}s they like, rather than the final rewards of developers. In other words, a normal voter wants to maximize the total
+weighted ranking scores of all {\dapp}s he likes. Our quadratic ranking algorithm guarantees the following property:
 
 \begin{property}
 	\label{p1}
-	In the DIP model, for a self-interested normal voter, generally, he will cast his votes to multiple DApps.
+	In the DIP model, for a self-interested normal voter, generally, he will cast his votes to multiple {\dapp}s.
 \end{property}
 We illustrate the property by the following model: suppose the weights that
-voter $a_i$ values all DApps are $b_{i1}, b_{i2}, \ldots, b_{in}$ respectively (can be regarded as the true preference of the voter to all DApps). Taking the form of~\ref{eq:sqrt}, the voter's contributory values satisfy
+voter $a_i$ values all {\dapp}s are $b_{i1}, b_{i2}, \ldots, b_{in}$ respectively (can be regarded as the true preference of the voter to all {\dapp}s). Taking the form of~\ref{eq:sqrt}, the voter's contributory values satisfy
 
 $$\frac{b_{i1}}{\sqrt{\nr_{i1}}}=\frac{b_{i2}}{\sqrt{\nr_{i2}}}=\cdots=\frac{b_{in}}{\sqrt{\nr_{in}}}.$$
 
-In other words, voter $a_i$'s contributory values matches his true preference to DApps. The detailed proof is in Section~\ref{subsection:proof1}.
+In other words, voter $a_i$'s contributory values matches his true preference to {\dapp}s. The detailed proof is in Section~\ref{subsection:proof1}.
 
 Traditional voting models usually compute the ranking score linearly, i.e.,
 $$g(\nr_{1j},\nr_{2j},\ldots,\nr_{mj}) = \sum_{i=1}^m \nr_{ij}.$$
-In this model, a rational voter only cast his votes to the DApp he likes the
+In this model, a rational voter only cast his votes to the \dapp he likes the
 most. In comparison, formula~\ref{eq:sqrt} can promote the interactions between
-voters and DApps, due to the property of the square root function. In other
-words, voters voting for multiple DApps maximizes the utilization of his voting
+voters and {\dapp}s, due to the property of the square root function. In other
+words, voters voting for multiple {\dapp}s maximizes the utilization of his voting
 capacity. Similar analysis can be found in~\cite{buterin2018liberal}. To sum up,
-a voter would vote for multiple DApps and keep the priority of DApps he likes
+a voter would vote for multiple {\dapp}s and keep the priority of {\dapp}s he likes
 the most simultaneously, \ie the ratio equation above.
 
-In practice, sometimes traditional  linear voting model will limit the maximum votes for a voter to a DApp, to forcibly let voters disperse their votes, while our algorithm achieves the same goal by the means of essential incentive, with a more elegant and simple mathematical expression.
+In practice, sometimes traditional  linear voting model will limit the maximum votes for a voter to a \dapp, to forcibly let voters disperse their votes, while our algorithm achieves the same goal by the means of essential incentive, with a more elegant and simple mathematical expression.
 
 
 \begin{corollary}
 	The total contributory values of a  voter who is bought over is far less than the total contributory values of a normal voter.
 \end{corollary}
-For a voter $a_i$ who is bought over, he can at most offer the DApp with contributory value with amount $\sqrt{\nr_i}$. For a normal voter who is not bought over, assuming that he plans to vote for $K$ DApps,\footnote{$K$ reflects the number of DApps of which the contributory values from the voter can discriminate with other DApps, which is usually larger than 1, as long as the voter's value weights of the $K$ DApps are not extremely distributed, i.e., the voter only votes for a particular DApp and the votes for other DApps tent to 0} when  his value weights to these DApps are uniformly distributed, the total increment of ranking scores  over all DApps caused by the voter is at the over of $O(\sqrt{K\nr_i})$, that is, the efficiency of a normal voter is $K$ times the efficiency of a voter who is bought over. Therefore the cost of the manipulation about buying over is increased.
+For a voter $a_i$ who is bought over, he can at most offer the \dapp with contributory value with amount $\sqrt{\nr_i}$. For a normal voter who is not bought over, assuming that he plans to vote for $K$ {\dapp}s,\footnote{$K$ reflects the number of {\dapp}s of which the contributory values from the voter can discriminate with other {\dapp}s, which is usually larger than 1, as long as the voter's value weights of the $K$ {\dapp}s are not extremely distributed, i.e., the voter only votes for a particular \dapp and the votes for other {\dapp}s tent to 0} when  his value weights to these {\dapp}s are uniformly distributed, the total increment of ranking scores  over all {\dapp}s caused by the voter is at the over of $O(\sqrt{K\nr_i})$, that is, the efficiency of a normal voter is $K$ times the efficiency of a voter who is bought over. Therefore the cost of the manipulation about buying over is increased.
 
 \subsection{Malicious Splitting}
 \label{subsec:5.2}
-\noindent For developers, another manipulation is to maliciously split their DApps, in order to obtain higher total rewards of all splitted DApps. Intuitively, splitting can increase the number of DApps that participant in the reward mechanism and thus increase the total final rewards. However our model guarantees that it is not the case. Here we assume that all developers concern their final rewards (total bonus) as well as the potential utility caused by the improvement of ranks.
+\noindent For developers, another manipulation is to maliciously split their {\dapp}s, in order to obtain higher total rewards of all splitted {\dapp}s. Intuitively, splitting can increase the number of {\dapp}s that participant in the reward mechanism and thus increase the total final rewards. However our model guarantees that it is not the case. Here we assume that all developers concern their final rewards (total bonus) as well as the potential utility caused by the improvement of ranks.
 
 Specifically, as the algorithm of final rewards, the convexity of formula~\ref{eq:distribution} guarantees the following property:
 \begin{property}
 	\label{p2}
-    If all voters are normal, splitting DApps will not increase the reward of the developer.
+    If all voters are normal, splitting {\dapp}s will not increase the reward of the developer.
 \end{property}
 
 It is assumed that a normal voter belongs to the following cases:
 \begin{inparaenum}
-\item[i).] voter simply distributes his votes that are supposed for the original DApp to split DApps. Such case occurs when an application has different smart contract addresses for invocation.
-\item[ii).] Suppose that the voter values the original DApp with weight $a$, and with weights $b$ and $c$ for two split DApps respectively, then $c>a+b$. Such case can be illustrated that after splitting, the split DApps' qualities are greatly decreased due to the lack of linkages. So the total qualities of split DApps' is lower than the quality of the original DApp.
+\item[i).] voter simply distributes his votes that are supposed for the original \dapp to split {\dapp}s. Such case occurs when an application has different smart contract addresses for invocation.
+\item[ii).] Suppose that the voter values the original \dapp with weight $a$, and with weights $b$ and $c$ for two split {\dapp}s respectively, then $c>a+b$. Such case can be illustrated that after splitting, the split {\dapp}s' qualities are greatly decreased due to the lack of linkages. So the total qualities of split {\dapp}s' is lower than the quality of the original \dapp.
  \end{inparaenum}
 
   In both cases, the final reward of the developer does not increase. Detailed
   proof is in Section~\ref{subsection:proof2}.
 
-Furthermore, a developer can buyer over voter and split his DApp simultaneously: he first splits his DApp to $K$ DApps. Then, he lets his bought-over voters distribute their votes uniformly to split DApps, thus  maximizing the utilization of  bought-over  voters. We have the following corollary against this case:
+Furthermore, a developer can buyer over voter and split his \dapp simultaneously: he first splits his \dapp to $K$ {\dapp}s. Then, he lets his bought-over voters distribute their votes uniformly to split {\dapp}s, thus  maximizing the utilization of  bought-over  voters. We have the following corollary against this case:
 
 \begin{corollary}
 	\label{c1}
-	Even with the introduction of bought-over voters, the developer cannot increase his final rewards by splitting his DApps.
+	Even with the introduction of bought-over voters, the developer cannot increase his final rewards by splitting his {\dapp}s.
 \end{corollary}
 
 Detailed proof is in Section~\ref{subsection:proof3}.
 
-It is notable that, the rank of DApps will be decreased if developers split DApps, thus the potential utility is also decreased. In summary, our algorithm essentially prevents malicious splitting.
+It is notable that, the rank of {\dapp}s will be decreased if developers split {\dapp}s, thus the potential utility is also decreased. In summary, our algorithm essentially prevents malicious splitting.
 
-Without doubt that for a developer that develops multiple different  DApps,
-since there is no mirrored of split relations among the DApps, the utility of
+Without doubt that for a developer that develops multiple different  {\dapp}s,
+since there is no mirrored of split relations among the {\dapp}s, the utility of
 the developer is not affected.
 
 \subsection{Sybil Attack}
@@ -85,6 +83,6 @@ Suppose that the propose of a voter to execute Sybil attack is to increase the r
 
 \begin{property}
 	\label{p3}
-    For any voter, executing Sybil attack will not increase the ranking score of the DApp he votes and the final reward of the DApp's developer.
+    For any voter, executing Sybil attack will not increase the ranking score of the \dapp he votes and the final reward of the \dapp's developer.
 \end{property}
 So the property against Sybil attack is guaranteed.

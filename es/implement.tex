@@ -1,28 +1,22 @@
-\section{Implementation of DIP}
+\section{Implementación del \pidc}
 
 \noindent
-The complete implementation of DIP is out of scope of this paper. So here we only discuss the key issues should be handled when implementing DIP\@.
+La implementación completa del \pidc está fuera del alcance de este libro púrpura; discutiremos únicamente los aspectos clave que deben ser manejados durante ese evento\@.
 
-\subsection{How to Distribute Rewards}
+\subsection{Cómo distribuir los incentivos}
 \noindent
-For distributing rewards, a special account $D$ should be established. In the meanwhile, a part of the new-block rewards is transferred to $D$ according to a fixed ratio.
+Para la distribución de los incentivos, se establecerá una cuenta especial, $D$. En el ínterin, una parte de las recompensas por nuevos bloques se transferirá a la cuenta $D$ de acuerdo a una proporción fija.
 
+Es importante asegurarse de que cada desarrollador reciba sus incentivos de forma puntual.\footnote{El intervalo de tiempo para el envío de incentivos equivale al intervalo de muestreo descrito en la sección ~\ref{subsection:interval}}. Con el fin de poder enviar las recompensas al blockchain, se requiere la clave privada de la cuenta asignada a tal fin, para poder firmar digitalmente la transacción necesaria. Por ello, para garantizar la seguridad, la cuenta $D$ requiere un tratamiento especial.
 
-Developers' deserved rewards will be sent regularly.\footnote{The time interval of sending rewards equals to the sampling interval in Section~\ref{subsection:interval}}. In order to send rewards on the blockchain, the private key of the account that sends rewards is required for signing the transaction of sending. Therefore, for the purpose of security, the account $D$ for sending rewards needs a special treatment.
+En primer lugar, se implementará un tipo especial de transacción en el sistema, denotado como transacción \texttt{dip}, que contiene la información necesaria sobre monto total del incentivo para un desarrollador dado, y la \textit{altura} del blockchain. En segundo lugar, el sistema rechazará todas las transacciones que no sean \texttt{dip} iniciadas por $D$, para asegurar que ninguna cuenta pueda extraer tokens de $D$. Finalmente, los nodos de verificación del blockchain verificarán las transacciones \texttt{dip}. Particularmente, esos nodos deberán correr DIP en forma local y verificar si la información de las transacciones \texttt{dip} coincide con sus resultados locales.
 
-Firstly, a special kind of transaction is added to the system, denoted by \texttt{dip} transaction, which contains the information about the amount of deserved reward of a developer and the height of the blockchain. Secondly, the system refuses all transactions other than \texttt{dip} initiated by $D$, to ensure that no account can extract tokens from $D$. Finally, verification nodes on the blockchain  need to verify the \texttt{dip} transactions. Particularly, verification nodes need to run DIP locally and verify whether the data in \texttt{dip} transactions coincident with local results.
+Por medio de los métodos descriptos en el párrafo anterior, no sólo se asegurará la distribución normal de los incentivos a los desarrolladores, sino que además se garantizará la seguridad de la cuenta $D$ destinada a enviarlos.
 
-Through the methods mentioned above, not only the rewards for developers are distributed normally, but also the security of account $D$ for sending rewards is ensured.
-
-\subsection{Updating of DIP}
+\subsection{Actualización de \pidc}
 \noindent
-As we know, the DIP is closely related to the whole ecosystem. As the variance
-of the ecosystem, DIP ought to be updated, particularly, the parameters in the
-DIP model. So how to effectively update the DIP turns out to be a key issue.
+Como sabemos, \pidc guarda una estrecha relación con el ecosistema. Al ser su factor de variación, DIP debe recibir actualizaciones, particularmente en sus parámetros; la cuestión de cómo lograr su actualización efectiva es un aspecto clave. Para lograrlo, se utilizará Nebulas Force para actualizar DIP de forma iterativa\@.
 
-For this, we use Nebulas Force to iteratively update DIP\@.
+Se actualiza la estructura de los bloques para que puedan contener algoritmos y parámetros en DIP (bajo la forma de LLVM IR). La Máquina Virtual de Nebulas (NVM) recibe esos parámetros y corre esos algoritmos para determinar el total de tokens que una cuenta dada debe recibir.
 
-We update the blocks' structures to contain algorithms and parameters in DIP (by the form of LLVM IR). Nebulas Virtual Machine (NVM), as the engine of the algorithm, gets algorithm and parameters from blocks and run algorithms, to obtain the amount of tokens that an account deserves.
-
-When algorithms and parameters need to be updated, Nebulas group will work
-together with the community, letting new blocks contain updated algorithms and parameters, to ensure the timeliness and smoothness of the whole updating process and avoid any possible forks.
+Si es necesario actualizar esos parámetros y algoritmos, el Grupo Nebulas trabajará en conjunto con su comunidad para permitir que los nuevos bloques contengan parámetros y algoritmos actualizados que aseguren tanto la puntualidad como la fluidez del proceso, y que eviten la necesidad de realizar un \textit{hard fork}.
