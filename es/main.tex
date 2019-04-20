@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
-
+\usepackage[utf8]{inputenc}
 \input{../common/common.tex}
+
 \usepackage{indentfirst}
 
 \newcommand{\reffig}[1]{Fig.~\ref{#1}}
@@ -13,6 +14,13 @@
 \newcommand{\nr}{\Gamma}
 \newcommand{\pidc}{Protocolo de Incentivos para Desarrolladores\xspace}
 %\newcommand{\dom}{{\; \texttt{dom}\;}}
+
+% ---------------------------------
+% Los siguientes comandos son un quickfix para la imposibilidad de compilar este documento usando Babel.
+\renewcommand\refname{Referencias}
+\renewcommand\appendixname{Anexo}
+\renewcommand\appendixpagename{Anexos}
+% ---------------------------------
 
 \onehalfspacing
 
@@ -67,7 +75,7 @@
 
 \newpage
 \begin{appendices}
-\input{proof} %pending
+\input{proof} %done
 \input{changelog.tex} %done
 \end{appendices}
 

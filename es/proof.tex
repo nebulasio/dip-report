@@ -1,94 +1,85 @@
 \section{Pruebas}
-\subsection{Prueba de propiedad\ref{p1}}
+\subsection{Prueba de propiedad \ref{p1}}
 \label{subsection:proof1}
 \begin{proof}
-	Sin pérdida de la generalidad, podemos asumir que los weights that voter $a_i$
-	values all {\dapp}s are $b_{i1}, b_{i2}, \ldots, b_{in}$ respectively, which are
-	fixed. We assume that voter $a_i$'s contributory values to all {\dapp}s are
-	$\nr_{i1},\ldots,\nr_{in}$ respectively, which are adjustable by voter $a_i$.
+	Sin pérdida de la generalidad, podemos asumir que las \textit{ponderaciones} con los que el votante $a_i$
+	valúa todas las {\dapp}s son $b_{i1}, b_{i2}, \ldots, b_{in}$ respectivamente, y que son valores fijos. Asumimos que los valores de contribución del votante $a_i$ a todas las {\dapp}s son
+	$\nr_{i1},\ldots,\nr_{in}$ respectivamente, y que son ajustables por el votante $a_i$.
 
-	The optimization objective of voter $i$ is the weighted sum of ranking scores that he offers, defined by
+	El objetivo de la optimización del votante $i$ es la suma ponderada de los puntajes de las valuaciones que ofrece, definida por:
 	$$w_i = \sum_{j=1}^n b_{ij}\sqrt{\nr_{ij}}$$
-	According to Cauthy's inequality it holds that
+	De acuerdo a la inecualidad de Cauchy, se desprende que:
 	$$w_i = \sum_{j=1}^n b_{ij}\sqrt{\nr_{ij}} \leq (\sum_{j=1}^n b_{ij}^2)(\sum_{j=1}^n \nr_{ij}) \leq (\sum_{j=1}^n b_{ij}^2)\nr_i$$
-	The most right side of the formula	above is a fixed value. The equality holds if and only if
+	El último término del segundo miembro en la ecuación de arriba es un valor fijo. La igualdad se mantiene sí y sólo sí:
 	$$\frac{b_{i1}^2}{\nr_{i1}}=\frac{b_{i2}^2}{\nr_{i2}}=\cdots=\frac{b_{in}^2}{\nr_{in}}$$
-	So the property is proved.
+	Así, la propiedad queda demostrada.
 \end{proof}
 
-\subsection{Proof of Property~\ref{p2}}
+\subsection{Prueba de propiedad \ref{p2}}
 \label{subsection:proof2}
 \begin{proof}
-	Without loss of generality, we assume that $d_1$'s developer splits $d_1$
-	into two {\dapp}s. For any normal voter who belongs to the second case in
-	section~\ref{subsec:5.2}, that is, assume the weights that he values all
-	{\dapp}s before splitting is $b_{i1},b_{i2},\ldots,b_{in}$ and the weights that he values the two split {\dapp}s are $b'_{i1},b'_{i2}$, it holds that $b_{i1} \geq b'_{i1}+b'_{i2}$ according to our assumption.
+	Sin pérdida de la generalidad, se asume que el desarrollador de la dapp $d_1$ la divide en dos {\dapp}s. Para todo votante normal que pertenece al segundo caso descripto en la sección \ref{subsec:5.2} asumiendo que las \textit{ponderaciones} asignados a valuar las
+	{\dapp}s antes de su división son $b_{i1},b_{i2},\ldots,b_{in}$ y las ponderaciones con los que valúa las dos {\dapp}s divididas son $b'_{i1},b'_{i2}$, se sostiene que $b_{i1} \geq b'_{i1}+b'_{i2}$ de acuerdo a nuestra presunción.
 
-	Then we compute the contributory values of voter $a_i$ before splitting. Define $H_i = \sum_{j=2}^n b_{ij}^2$, according to the conclusion in Property~\ref{p1} and Partition ratio theorem we have
+	Luego, computamos los valores de contribución del votante $a_i$ antes de ocurrir la división. Se define $H_i = \sum_{j=2}^n b_{ij}^2$, de acuerdo a la conclusión en la propiedad \ref{p1} y de acuerdo al Teorema de Particiones tenemos:
 		 $$\frac{\nr_{i1}}{b_{i1}^2} = \frac{\sum_{j=1}^n \nr_{ij}}{\sum_{j=1}^n b_{ij}^2} = \frac{\nr_i}{b_{i1}^2+H_i}$$
-  Similarly, the contributory value of voter $a_i$ to the $t$-th split \dapp (denote by $\nr'_{it},t=1,2$) is
+  Similarmente, el valor de contribuciones del votante $a_i$ a la $t$-a división de la \dapp (denotada por $\nr'_{it},t=1,2$) es:
   	 $$\nr'_{it} =  \frac{b_{it}^{'2}\nr_i}{b_{i1}^{'2}+b_{i2}^{'2}+H_i}$$
-  	 Note that $b_{i1}^2 \geq (b‘_{i1}+b’_{i2})^2 >b_{i1}^{'2}+b_{i2}^{'2}$, we have
+  	 Nótese que $b_{i1}^2 \geq (b‘_{i1}+b’_{i2})^2 >b_{i1}^{'2}+b_{i2}^{'2}$, tenemos
   	 $$\nr_{i1} > \nr'_{i1}+\nr'_{i2}$$
-  	 So we give the constraint of contributory values for a rational enough voter. Generally, most voters belongs to the first case in Section~\ref{subsec:5.2}, that is, they simply distribute their contributory values that are supposed for $d_1$ to split {\dapp}s. In either case, we have
+  	 Así, introducimos la restricción de los valores de contribución para un votante lo suficientemente racional. Generalmente, la mayoría de los votantes pertenece al primer caso descripto en la sección \ref{subsec:5.2}, esto es, sencillamente distribuyen los valores de contribución que se suponen para $d_1$ para las {\dapp}s divididad. En cualquier caso, tenemos:
   	 	 	$$\nr_{i1} \geq \nr'_{i1}+\nr'_{i2}$$
-  	 Define $S'_1,S'_2$ to be the two split {\dapp}s' ranking scores respectively. By definition
+  	 Defínase $S'_1,S'_2$ como los dos puntajes de valuación de las {\dapp}s, respectivamente. Por definición:
   	 	 $$S'_1 =  \sum_{i=1}^m \sqrt{\nr'_{i1}},~~~S'_2 =  \sum_{i=1}^m \sqrt{\nr'_{i2}},~~~S_1 = \sum_{i=1}^m \sqrt{\nr_{i1}}$$
-  	Define $U'_1$ to be the final reward of $d_1$'s developer after splitting. By definition
+  	Defínase $U'_1$ como el incentivo final del desarrollador de la \dapp $d_1$ luego de la división. Por definición:
   		 $$U'_1=\frac{S_1^{'2}+S_2^{'2}}{S_1^{'2}+S_2^{'2}+\sum_{j=2}^n S_j^2} \lambda M,~~~U_1=\frac{S^2_1}{S_1^2+\sum_{j=2}^n S_j^2} \lambda M$$
-  	Note that given $S_2,\ldots,S_n$,
+  	Nótese que dados $S_2,\ldots,S_n$,
   		 $$ U_1 \geq U'_1 \Leftrightarrow S_1^2 \geq S_1^{'2}+S_2^{'2}$$
-   In order to show whether splitting increases the utility, we only need to compare the following two terms
+   Para mostrar si la división aumenta la utilidad, sólo es necesario comparar los siguientes dos términos:
    	 $$S_1^2 = (\sum_{i=1}^m \sqrt{\nr_{i1}})^2,~~~S_1^{'2}+S_2^{'2}=  (\sum_{i=1}^m \sqrt{\nr'_{i1}})^2+(\sum_{i=1}^m \sqrt{\nr'_{i2}})^2$$
-   	Actually, $S_1^2 \geq S_1^{'2}+S_2^{'2}$ can be proved according to the shortest distance theorem.
+   	En realidad, $S_1^2 \geq S_1^{'2}+S_2^{'2}$ pueden ser demostrados de acuerdo al teorema de la distancia más corta.
    		 \begin{figure}
    		 	\centering
    		 	%\includegraphics[width = 0.6\textwidth]{../common/m1.png}
    		 	\input{../common/m2.tex}
-   		 	\caption{Proof by shortest distance\label{fig:path}}
+   		 	\caption{Prueba de la distancia más corta\label{fig:path}}
    		 \end{figure}
-   As shown in Figure~\ref{fig:path}, we construct a grid whose length and width are divided into $m$ segments,  the $i$-th segment of which has length $\sqrt{\nr'_{i1}}$ and $\sqrt{\nr'_{i2}}$ respectively.
+   Como se muestra en la figura \ref{fig:path}, construimos una grilla cuyos largo y ancho están divididos en $m$ segmentos, cuyo $i$-ésimo segmento tiene una longitud de $\sqrt{\nr'_{i1}}$ y $\sqrt{\nr'_{i2}}$ respectivamente.
 
-   	Then, $S_1^{'2}+S_2^{'2}=A_0A_m^2$, that is, equals to the square of the blue segment's length. In the meanwhile,
+   	Entonces, $S_1^{'2}+S_2^{'2}=A_0A_m^2$, esto es, es igual al cuadrado de la longitud del segmento azul. Entretanto,
    	 $$S_1^2 = (\sum_{i=1}^m \sqrt{\nr_{i1}})^2 > (\sum_{i=1}^m \sqrt{\nr'_{i1}+\nr'_{i2}})^2 = (\sum_{i=1}^m A_{i-1}A_i)^2$$,
-   	 which equals to the sum of squares of all red segments. Since the shortest distance between two points is a line-segment, it holds that $S_1^2 >S_1^{'2}+S_2^{'2}$.
+   	 que es igual a la suma de los cuadrados de todos los segmentos rojos. Como la distancia más corta entre dos puntos es un segmento lineal, se mantiene que $S_1^2 >S_1^{'2}+S_2^{'2}$.
 
-   	 For the cases where $k>2$ {\dapp}s are split, 	we can regard it as successive splits and iteratively use the result on $k=2$.
+   	 Para los casos en los que las {\dapp}s $k>2$ están divididas, podemos considerarlo como divisiones sucesivas y usar iterativamente el resultado en $k=2$.
 
-   	 So the property is proved.
+   	 Así, la propiedad queda probada.
 
 \end{proof}
 
-\subsection{Proof of Corollary~\ref{c1}}
+\subsection{Prueba de corolario \ref{c1}}
 \label{subsection:proof3}
 \begin{proof}
-	For any voter that is bought over by $d_1$'s developer, before splitting, we
-	can regard the voter as a normal voter who values all {\dapp}s with weight
-	vector $(1,0,0,\ldots,0)$, as he gives his all voting capacity to $d_1$.
-	Suppose now $d_1$ is split into $k$ {\dapp}s and the bough-over voter's
-	contributory values to the $k$ {\dapp}s are $\nr_{t1},\ldots,\nr_{tk}$, whose
-	sum is fixed. According to the condition that the equality holds for Cauthy's
-	inequality in the proof of Property~\ref{p1}, the voter can be regard as a
-	normal voter who values all {\dapp}s with weight vector
-	$(\sqrt{\nr_{t1}}/C,\sqrt{\nr_{t2}}/C,\ldots, \sqrt{\nr_{tk}}/C,0,0,\ldots,0)$, where $C=\sum_{j=1}^k \sqrt{\nr_{tj}}$. That is, the voter values the split {\dapp}s with weights according to kind of proportion and values all other {\dapp}s with 0 weights.~\footnote{Note that scaling all weights by a constant does not effect the results, since the total contributory value of the voter only depends on the proportions of weights to total weights}. Since
+	Para todo votante comprado por el desarrollador de una \dapp $d_1$, antes de su división, podemos considerar al votante como un votante normal que valúa todas las {\dapp}s con un vector de ponderación $(1,0,0,\ldots,0)$, ya que otorga toda su capacidad de voto a $d_1$.
+	Suponemos ahora que $d_1$ se divide en $k$ {\dapp}s y que los valores de contribución de los votantes comprados a las {\dapp}s $k$ son $\nr_{t1},\ldots,\nr_{tk}$, cuya suma es fija. De acuerdo a la condición de que la igualdad se mantenga para la inecualidad de Cauchy en la Prueba de Propiedad \ref{p1}, el votante puede ser considerado como un votante normal que valúa todas las {\dapp}s con un vector de ponderación
+	$(\sqrt{\nr_{t1}}/C,\sqrt{\nr_{t2}}/C,\ldots, \sqrt{\nr_{tk}}/C,0,0,\ldots,0)$, donde $C=\sum_{j=1}^k \sqrt{\nr_{tj}}$. Esto es, el votante valúa las {\dapp}s divididas con ponderaciones de acuerdo a proporción, y valúa todas las otras {\dapp}s con ponderaciones 0.\footnote{Nótese que al escalar todas las ponderaciones mediante una constante no se afectan los resultados, ya que el valor de contribución total del votante sólo depende de las proporciones de las ponderaciones con respecto a las ponderaciones totales}. Como
 		$$\sum_{j=1}^k \sqrt{\nr_{tj}}/C =1$$
-	so the case in this corollary can be reduced to the case about normal voters(Property~\ref{p2}). So the corollary is proved.
+	por lo que el caso de este corolario puede reducirse al caso de los votantes normales. (Propiedad\ref{p2}). Así, el corolario queda probado.
 \end{proof}
 
-\subsection{Proof of Property~\ref{p3}}
+\subsection{Prueba de propiedad \ref{p3}}
 \begin{proof}
-	We first consider the case that a voter splits his account into two sub-accounts. We fix the actions of other voters. Let $c$ to be the original account and $a,b$ to be the split sun-accounts, $S,S'$ to be the ranking score of the \dapp that the voter plans to vote before and after splitting respectively, $U,U'$ to be the final reward of the developer of the \dapp that the voter plans to vote before and after splitting respectively. By definition, we have
+	Consideramos en primer lugar el caso de un votante que divide su cuenta en dos sub-cuentas. Consideramos $c$ como la cuenta original y $a,b$ como las sub-cuentas, $S,S'$ son las puntuaciones de valoración de la \dapp que el votante planea votar antes y después de la división respectivamente, $U,U'$ son los incentivos finales para el desarrollador de la \dapp que el votante planea votar, antes y después de la división respectivamente. Por definición, tenemos
 	$$S= \sqrt{\nr_c}+O,\quad S'=\sqrt{\nr_a}+\sqrt{\nr_b}+O$$,
-	where $O$ is the sum of contributory values by other voters, which is fixed.
+	donde $O$ es la suma de los valores de contribución de otros votantes, que es un valor fijo.
 
-	By ~\ref{eq:sqrt_nr} it holds that $S < S'$. That is, the rank of the \dapp does not increase.
+	Mediante ~\ref{eq:sqrt_nr} se sostiene que $S < S'$. Esto es, la valuación de la \dapp no se incrementa.
 
-	In the meanwhile, by definition,
+	Entretanto, por definición,
 	$$U = \frac{S}{S+P}\lambda M,\quad U' = \frac{S'}{S'+P} \lambda M$$,
-	where $P$ is the sum of squares of other \dapp's ranking score, which is fixed.
+	donde $P$ es la suma de los cuadrados de los puntajes de la valuación de las otras \dapp, cuyo valor es fijo.
 
-	Since $S < S'$ it holds that $U \leq U'$. That is the developer's final reward does not increase.
+	Como $S < S'$ se sostiene que $U \leq U'$. Esto es, el incentivo final que recibe el desarrollador no se incrementa.
 
-	For the cases where $k>2$ sub-accounts are split, we can regard it as successive splits and iteratively use the result on $k=2$.
+	Para los casos en los que $k>2$ cuentas están divididas, podemos considerarlo como divisiones sucesivas y usar iterativamente el resultado en $k=2$.
 
 \end{proof}

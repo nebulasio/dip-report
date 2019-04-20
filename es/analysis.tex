@@ -2,13 +2,13 @@
 \label{section:properties}
 \noindent Habiendo introducido el \pidc, en esta sección analizaremos las manipulaciones que pueden ocurrir en la práctica, y las propiedades de DIP contra ellas\@. Desde el punto de vista de los votantes y los desarrolladores, respectivamente, las manipulaciones incluyen compra de votos, división maliciosa de {\dapp}s, ataques Sybil y otros.
 \subsection{Compra de votantes}
-\noindent Esta manipulación sucede cuando un desarrollador atrae todos los votos de un grupo de votantes hacia su \dapp por medio de sobornos u otras prácticas similares, algo que ocurre con frecuencia en la vida real. Aquí suponemos que todos los votantes tienen su interés únicamente en sí mismos; asumimos que los votantes normales sólo sienten interés por la valuación de las {\dapp}s que son de su interés más que los incentivos que recibe tal o cual desarrollador. En otras palabras, un votante normal buscará maximizar el peso de la valuación de todas las {\dapp}s que son de su agrado. Nuestro algoritmo de valuación cuadrática garantiza la siguiente propiedad:
+\noindent Esta manipulación sucede cuando un desarrollador atrae todos los votos de un grupo de votantes hacia su \dapp por medio de sobornos u otras prácticas similares, algo que ocurre con frecuencia en la vida real. Aquí suponemos que todos los votantes tienen su interés únicamente en sí mismos; asumimos que los votantes normales sólo sienten interés por la valuación de las {\dapp}s que son de su interés más que los incentivos que recibe tal o cual desarrollador. En otras palabras, un votante normal buscará maximizar la ponderación de la valuación de todas las {\dapp}s que son de su agrado. Nuestro algoritmo de valuación cuadrática garantiza la siguiente propiedad:
 
 \begin{property}
 	\label{p1}
 	En el modelo DIP, un votante normal con interés propio generalmente usará sus votos en múltiples {\dapp}s.
 \end{property}
-Es posible ilustrar esta propiedad mediante el siguiente modelo: suponiendo que los pesos con los que un votante $a_i$ valúa todas las {\dapp}s son $b_{i1}, b_{i2}, \ldots, b_{in}$ respectivamente (puede ser considerado como la preferencia del votante por todas las {\dapp}s). Tomando la forma de\ref{eq:sqrt}, el valor de contribución del usuario satisface
+Es posible ilustrar esta propiedad mediante el siguiente modelo: suponiendo que las ponderaciones con los que un votante $a_i$ valúa todas las {\dapp}s son $b_{i1}, b_{i2}, \ldots, b_{in}$ respectivamente (puede ser considerado como la preferencia del votante por todas las {\dapp}s). Tomando la forma de\ref{eq:sqrt}, el valor de contribución del usuario satisface
 
 $$\frac{b_{i1}}{\sqrt{\nr_{i1}}}=\frac{b_{i2}}{\sqrt{\nr_{i2}}}=\cdots=\frac{b_{in}}{\sqrt{\nr_{in}}}.$$
 
@@ -24,7 +24,7 @@ En la práctica, a veces el modelo de voto lineal tradicional limitará la canti
 \begin{corollary}
 	El valor de contribución total de un votante comprado es mucho menor que el valor total de contribución de un usuario normal.
 \end{corollary}
-Un votante comprado $a_i$ puede como mucho ofrecerle a su \dapp un valor de contribución $\sqrt{\nr_i}$. Un votante normal que no ha sido comprado, asumiendo que planea votar por $K$ {\dapp}s,\footnote{$K$ refleja el número de {\dapp}s de las cuales el valor de contribución del votante puede discriminar de otras {\dapp}s —que es usualmente mayor a 1— siempre y cuando el peso de la valuación del votante de las $K$ {\dapp}s no esté extremadamente distribuido (es decir, el votante sólo vota por una \dapp en particular y los votos para otras {\dapp}s tiende a 0).} cuando el peso de sus valuaciones hacia esas {\dapp}s están uniformemente distribuidos, el incremento total del puntaje de valuación sobre todas las {\dapp}s causado por el votante está por encima de $O(\sqrt{K\nr_i})$, esto es, la eficiencia de un votante normal es $K$ veces la eficiencia de un votante comprado. En consecuencia, el costo de la manipulación al comprar votantes se incrementa.
+Un votante comprado $a_i$ puede como mucho ofrecerle a su \dapp un valor de contribución $\sqrt{\nr_i}$. Un votante normal que no ha sido comprado, asumiendo que planea votar por $K$ {\dapp}s,\footnote{$K$ refleja el número de {\dapp}s de las cuales el valor de contribución del votante puede discriminar de otras {\dapp}s —que es usualmente mayor a 1— siempre y cuando la ponderación de la valuación del votante de las $K$ {\dapp}s no esté extremadamente distribuido (es decir, el votante sólo vota por una \dapp en particular y los votos para otras {\dapp}s tiende a 0).} cuando la ponderación de sus valuaciones hacia esas {\dapp}s están uniformemente distribuidos, el incremento total del puntaje de valuación sobre todas las {\dapp}s causado por el votante está por encima de $O(\sqrt{K\nr_i})$, esto es, la eficiencia de un votante normal es $K$ veces la eficiencia de un votante comprado. En consecuencia, el costo de la manipulación al comprar votantes se incrementa.
 
 \subsection{División maliciosa}
 \label{subsec:5.2}
@@ -39,7 +39,7 @@ Específicamente, tal como sucede con el algoritmo que calcula los incentivos fi
 Se asume que un votante normal pertenece a uno de estos casos:
 \begin{inparaenum}
 \item[i).] el votante distribuye los votos destinados a la \dapp original en las {\dapp}s resultantes de la división. Tal caso ocurre cuando una aplicación tiene diferentes direcciones de contratos inteligentes para su invocación.
-\item[ii).] Suponiendo que el votante valúa la \dapp original con un peso $a$, y valúa con pesos $b$ y $c$ dos {\dapp}s divididas, respectivamente, entonces $c>a+b$. Tal caso se puede ilustrar con el hecho de que, luego de la división, las calidades de las {\dapp}s' se reducen fuertemente debido a la falta de vinculación entre ellas. Así, la suma de las calidades de las {\dapp}s divididad es menor que la calidad de la \dapp original.
+\item[ii).] Suponiendo que el votante valúa la \dapp original con una ponderación $a$, y valúa con ponderaciones $b$ y $c$ dos {\dapp}s divididas, respectivamente, entonces $c>a+b$. Tal caso se puede ilustrar con el hecho de que, luego de la división, las calidades de las {\dapp}s' se reducen fuertemente debido a la falta de vinculación entre ellas. Así, la suma de las calidades de las {\dapp}s divididad es menor que la calidad de la \dapp original.
  \end{inparaenum}
 
   En ambos casos, el incentivo final para el desarrollador no se incrementa. Se brinda una prueba detallada de esto en la sección \ref{subsection:proof2}.
