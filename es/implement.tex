@@ -1,0 +1,22 @@
+\section{Implementación del \pidc}
+
+\noindent
+La implementación completa del \pidc está fuera del alcance de este libro púrpura; discutiremos únicamente los aspectos clave que deben ser manejados durante ese evento\@.
+
+\subsection{Cómo distribuir los incentivos}
+\noindent
+Para la distribución de los incentivos, se establecerá una cuenta especial, $D$. En el ínterin, una parte de las recompensas por nuevos bloques se transferirá a la cuenta $D$ de acuerdo a una proporción fija.
+
+Es importante asegurarse de que cada desarrollador reciba sus incentivos de forma puntual.\footnote{El intervalo de tiempo para el envío de incentivos equivale al intervalo de muestreo descrito en la sección ~\ref{subsection:interval}}. Con el fin de poder enviar las recompensas al blockchain, se requiere la clave privada de la cuenta asignada a tal fin, para poder firmar digitalmente la transacción necesaria. Por ello, para garantizar la seguridad, la cuenta $D$ requiere un tratamiento especial.
+
+En primer lugar, se implementará un tipo especial de transacción en el sistema, denotado como transacción \texttt{dip}, que contiene la información necesaria sobre monto total del incentivo para un desarrollador dado, y la \textit{altura} del blockchain. En segundo lugar, el sistema rechazará todas las transacciones que no sean \texttt{dip} iniciadas por $D$, para asegurar que ninguna cuenta pueda extraer tokens de $D$. Finalmente, los nodos de verificación del blockchain verificarán las transacciones \texttt{dip}. Particularmente, esos nodos deberán correr DIP en forma local y verificar si la información de las transacciones \texttt{dip} coincide con sus resultados locales.
+
+Por medio de los métodos descriptos en el párrafo anterior, no sólo se asegurará la distribución normal de los incentivos a los desarrolladores, sino que además se garantizará la seguridad de la cuenta $D$ destinada a enviarlos.
+
+\subsection{Actualización de \pidc}
+\noindent
+Como sabemos, \pidc guarda una estrecha relación con el ecosistema. Al ser su factor de variación, DIP debe recibir actualizaciones, particularmente en sus parámetros; la cuestión de cómo lograr su actualización efectiva es un aspecto clave. Para lograrlo, se utilizará Nebulas Force para actualizar DIP de forma iterativa\@.
+
+Se actualiza la estructura de los bloques para que puedan contener algoritmos y parámetros en DIP (bajo la forma de LLVM IR). La Máquina Virtual de Nebulas (NVM) recibe esos parámetros y corre esos algoritmos para determinar el total de tokens que una cuenta dada debe recibir.
+
+Si es necesario actualizar esos parámetros y algoritmos, el Grupo Nebulas trabajará en conjunto con su comunidad para permitir que los nuevos bloques contengan parámetros y algoritmos actualizados que aseguren tanto la puntualidad como la fluidez del proceso, y que eviten la necesidad de realizar un \textit{hard fork}.

@@ -1,0 +1,74 @@
+\section{\pidc}
+\noindent Basándonos en el modelo de la sección anterior, en esta presentaremos el \pidc (DIP, por sus siglas en inglés, \textit{Developer Incentive Protocol}). DIP se compone de dos procedimientos: la valuación de las {\dapp}s y la incentivación de los desarrolladores. Específicamente, desde el comportamiento de invocación por parte de los votantes hasta la recepción de los incentivos por parte de los desarrolladores, DIP incluye cuatro transformaciones: tiempos de invocación$\overset{1}{\rightarrow}$ capacidad de voto$\overset{2}{\rightarrow}$ valor de contribución$\overset{3}{\rightarrow}$ puntaje de valuación$\overset{4}{\rightarrow}$ incentivo final.
+
+\subsection{Capacidad de voto y Valor de Contribución}
+\noindent Para todo votante $a_i$, utilizamos $\nr_i$ para denotar su capacidad de voto, que se puede expresar como el número total de votos que posee el votante $a_i$. \cite{Nebulasyellowpaper} demuestra que el valor NR de un votante es una medida efectiva del valor de su cuenta. Así, en DIP, el valor NR es usado también como un criterio significativo para decidir la capacidad de voto de los votantes. Para un votante $a_i$, su capacidad de voto se puede representar como una función de su valor NR:
+\begin{align}
+	\nr_i = f(\mathcal{C}(a_i))
+\end{align}
+donde $\mathcal{C}(a_i)$ representa el valor NR del votante $a_i$.
+
+Normalmente, querríamos que $f$ sea una función creciente, esto es, votantes con mayor valor NR
+tienen mayor capacidad de voto. Aquí brindamos una función que satisface esa condición:
+
+\begin{align}
+	\label{eq:capacity}
+	f(\mathcal{C}(a_i))=\mathcal{C}^2(a_i).
+\end{align}
+En otras palabras,
+\begin{align}
+	\nr_i = \mathcal{C}^2(a_i).
+\end{align}
+
+De ello surge que esta función provee propiedades interesantes, como ser fortaleza contra ataques Sybil. Véase la sección \ref{section:properties}.
+
+Luego es necesario discutir el mecanismo de distribución de la capacidad de voto. De acuerdo a la sección \ref{section:properties}, $\nr_{ij}$ representa el valor de contribución de un votante $a_i$ a una \dapp $d_j$. Lo definimos de esta manera:
+\begin{align}
+	\label{eq:vote_rate}
+	\nr_{ij} = \frac{e_{ij}}{e_{i0}+\sum_{j=1}^n {e_{ij}}} \nr_i.
+\end{align}
+La fórmula~\ref{eq:vote_rate} puede ser entendida como la proporción entre la cantidad de invocaciones a $d_j$ y el total de invocaciones. Aquí $e_{i0}$ representa la cantidad de invocaciones que no corresponden a ninguna \dapp. Un votante puede ajustar arbitrariamente los valores de $e_{i0}$ y $e_{ij}$.
+
+Con la introducción de $e_{i0}$, se desprende que
+$$\sum_{j=1}^n \nr_{ij} \leq \nr_i.$$
+Es importante notar que el propósito de la fórmula\ref{eq:vote_rate} es el de permitirles a los votantes
+distribuir arbitrariamente sus valores NR para votar (mediante la elección arbitraria de valores de contribución). En la práctica es posible que algunas {\dapp}s aumenten por la fuerza el número de invocaciones (al forzar a los usuarios a enviar el doble de ellas), pero como tanto el número de invocaciones como los valores NR son de dominio público, un votante puede todavía lograr la distribución valores de contribución que desea simplemente ajustando sus tiempos de invocación.
+
+La razón detrás de la introducción de $e_{i0}$ es que, para el resto de los IR (\textit{Individual Rationals}) de los votantes —los intereses de los votantes no serán vulnerados— no forzamos a los votantes a emitir todos sus votos. Los votantes pueden ejercer selectivamente parte de sus derechos de voto o bien abstenerse por completo ajustando apropiadamente el valor de $e_{i0}$.\footnote{$e_{i0}$ se puede implementar estableciendo oficialmente un contrato inteligente vacío, que no ejecuta ninguna instrucción. Los votantes, entonces, pueden invocar ese contrato inteligente las veces que lo necesiten.}
+\subsection{Puntaje de valuación}
+\noindent Dados todos los valores de contribución de los votantes a las {\dapp}s, es posible computar el puntaje de valuación de las {\dapp}s: dados todos los valores de contribución
+$\nr_{ij},i=1,2,\ldots,m,j=1,2,\ldots,n$, definimos el puntaje de valuación de una \dapp $d_j$ como una función de múltiples variables sobre los valores de contribución de todos los votantes:
+
+\begin{align}
+	S_j = g(\nr_{1j},\nr_{2j},\ldots,\nr_{mj})
+\end{align}
+Similarmente, la siguiente función satisface esas condiciones:
+\begin{align}
+	\label{eq:sqrt}
+	g(\nr_{1j},\nr_{2j},\ldots,\nr_{mj}) = \sum_{i=1}^m \sqrt{\nr_{ij}}
+\end{align}
+Esto es, la valuación de una \dapp en el Store equivale a la suma de las raíces cuadradas de los valores de contribución de todos sus votantes. No es difícil ver que, para un usuario
+$a_i$, cuando sólo vota por una \dapp (asumiendo que no deshecha ningún voto), su valor de contribución total es $\sqrt{\nr_i}$. Cuando emite sus votos a distintas {\dapp}s, su valor de contribución total se incrementa debido a la propiedad $\sqrt{a+b}<\sqrt{a}+\sqrt{b}$ de la función raíz cuadrada. En otras palabras, el votante se pone en contacto con más {\dapp}s, algo alentado por nuestro sistema. En la sección \ref{section:properties}, probaremos las propiedades detalladas para nuestra construcción. Un método similar está referenciado en \cite{buterin2018liberal}.
+
+Dados los puntajes de valuación $S_j,j=1,2,\ldots,m$, las valuaciones de las {\dapp}s están determinadas de forma acorde. Por ejemplo, en el cliente Nebulas nano\footnote{\url{https://nano.nebulas.io/}}, las \dapp de alta valuación son listadas en posiciones prominentes, lo que sirve para atraer más atención sobre ellas.
+
+\subsection{Incentivo final}
+\noindent DIP le ofrece a los votantes una lista confiable de valuación de {\dapp}s.\footnote{Asumimos que los votantes únicamente sienten interés por la valuación de las {\dapp}s de su preferencia, al tiempo que las recompensas que sus desarrolladores reciben no son de su incumbencia.} Para los desarrolladores, necesitamos distribuir las recompensas de acuerdo a sus puntos de valuación.
+
+Dados todos los puntajes de valuación de las {\dapp}s, definimos el incentivo para el desarrollador de una \dapp $d_j$ por medio de:
+\begin{align}
+	\label{eq:distribution}
+	U_j = \frac{S_j^2}{\sum_{k=1}^n S_k^2}\cdot \lambda M
+\end{align}
+donde $M$ es el total del fondo de incentivos para desarrolladores, que proviene de las recompensas otorgadas por los nuevos bloques. $\lambda $ se define como el factor de participación; esto es, deseamos que el total de incentivos se incremente junto al total de los valores NR de los votantes. La definición específica es como se muestra a continuación:
+\begin{align}
+	\label{eq:participation}
+	\lambda=\min\{\frac{\nr_p}{\alpha \nr_s }\cdot \min\{\frac{\beta\nr_p^2 }{\sigma^2(\nr_p)},1\},1\},
+\end{align}
+\noindent donde $$\nr_p = \sum_{i=1}^m (\nr_i-\nr_{i0}),\quad \nr_{i0} = \frac{e_{i0}\nr_i}{e_{i0}+\sum_{j=1}^n {e_{ij}}},$$ (la capacidad total efectiva de voto de todos los votantes)
+$$\nr_s = \sum_{i=1}^{m^*} \nr_i,$$
+\noindent la capacidad total de voto (la raíz cuadrada del valor NR) de todos los usuarios en la comunidad, $\sigma$ es la desviación estándar (raíz cuadrada de la varianza) de la capacidad total efectiva de voto de todos los votantes:
+$$ \sigma^2(\nr_p) = \sum_{i=1}^m (\nr_i-\frac{1}{m}\nr_p)^2 $$
+de la cual su valor máximo es $\frac{(m-1)^2}{m^2}\nr_p^2$, y $\alpha,\beta < 1$ son parámetros ajustables.
+
+El propósito de la introducción del factor de participación $\lambda$ es el de esperar que la capacidad total de voto de los votantes supere un umbral ($\alpha$ veces la capacidad total de voto de los usuarios de la comunidad) y para limitar la varianza en la capacidad de voto de los votantes, evitando el escenario de varios votantes de alto valor NR mezclados con muchas cuentas falsas de bajo valor NR. Los dos términos se pueden complementar entre sí, es decir, cuando la tasa de participación es alta, podemos ignorar los efectos de la divergencia.
