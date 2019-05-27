@@ -1,0 +1,78 @@
+\section{Análisis de propiedades}
+\label{section:properties}
+\noindent Habiendo introducido el \pidc, en esta sección analizaremos las manipulaciones que pueden ocurrir en la práctica, y las propiedades de DIP contra ellas\@. Desde el punto de vista de los votantes y los desarrolladores, respectivamente, las manipulaciones incluyen compra de votos, división maliciosa de {\dapp}s, ataques Sybil y otros.
+\subsection{Compra de votantes}
+\noindent Esta manipulación sucede cuando un desarrollador atrae todos los votos de un grupo de votantes hacia su \dapp por medio de sobornos u otras prácticas similares, algo que ocurre con frecuencia en la vida real. Aquí suponemos que todos los votantes tienen su interés únicamente en sí mismos; asumimos que los votantes normales sólo sienten interés por la valuación de las {\dapp}s que son de su interés más que los incentivos que recibe tal o cual desarrollador. En otras palabras, un votante normal buscará maximizar la ponderación de la valuación de todas las {\dapp}s que son de su agrado. Nuestro algoritmo de valuación cuadrática garantiza la siguiente propiedad:
+
+\begin{property}
+	\label{p1}
+	En el modelo DIP, un votante normal con interés propio generalmente usará sus votos en múltiples {\dapp}s.
+\end{property}
+Es posible ilustrar esta propiedad mediante el siguiente modelo: suponiendo que las ponderaciones con los que un votante $a_i$ valúa todas las {\dapp}s son $b_{i1}, b_{i2}, \ldots, b_{in}$ respectivamente (puede ser considerado como la preferencia del votante por todas las {\dapp}s). Tomando la forma de\ref{eq:sqrt}, el valor de contribución del usuario satisface
+
+$$\frac{b_{i1}}{\sqrt{\nr_{i1}}}=\frac{b_{i2}}{\sqrt{\nr_{i2}}}=\cdots=\frac{b_{in}}{\sqrt{\nr_{in}}}.$$
+
+Dicho de otro modo, los valores de contribución del votante $a_i$ coinciden con sus verdaderas preferencias por esas {\dapp}s. La prueba detallada se encuentra en la sección \ref{subsection:proof1}.
+
+Los modelos tradicionales de voto generalmente computan el puntaje de valuación linealmente; esto es,
+$$g(\nr_{1j},\nr_{2j},\ldots,\nr_{mj}) = \sum_{i=1}^m \nr_{ij}.$$
+En este modelo, un votante racional sólo emitirá votos por su \dapp favorita. En comparación, la fórmula \ref{eq:sqrt} puede promover interacciones entre los votantes y las {\dapp}s, debido a la propiedad de la función raíz cuadrada. En otras palabras, los votantes que votan por múltiples {\dapp}s maximizan la utilización de su capacidad de voto. Un análisis similar se puede encontrar en \cite{buterin2018liberal}. Para sumarizar, un votante podría votar por distintas {\dapp}s y mantener al mismo tiempo la prioridad sobre sus {\dapp}s favoritas, tal como se observa en la ecuación más arriba.
+
+En la práctica, a veces el modelo de voto lineal tradicional limitará la cantidad máxima de votos por votante para una \dapp, para forzar la dispersión de sus votos, mientras nuestro algoritmo logra el mismo objetivo por medio de incentivos esenciales, con una expresión matemática más elegante y simple.
+
+
+\begin{corollary}
+	El valor de contribución total de un votante comprado es mucho menor que el valor total de contribución de un usuario normal.
+\end{corollary}
+Un votante comprado $a_i$ puede como mucho ofrecerle a su \dapp un valor de contribución $\sqrt{\nr_i}$. Un votante normal que no ha sido comprado, asumiendo que planea votar por $K$ {\dapp}s,\footnote{$K$ refleja el número de {\dapp}s de las cuales el valor de contribución del votante puede discriminar de otras {\dapp}s —que es usualmente mayor a 1— siempre y cuando la ponderación de la valuación del votante de las $K$ {\dapp}s no esté extremadamente distribuido (es decir, el votante sólo vota por una \dapp en particular y los votos para otras {\dapp}s tiende a 0).} cuando la ponderación de sus valuaciones hacia esas {\dapp}s están uniformemente distribuidos, el incremento total del puntaje de valuación sobre todas las {\dapp}s causado por el votante está por encima de $O(\sqrt{K\nr_i})$, esto es, la eficiencia de un votante normal es $K$ veces la eficiencia de un votante comprado. En consecuencia, el costo de la manipulación al comprar votantes se incrementa.
+
+\subsection{División maliciosa}
+\label{subsec:5.2}
+\noindent En cuanto a los desarrolladores, otra posible manipulación consiste en dividir sus {\dapp}s con el fin de obtener mayores incentivos. Intuitivamente, la división de sus {\dapp}s les permite incrementar el número de participantes propios en el mecanismo de incentivos, e incrementar así el total de recompensas recibidas. No obstante, nuestro modelo garantiza que esto no suceda. Asumimos que todos los desarrolladores tienen interés en recibir incentivos así como una utilidad potencial causada por la mejora de su posicionamiento en el sistema de valuación.
+
+Específicamente, tal como sucede con el algoritmo que calcula los incentivos finales, la convexidad de la fórmula \ref{eq:distribution} garantiza la siguiente propiedad:
+\begin{property}
+	\label{p2}
+    Si todos los votantes son normales, dividir una \dapp en varias {\dapp}s no incrementará el total de recompensas para el desarrollador.
+\end{property}
+
+Se asume que un votante normal pertenece a uno de estos casos:
+\begin{inparaenum}
+\item[i).] el votante distribuye los votos destinados a la \dapp original en las {\dapp}s resultantes de la división. Tal caso ocurre cuando una aplicación tiene diferentes direcciones de contratos inteligentes para su invocación.
+\item[ii).] Suponiendo que el votante valúa la \dapp original con una ponderación $a$, y valúa con ponderaciones $b$ y $c$ dos {\dapp}s divididas, respectivamente, entonces $c>a+b$. Tal caso se puede ilustrar con el hecho de que, luego de la división, las calidades de las {\dapp}s' se reducen fuertemente debido a la falta de vinculación entre ellas. Así, la suma de las calidades de las {\dapp}s divididad es menor que la calidad de la \dapp original.
+ \end{inparaenum}
+
+  En ambos casos, el incentivo final para el desarrollador no se incrementa. Se brinda una prueba detallada de esto en la sección \ref{subsection:proof2}.
+
+Mas aun, un desarrollador podría simultáneamente comprar votantes y dividir su \dapp: primero divide su \dapp en $K$ {\dapp}s y luego permite que sus votantes comprados distribuyan sus votos uniformemente entre todas las {\dapp}s resultantes de la división, maximizando así el uso de los votantes comprados. Preparamos el siguiente corolario contra este caso:
+
+\begin{corollary}
+	\label{c1}
+	Incluso con la introducción de votos comprados, el desarrollador no puede incrementar sus incentivos por medio de la división de sus {\dapp}s.
+\end{corollary}
+
+Se brinda una prueba detallada en la sección \ref{subsection:proof3}.
+
+Es de notar que la valuación de las {\dapp}s se decrementará si los desarrolladores las dividen, por lo que las potenciales utilidades también se verían disminuidas. En suma, nuestro algoritmo esencialmente previene estos casos de divisiones maliciosas.
+
+Sin duda que para un desarrollador que escribe distintas {\dapp}s,
+como no hay relaciones de simetría o división entre sus {\dapp}s, la utilidad que recibe no se verá afectada.
+
+\subsection{Ataque \textit{Sybil}}
+\noindent Al generalizar el ataque Sybil nos referimos a un ataque que subvierte el sistema de reputación al crear un gran número de identidades seudónimas, utilizando esas identidades espurias para ganar una influencia desproporcionadamente grande \cite{quercia2010sybil}. En el libro amarillo de Nebulas \cite{Nebulasyellowpaper}, las propiedades de Nebulas Rank contra tales manipulaciones está probada. Así, en el algoritmo de valuación DIP, los votantes tampoco serán capaces de incrementar sus valores NR mediante la creación de cuentas espurias, esto es,
+$$\mathcal{C}(c)>\mathcal{C}(a)+\mathcal{C}(b)$$
+donde $c$ es la cuenta original, $a,b$ son cuentas títere. De acuerdo a la fórmula \ref{eq:vote_rate} sus capacidades de voto satisfacen la siguiente restricción:
+
+\begin{align}
+	\label{eq:sqrt_nr}
+	\sqrt{\nr_{a+b}}>\sqrt{\nr_a}+\sqrt{\nr_b}
+\end{align}
+
+Suponiendo que el propósito de un votante al lanzar un ataque Sybil es el de incrementar el puntaje de la valuación de una \dapp específica y, simultáneamente, los incentivos de su desarrollador, de acuerdo a la restricción mencionada arriba, tenemos la siguiente propiedad:
+
+
+\begin{property}
+	\label{p3}
+    Para todo votante, la ejecución de un ataque Sybil no incrementará el puntaje de valuación de la \dapp a la cual apunta a votar, ni tampoco el incentivo otorgado al desarrollador de la \dapp mencionada.
+\end{property}
+Así, la propiedad contra el ataque Sybil queda garantizada.
