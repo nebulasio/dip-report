@@ -2,7 +2,7 @@
 \noindent Based on the model in previous section, we introduce the Developer
 Incentive Protocol in this section. DIP includes two steps: ranking the DApps
 and rewarding the developers. Specifically, from voters' invocation behaviors
-to developers' final reward, it includes four transformations: invocation
+to developers' final rewards, it includes four transformations: invocation
 times$\overset{1}{\rightarrow}$ voting capacity$\overset{2}{\rightarrow}$ contributory
 value$\overset{3}{\rightarrow}$ ranking score$\overset{4}{\rightarrow}$ final reward.
 
@@ -63,8 +63,7 @@ Similarly, here we give a satisfactory function:
 That is, a DApp's ranking store equals to the sum of square roots of its
 contributory values from all voters. It is not hard to see that, for a user
 $a_i$, when he only votes for one DApp (assume that he does not discard any
-vote), his total contributory value is $\sqrt{\nr_i}$. When he casts his votes
-to several different DApps, his total contributory value increases due to the
+vote), the total incremental of ranking scores by him is $\sqrt{\nr_i}$. When he casts his votes to several different DApps, the incremental of total ranking scores by him increases due to the
 property $\sqrt{a+b}<\sqrt{a}+\sqrt{b}$ of the square root function. In other
 words, the voter gets in touch with more DApps, which is encouraged by our
 system. In Section~\ref{section:properties}, we will prove  detailed properties for our construction. Similar method are referred in~\cite{buterin2018liberal}.
